@@ -1,4 +1,4 @@
-﻿using System.Web.UI.WebControls;
+using System.Web.UI.WebControls;
 using KinderSurprise.DTO;
 using KinderSurprise.MVP.Presenter.Interfaces;
 using NUnit.Framework;
@@ -8,13 +8,24 @@ namespace KinderSurprise.MVP.Presenter.Test
     [TestFixture]
     public class TestMultiViewPresenter
     {
-
+		private IMultiView m_MockMultiView = null;
+		
         #region MockObjectWithInitializationAndDispose
         [SetUp]
         public void Setup()
         {
-            m_MockMultiView = new MockMultiView();
-            m_MockMultiView.MultiViewCategory.Views.Add(m_MockMultiView.ViewCategoryProperty);
+            Moq.Mock<IMultiView> mockMultiView = new Moq.Mock<IMultiView>();
+            mockMultiView.SetupAllProperties();
+			m_MockMultiView = mockMultiView.Object;
+			m_MockMultiView.MultiViewCategory = new MultiView();
+			m_MockMultiView.MultiViewFigur = new MultiView();
+			m_MockMultiView.MultiViewSerie = new MultiView();
+			m_MockMultiView.ViewCategoryProperty = new View();
+			m_MockMultiView.ViewFigurProperty = new View();
+			m_MockMultiView.ViewFigurStore = new View();
+			m_MockMultiView.ViewSerieProperty = new View();
+			m_MockMultiView.ViewSerieStore = new View();
+			m_MockMultiView.MultiViewCategory.Views.Add(m_MockMultiView.ViewCategoryProperty);
             m_MockMultiView.MultiViewSerie.Views.Add(m_MockMultiView.ViewSerieProperty);
             m_MockMultiView.MultiViewSerie.Views.Add(m_MockMultiView.ViewSerieStore);
             m_MockMultiView.MultiViewFigur.Views.Add(m_MockMultiView.ViewFigurProperty);
@@ -27,70 +38,7 @@ namespace KinderSurprise.MVP.Presenter.Test
             m_MockMultiView = null;
         }
 
-        
-
-        private class MockMultiView : IMultiView
-        {
-            private MultiView m_MVCategory = new MultiView();
-            public MultiView MultiViewCategory
-            {
-                get { return m_MVCategory; }
-                set { MultiViewCategory = m_MVCategory; }
-            }
-
-            private View m_ViewCategporyProperty = new View();
-            public View ViewCategoryProperty
-            {
-                get { return m_ViewCategporyProperty;}
-                set { ViewCategoryProperty = m_ViewCategporyProperty; }
-            }
-
-            private MultiView m_MVSerie = new MultiView();
-            public MultiView MultiViewSerie
-            {
-                get { return m_MVSerie; }
-                set { MultiViewSerie = m_MVSerie; }
-            }
-
-            private View m_ViewSerieProperty = new View();
-            public View ViewSerieProperty
-            {
-                get { return m_ViewSerieProperty; }
-                set { ViewSerieProperty = m_ViewSerieProperty; }
-            }
-
-            private View m_ViewSerieStore = new View();
-            public View ViewSerieStore
-            {
-                get { return m_ViewSerieStore; }
-                set { ViewSerieStore = m_ViewSerieStore; }
-            }
-
-            private MultiView m_MVFigur = new MultiView();
-            public MultiView MultiViewFigur
-            {
-                get { return m_MVFigur; }
-                set { MultiViewFigur = m_MVFigur; }
-            }
-
-            private View m_ViewFigureProperty = new View();
-            public View ViewFigurProperty
-            {
-                get { return m_ViewFigureProperty; }
-                set { ViewFigurProperty = m_ViewFigureProperty; }
-            }
-
-            private View m_ViewFigureStore = new View();
-            public View ViewFigurStore
-            {
-                get { return m_ViewFigureStore; }
-                set { ViewFigurStore = m_ViewFigureStore; }
-            }
-        }
-
-        private MockMultiView m_MockMultiView;
-
-        #endregion
+		#endregion
         
         [Test]
         public void Test_SetViewActive_None()

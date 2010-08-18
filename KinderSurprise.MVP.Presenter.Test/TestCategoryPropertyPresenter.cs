@@ -7,86 +7,29 @@ using NUnit.Framework;
 
 namespace KinderSurprise.MVP.Presenter.Test
 {
-		/*
+
     [TestFixture]
 
     public class TestCategoryPropertyPresenter
     {
         #region MockObjectWithInitializationAndDispose
 
-        private class MockCategoryProperty : ICategoryPropertyPresenter
-        {
-            private CategoryDto m_CategoryDto = null;
-            private Label m_ErrorLabel = new Label();
-            private TextBox m_NameTextBox = new TextBox();
-            private TextBox m_DescriptionTextBox = new TextBox();
-            private Button m_NewSerie = new Button();
-            private Button m_NewCategory = new Button();
-            private Button m_Cancel = new Button();
-            private Button m_Delete = new Button();
-            private Button m_Update = new Button();
-            
-            public Label ErrorLabel
-            {
-                get { return m_ErrorLabel; }
-                set { m_ErrorLabel = value; }
-            }
-
-            public TextBox NameTextBox
-            {
-                get { return m_NameTextBox; }
-                set { m_NameTextBox = value; }
-            }
-
-            public TextBox DescriptionTextBox
-            {
-                get { return m_DescriptionTextBox; }
-                set { m_DescriptionTextBox = value; }
-            }
-
-            public Button NewSerie
-            {
-                get { return m_NewSerie; }
-                set { m_NewSerie = value; }
-            }
-
-            public Button NewCategory
-            {
-                get { return m_NewCategory; }
-                set { m_NewCategory = value; }
-            }
-
-            public Button Cancel
-            {
-                get { return m_Cancel; }
-                set { m_Cancel = value; }
-            }
-
-            public Button Delete
-            {
-                get { return m_Delete; }
-                set { m_Delete = value; }
-            }
-
-            public Button Update
-            {
-                get { return m_Update; }
-                set { m_Update = value; }
-            }
-
-            public CategoryDto CategoryDto
-            {
-                get { return m_CategoryDto; }
-                set { m_CategoryDto = value; }
-            }
-        }
-
-        private MockCategoryProperty m_MockCategoryProperty;
+        private ICategoryPropertyPresenter m_MockCategoryProperty;
 
         [SetUp]
         public void Setup()
         {
-            m_MockCategoryProperty = new MockCategoryProperty();
+			Moq.Mock<ICategoryPropertyPresenter> mockCategoryProperty = new Moq.Mock<ICategoryPropertyPresenter>();
+			mockCategoryProperty.SetupAllProperties();
+			m_MockCategoryProperty = mockCategoryProperty.Object;
+			m_MockCategoryProperty.ErrorLabel = new Label();
+            m_MockCategoryProperty.NameTextBox = new TextBox();
+            m_MockCategoryProperty.DescriptionTextBox = new TextBox();
+            m_MockCategoryProperty.NewSerie = new Button();
+            m_MockCategoryProperty.NewCategory = new Button();
+            m_MockCategoryProperty.Cancel = new Button();
+            m_MockCategoryProperty.Delete = new Button();
+            m_MockCategoryProperty.Update = new Button();
         }
 
         [TearDown]
@@ -217,5 +160,4 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual(categoryDtos.Count, categoryService.GetAll().Count);
         }
     }
-    */
 }

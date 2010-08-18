@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Web.UI.WebControls;
 using KinderSurprise.DTO;
 using KinderSurprise.Mapper;
@@ -14,86 +14,23 @@ namespace KinderSurprise.MVP.Presenter.Test
     {
         #region MockObjectWithInitializationAndDispose
 
-        private class MockFigurProperty : IFigurPropertyPresenter
-        {
-            private Button m_NewFigurButton = new Button();
-            private Button m_SaveButton = new Button();
-            private Button m_DeleteButton = new Button();
-            private Button m_CancelButton = new Button();
-            private Label m_ErrorMessage = new Label();
-            private TextBox m_FigurName = new TextBox();
-            private TextBox m_FigurDescription = new TextBox();
-            private TextBox m_FigurPrice = new TextBox();
-            private DropDownList m_ChooseSerie = new DropDownList();
-            private FigurDto m_FigurDto;
-
-            public Button NewFigurButton
-            {
-                get { return m_NewFigurButton; }
-                set { m_NewFigurButton = value; }
-            }
-
-            public Button SaveButton
-            {
-                get { return m_SaveButton; }
-                set { m_SaveButton = value; }
-            }
-
-            public Button DeleteButton
-            {
-                get { return m_DeleteButton; }
-                set { m_DeleteButton = value; }
-            }
-
-            public Button CancelButton
-            {
-                get { return m_CancelButton; }
-                set { m_CancelButton = value; }
-            }
-
-            public TextBox FigurName
-            {
-                get { return m_FigurName; }
-                set { m_FigurName = value; }
-            }
-
-            public TextBox FigurDescription
-            {
-                get { return m_FigurDescription; }
-                set { m_FigurDescription = value; }
-            }
-
-            public TextBox FigurPrice
-            {
-                get { return m_FigurPrice; }
-                set { m_FigurPrice = value; }
-            }
-
-            public DropDownList ChooseSerie
-            {
-                get { return m_ChooseSerie; }
-                set { m_ChooseSerie = value; }
-            }
-
-            public Label ErrorMessage
-            {
-                get { return m_ErrorMessage; }
-                set { m_ErrorMessage = value; }
-            }
-
-            public FigurDto FigurDto
-            {
-                get { return m_FigurDto; }
-                set { m_FigurDto = value; }
-            }
-        }
-
-        private MockFigurProperty m_MockFigurProperty;
+        private IFigurPropertyPresenter m_MockFigurProperty;
 
         [SetUp]
         public void Setup()
         {
-            m_MockFigurProperty = new MockFigurProperty();
+            Moq.Mock<IFigurPropertyPresenter> mockFigurPropertyPresenter = new Moq.Mock<IFigurPropertyPresenter>();
+			mockFigurPropertyPresenter.SetupAllProperties();
+			m_MockFigurProperty = mockFigurPropertyPresenter.Object;
+			m_MockFigurProperty.NewFigurButton = new Button();
+            m_MockFigurProperty.SaveButton = new Button();
+            m_MockFigurProperty.DeleteButton = new Button();
+            m_MockFigurProperty.CancelButton = new Button();
+            m_MockFigurProperty.ErrorMessage = new Label();
+            m_MockFigurProperty.FigurName = new TextBox();
+            m_MockFigurProperty.FigurDescription = new TextBox();
+            m_MockFigurProperty.FigurPrice = new TextBox();
+            m_MockFigurProperty.ChooseSerie = new DropDownList();
         }
 
         [TearDown]

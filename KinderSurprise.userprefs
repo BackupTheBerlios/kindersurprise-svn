@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KinderSurprise.DAL.Test/TestCategoryRepository.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KinderSurprise.MVP.Presenter.Test/TestUserControlPresenter.cs" ctype="Workbench">
     <Files>
       <File FileName="KinderSurprise.DAL/RepositoryBase.cs" Line="1" Column="1" />
       <File FileName="KinderSurprise.DAL/SerieRepository.cs" Line="1" Column="1" />
@@ -8,44 +8,201 @@
       <File FileName="KinderSurprise.Mapper/Mapping/FigurMap.cs" Line="1" Column="1" />
       <File FileName="KinderSurprise.DAL.Test/TestSerieRepository.cs" Line="1" Column="1" />
       <File FileName="KinderSurprise.Mapper/Figur.cs" Line="1" Column="1" />
-      <File FileName="KinderSurprise.DAL.Test/TestCategoryRepository.cs" Line="12" Column="9" />
+      <File FileName="KinderSurprise.DAL.Test/TestCategoryRepository.cs" Line="11" Column="15" />
       <File FileName="KinderSurprise.Mapper/Mapping/CategoryMap.cs" Line="1" Column="1" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestCategoryPropertyPresenter.cs" Line="16" Column="1" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestUserControlPresenter.cs" Line="91" Column="9" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestTreeViewPresenter.cs" Line="1" Column="1" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestSeriePropertyPresenter.cs" Line="238" Column="1" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestMultiViewPresenter.cs" Line="99" Column="2" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestFigurPropertyService.cs" Line="208" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="KinderSurprise.DAL" expanded="True">
-            <Node name="Interfaces" expanded="True" />
+        <State expanded="True" selected="True">
+          <Node name="KinderSurprise.DAL" expanded="True" selected="True">
+            <Node name="References" selected="True" />
+            <Node name="Interfaces" expanded="True" selected="True">
+              <Node name="ICategoryRepository.cs" selected="True" />
+              <Node name="IFigurRepository.cs" selected="True" />
+              <Node name="ISerieRepository.cs" selected="True" />
+            </Node>
+            <Node name="Properties" selected="True" />
+            <Node name="CategoryRepository.cs" selected="True" />
+            <Node name="FigurRepository.cs" selected="True" />
+            <Node name="RepositoryBase.cs" selected="True" />
+            <Node name="SerieRepository.cs" selected="True" />
           </Node>
-          <Node name="KinderSurprise.DAL.Test" expanded="True">
-            <Node name="References" expanded="True" />
+          <Node name="KinderSurprise.DAL.Test" expanded="True" selected="True">
+            <Node name="References" expanded="True" selected="True">
+              <Node name="/home/enrico/projects/kindersurprise/lib/fluentnhibernate-1.1/NHibernate.ByteCode.Castle.dll" selected="True" />
+              <Node name="/home/enrico/projects/kindersurprise/lib/fluentnhibernate-1.1/NHibernate.dll" selected="True" />
+              <Node name="KinderSurprise.DAL" selected="True" />
+              <Node name="KinderSurprise.DTO" selected="True" />
+              <Node name="KinderSurprise.Mapper" selected="True" />
+              <Node name="nunit.core, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" selected="True" />
+              <Node name="nunit.framework, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" selected="True" />
+              <Node name="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+            </Node>
+            <Node name="Properties" selected="True" />
+            <Node name="TestCategoryRepository.cs" selected="True" />
+            <Node name="TestFigurRepository.cs" selected="True" />
+            <Node name="TestSerieRepository.cs" selected="True" />
+            <Node name="WebTest.config" selected="True" />
           </Node>
-          <Node name="KinderSurprise.Mapper" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Mapping" expanded="True" />
+          <Node name="KinderSurprise.DTO" selected="True" />
+          <Node name="KinderSurprise.Mapper" expanded="True" selected="True">
+            <Node name="References" expanded="True" selected="True">
+              <Node name="/home/enrico/projects/kindersurprise/lib/fluentnhibernate-1.1/FluentNHibernate.dll" selected="True" />
+              <Node name="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+            </Node>
+            <Node name="Mapping" expanded="True" selected="True">
+              <Node name="CategoryMap.cs" selected="True" />
+              <Node name="FigurMap.cs" selected="True" />
+              <Node name="SerieMap.cs" selected="True" />
+            </Node>
+            <Node name="Properties" selected="True" />
+            <Node name="Category.cs" selected="True" />
+            <Node name="Figur.cs" selected="True" />
+            <Node name="Serie.cs" selected="True" />
           </Node>
-          <Node name="KinderSurprise.MVP.Model" expanded="True">
-            <Node name="References" expanded="True" />
+          <Node name="KinderSurprise.MVP.Model" expanded="True" selected="True">
+            <Node name="References" expanded="True" selected="True">
+              <Node name="KinderSurprise.DAL" selected="True" />
+              <Node name="KinderSurprise.DTO" selected="True" />
+              <Node name="KinderSurprise.Mapper" selected="True" />
+              <Node name="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" selected="True" />
+            </Node>
+            <Node name="Interfaces" selected="True" />
+            <Node name="Properties" selected="True" />
+            <Node name="CategoryService.cs" selected="True" />
+            <Node name="FigurService.cs" selected="True" />
+            <Node name="SerieService.cs" selected="True" />
+            <Node name="ValidationHandling.cs" selected="True" />
           </Node>
-          <Node name="KinderSurprise.MVP.Model.Test" expanded="True">
-            <Node name="References" expanded="True" />
+          <Node name="KinderSurprise.MVP.Model.Test" expanded="True" selected="True">
+            <Node name="References" expanded="True" selected="True">
+              <Node name="KinderSurprise.DTO" selected="True" />
+              <Node name="KinderSurprise.Mapper" selected="True" />
+              <Node name="KinderSurprise.MVP.Model" selected="True" />
+              <Node name="KinderSurprise.MVP.Presenter" selected="True" />
+              <Node name="nunit.core, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" selected="True" />
+              <Node name="nunit.framework, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" selected="True" />
+              <Node name="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" selected="True" />
+            </Node>
+            <Node name="Properties" selected="True" />
+            <Node name="TestCategoryService.cs" selected="True" />
+            <Node name="TestFigurService.cs" selected="True" />
+            <Node name="TestSerieService.cs" selected="True" />
+            <Node name="TestValidationHandling.cs" selected="True" />
+            <Node name="WebTest.config" selected="True" />
           </Node>
-          <Node name="KinderSurprise.MVP.Presenter" expanded="True">
-            <Node name="References" expanded="True" />
+          <Node name="KinderSurprise.MVP.Presenter" expanded="True" selected="True">
+            <Node name="References" expanded="True" selected="True">
+              <Node name="KinderSurprise.DTO" selected="True" />
+              <Node name="KinderSurprise.Mapper" selected="True" />
+              <Node name="KinderSurprise.MVP.Model" selected="True" />
+              <Node name="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" selected="True" />
+              <Node name="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+            </Node>
+            <Node name="Interfaces" selected="True" />
+            <Node name="Properties" selected="True" />
+            <Node name="CategoryPropertyPresenter.cs" selected="True" />
+            <Node name="FigurPropertyPresenter.cs" selected="True" />
+            <Node name="MultiViewPresenter.cs" selected="True" />
+            <Node name="SeriePropertyPresenter.cs" selected="True" />
+            <Node name="TreeViewPresenter.cs" selected="True" />
+            <Node name="UserControlPresenter.cs" selected="True" />
           </Node>
-          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True">
-            <Node name="References" expanded="True" />
+          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True" selected="True">
+            <Node name="References" expanded="True" selected="True">
+              <Node name="/home/enrico/projects/kindersurprise/lib/Moq.3.1.416.3-bin/Moq.dll" selected="True" />
+              <Node name="KinderSurprise.DAL" selected="True" />
+              <Node name="KinderSurprise.DTO" selected="True" />
+              <Node name="KinderSurprise.Mapper" selected="True" />
+              <Node name="KinderSurprise.MVP.Model" selected="True" />
+              <Node name="KinderSurprise.MVP.Presenter" selected="True" />
+              <Node name="nunit.core, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" selected="True" />
+              <Node name="nunit.framework, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77" selected="True" />
+              <Node name="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" selected="True" />
+              <Node name="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+            </Node>
+            <Node name="Properties" selected="True" />
+            <Node name="TestCategoryPropertyPresenter.cs" selected="True" />
+            <Node name="TestFigurPropertyService.cs" selected="True" />
+            <Node name="TestMultiViewPresenter.cs" selected="True" />
+            <Node name="TestSeriePropertyPresenter.cs" selected="True" />
+            <Node name="TestTreeViewPresenter.cs" selected="True" />
+            <Node name="TestUserControlPresenter.cs" selected="True" />
+            <Node name="WebTest.config" selected="True" />
           </Node>
-          <Node name="KinderSurprise.MVP.View" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Account" expanded="True" />
-            <Node name="Properties" expanded="True" />
-            <Node name="Scripts" expanded="True" />
-            <Node name="Styles" expanded="True" />
-            <Node name="Default.aspx" expanded="True" />
-            <Node name="Global.asax" expanded="True" />
-            <Node name="Site.Master" expanded="True" />
-            <Node name="UserControlCategoryProperty.ascx" expanded="True" />
+          <Node name="KinderSurprise.MVP.View" expanded="True" selected="True">
+            <Node name="References" expanded="True" selected="True">
+              <Node name="/home/enrico/projects/kindersurprise/lib/mysql.data.dll" selected="True" />
+              <Node name="KinderSurprise.DTO" selected="True" />
+              <Node name="KinderSurprise.MVP.Model" selected="True" />
+              <Node name="KinderSurprise.MVP.Presenter" selected="True" />
+              <Node name="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Configuration, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" selected="True" />
+              <Node name="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" selected="True" />
+              <Node name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" selected="True" />
+              <Node name="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" selected="True" />
+            </Node>
+            <Node name="Account" expanded="True" selected="True">
+              <Node name="ChangePassword.aspx" selected="True" />
+              <Node name="ChangePasswordSuccess.aspx" selected="True" />
+              <Node name="Login.aspx" selected="True" />
+              <Node name="Register.aspx" selected="True" />
+              <Node name="Web.config" selected="True" />
+            </Node>
+            <Node name="App_Data" selected="True" />
+            <Node name="Properties" expanded="True" selected="True">
+              <Node name="AssemblyInfo.cs" selected="True" />
+            </Node>
+            <Node name="Scripts" expanded="True" selected="True">
+              <Node name="jquery-1.4.1.js" selected="True" />
+              <Node name="jquery-1.4.1.min.js" selected="True" />
+              <Node name="jquery-1.4.1-vsdoc.js" selected="True" />
+            </Node>
+            <Node name="Styles" expanded="True" selected="True">
+              <Node name="Site.css" selected="True" />
+            </Node>
+            <Node name="About.aspx" selected="True" />
+            <Node name="Default.aspx" expanded="True" selected="True">
+              <Node name="Default.aspx.cs" selected="True" />
+              <Node name="Default.aspx.designer.cs" selected="True" />
+            </Node>
+            <Node name="Global.asax" expanded="True" selected="True">
+              <Node name="Global.asax.cs" selected="True" />
+            </Node>
+            <Node name="Site.Master" expanded="True" selected="True">
+              <Node name="Site.Master.cs" selected="True" />
+              <Node name="Site.Master.designer.cs" selected="True" />
+            </Node>
+            <Node name="UserControlCategoryProperty.ascx" expanded="True" selected="True">
+              <Node name="UserControlCategoryProperty.ascx.cs" selected="True" />
+              <Node name="UserControlCategoryProperty.ascx.designer.cs" selected="True" />
+            </Node>
+            <Node name="UserControlFigurProperty.ascx" selected="True" />
+            <Node name="UserControlSerieProperty.ascx" selected="True" />
+            <Node name="Web.config" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -59,7 +216,15 @@
         <State selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True">
+            <Node name="KinderSurprise" expanded="True">
+              <Node name="MVP" expanded="True">
+                <Node name="Presenter" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
