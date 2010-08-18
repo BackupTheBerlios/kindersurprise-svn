@@ -1,0 +1,66 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="KinderSurprise.DAL.Test/TestCategoryRepository.cs" ctype="Workbench">
+    <Files>
+      <File FileName="KinderSurprise.DAL/RepositoryBase.cs" Line="1" Column="1" />
+      <File FileName="KinderSurprise.DAL/SerieRepository.cs" Line="1" Column="1" />
+      <File FileName="KinderSurprise.DAL/FigurRepository.cs" Line="1" Column="1" />
+      <File FileName="KinderSurprise.Mapper/Mapping/FigurMap.cs" Line="1" Column="1" />
+      <File FileName="KinderSurprise.DAL.Test/TestSerieRepository.cs" Line="1" Column="1" />
+      <File FileName="KinderSurprise.Mapper/Figur.cs" Line="1" Column="1" />
+      <File FileName="KinderSurprise.DAL.Test/TestCategoryRepository.cs" Line="12" Column="9" />
+      <File FileName="KinderSurprise.Mapper/Mapping/CategoryMap.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="KinderSurprise.DAL" expanded="True">
+            <Node name="Interfaces" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.DAL.Test" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.Mapper" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Mapping" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.MVP.Model" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.MVP.Model.Test" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.MVP.Presenter" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.MVP.View" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Account" expanded="True" />
+            <Node name="Properties" expanded="True" />
+            <Node name="Scripts" expanded="True" />
+            <Node name="Styles" expanded="True" />
+            <Node name="Default.aspx" expanded="True" />
+            <Node name="Global.asax" expanded="True" />
+            <Node name="Site.Master" expanded="True" />
+            <Node name="UserControlCategoryProperty.ascx" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

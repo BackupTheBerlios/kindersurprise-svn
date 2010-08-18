@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{431C4DA1-C2FC-409E-89D5-99A0F599E71B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KinderSurprise.MVP.Presenter</RootNamespace>
+    <AssemblyName>KinderSurprise.MVP.Presenter</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryPropertyPresenter.cs" />
+    <Compile Include="FigurPropertyPresenter.cs" />
+    <Compile Include="Interfaces\ICategoryControl.cs" />
+    <Compile Include="Interfaces\ICategoryPropertyPresenter.cs" />
+    <Compile Include="Interfaces\IFigurControl.cs" />
+    <Compile Include="Interfaces\IFigurPropertyPresenter.cs" />
+    <Compile Include="Interfaces\IMultiView.cs" />
+    <Compile Include="Interfaces\ISerieControl.cs" />
+    <Compile Include="Interfaces\ISeriePropertyPresenter.cs" />
+    <Compile Include="Interfaces\ITreeView.cs" />
+    <Compile Include="MultiViewPresenter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeriePropertyPresenter.cs" />
+    <Compile Include="TreeViewPresenter.cs" />
+    <Compile Include="UserControlPresenter.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\KinderSurprise.DTO\KinderSurprise.DTO.csproj">
+      <Project>{80645808-7284-4A28-BA9D-9470D68D5E53}</Project>
+      <Name>KinderSurprise.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KinderSurprise.Mapper\KinderSurprise.Mapper.csproj">
+      <Project>{ACEAF6B9-CDA7-4F07-9FD7-9E1724799AA5}</Project>
+      <Name>KinderSurprise.Mapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KinderSurprise.MVP.Model\KinderSurprise.MVP.Model.csproj">
+      <Project>{CDC97DAE-3879-44B4-91D5-2926D375AED1}</Project>
+      <Name>KinderSurprise.MVP.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
