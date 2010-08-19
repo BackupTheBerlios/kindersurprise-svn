@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using KinderSurprise.DTO;
 using KinderSurprise.Mapper;
 using KinderSurprise.DAL.Interfaces;
@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace KinderSurprise.DAL.Test
 {
     [TestFixture]
-    class TestFigurRepository
+    public class TestFigurRepository
     {
         [Test]
         public void Test_ExistFigurId_Exist()

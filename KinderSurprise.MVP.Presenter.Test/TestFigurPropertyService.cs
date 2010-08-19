@@ -31,6 +31,7 @@ namespace KinderSurprise.MVP.Presenter.Test
             m_MockFigurProperty.FigurDescription = new TextBox();
             m_MockFigurProperty.FigurPrice = new TextBox();
             m_MockFigurProperty.ChooseSerie = new DropDownList();
+			m_MockFigurProperty.FigurDto = null;
         }
 
         [TearDown]

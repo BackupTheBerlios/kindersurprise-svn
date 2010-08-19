@@ -23,7 +23,7 @@
     <WarningLevel>4</WarningLevel>
     <CustomCommands>
       <CustomCommands>
-        <Command type="Custom" command="cp &quot;${ProjectDir}/WebTest.config&quot; &quot;${TargetDir}/Web.config&quot;" workingdir="" />
+        <Command type="BeforeBuild" command="cp &quot;${ProjectDir}/WebTest.config&quot; &quot;${TargetDir}/${TargetName}.config&quot;" workingdir="" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
@@ -52,6 +52,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\fluentnhibernate-1.1\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MySql.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestCategoryRepository.cs" />
@@ -74,13 +78,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WebTest.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>WebTest.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>WebTest.config</DependentUpon>
     </Content>
+    <Content Include="WebTest.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

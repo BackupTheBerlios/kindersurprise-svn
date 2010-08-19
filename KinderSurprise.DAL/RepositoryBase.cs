@@ -17,8 +17,8 @@ namespace KinderSurprise.DAL
 				if (m_SessionFactory == null)
 				{
 					string conn = ConfigurationManager.ConnectionStrings["KinderSurpriseConnection"].ToString();
-					
-                    var configuration = MySQLConfiguration
+										
+					var configuration = MySQLConfiguration
 						.Standard
                         .ConnectionString(c => c.Is(conn))
                         .ShowSql()
