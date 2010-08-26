@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.UI.WebControls;
 using KinderSurprise.DAL;
 using KinderSurprise.DTO;
@@ -7,6 +8,7 @@ using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
 using NUnit.Framework;
+using NHibernate;
 
 namespace KinderSurprise.MVP.Presenter.Test
 {
@@ -206,32 +208,20 @@ namespace KinderSurprise.MVP.Presenter.Test
         public void Test_Delete_IfSerieDtoIsNotNull()
         {
             ISerieService serieService = new SerieService();
-            m_MockSeriePropertyPresenter.SerieDto = serieService.GetById(1);
+			int oldSerieCount = serieService.GetAll().Count;
+			serieService.SaveOrUpdate(new SerieDto(0, "Test", "test", DateTime.Today, new Category { CategoryId = 1})); 
+            
+			var serieDtos = serieService.GetAll();
+			
+			Assert.AreEqual(oldSerieCount + 1, serieDtos.Count);
+			m_MockSeriePropertyPresenter.SerieDto = serieDtos.OrderBy(x => x.SerieId).LastOrDefault();
 
-            var serieDtos = serieService.GetAll();
+            
 
             SeriePropertyPresenter seriePropertyPresenter = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             seriePropertyPresenter.Delete();
 
             Assert.AreEqual(serieDtos.Count-1, serieService.GetAll().Count);
-			/*
-            using(ISession session = RepositoryBase.OpenSession())
-            {
-                using (ITransaction transaction = session.BeginTransaction())
-                {
-                    session.Save(new Serie
-                                     {
-                                         SerieId = 1,
-                                         SerieName = "Plaste1",
-                                         Description = "Plasteserie 1",
-                                         PublicationYear = new DateTime(2008, 1, 1),
-                                         Category = new Category {CategoryId = 1}
-                                     });
-                    transaction.Commit();
-                }
-            }
-            */
-            Assert.AreEqual(serieDtos.Count, serieService.GetAll().Count);
         }
     }
 }

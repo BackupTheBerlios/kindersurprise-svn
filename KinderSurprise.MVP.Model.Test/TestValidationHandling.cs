@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 
 namespace KinderSurprise.MVP.Model.Test
 {
@@ -174,24 +174,24 @@ namespace KinderSurprise.MVP.Model.Test
         }
 
         [Test]
-        public void Test_Price_GetPriceWithWrongDelimiterPoint_ShouldFail()
+        public void Test_Price_GetPriceWithWrongDelimiter_ShouldFail()
         {
             ValidationHandling validationHandling = new ValidationHandling();
-            Assert.IsFalse(validationHandling.IsValidPrice("0.00"));
+            Assert.IsFalse(validationHandling.IsValidPrice("0,00"));
         }
 
         [Test]
         public void Test_Price_GetPriceWithPointButMoreThenTwoDigitsAfter_ShouldFail()
         {
             ValidationHandling validationHandling = new ValidationHandling();
-            Assert.IsFalse(validationHandling.IsValidPrice("0,100"));
+            Assert.IsFalse(validationHandling.IsValidPrice("0.100"));
         }
 
         [Test]
-        public void Test_Price_ContainsOfMoreThenOnePoints_ShouldFail()
+        public void Test_Price_ContainsOfMoreThenOneDelimiter_ShouldFail()
         {
             ValidationHandling validationHandling = new ValidationHandling();
-            Assert.IsFalse(validationHandling.IsValidPrice("0,12,100"));
+            Assert.IsFalse(validationHandling.IsValidPrice("0.12.100"));
         }
 
         [Test]
@@ -205,7 +205,7 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_Price_GetZeroAsPriceWithDigits_ShouldPass()
         {
             ValidationHandling validationHandling = new ValidationHandling();
-            Assert.IsTrue(validationHandling.IsValidPrice("0,11"));
+            Assert.IsTrue(validationHandling.IsValidPrice("0.11"));
         }
         
         [Test]
@@ -219,28 +219,28 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_Price_GetValidPriceWithDigitsAfterPoint_ShouldPass()
         {
             ValidationHandling validationHandling = new ValidationHandling();
-            Assert.IsTrue(validationHandling.IsValidPrice("1198,99"));
+            Assert.IsTrue(validationHandling.IsValidPrice("1198.99"));
         }
 
         [Test]
         public void Test_Price_GetValidPriceWithLettersAfterPoint_ShouldFail()
         {
             ValidationHandling validationHandling = new ValidationHandling();
-            Assert.IsFalse(validationHandling.IsValidPrice("1198,9a"));
+            Assert.IsFalse(validationHandling.IsValidPrice("1198.9a"));
         }
 
         [Test]
         public void Test_Price_GetValidPriceWithLettersBeforePoint_ShouldFail()
         {
             ValidationHandling validationHandling = new ValidationHandling();
-            Assert.IsFalse(validationHandling.IsValidPrice("1a98,99"));
+            Assert.IsFalse(validationHandling.IsValidPrice("1a98.99"));
         }
 
         [Test]
         public void Test_Price_GetValidPriceWithMoreThenTwoDigitsAfterPoint_ShouldFail()
         {
             ValidationHandling validationHandling = new ValidationHandling();
-            Assert.IsFalse(validationHandling.IsValidPrice("1198,999"));
+            Assert.IsFalse(validationHandling.IsValidPrice("1198.999"));
         }
     }
 }

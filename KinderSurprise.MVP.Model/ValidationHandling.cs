@@ -1,4 +1,4 @@
-﻿namespace KinderSurprise.MVP.Model
+namespace KinderSurprise.MVP.Model
 {
     public class ValidationHandling
     {
@@ -30,7 +30,7 @@
 
             int posOfPoint = -1;
             int iBeforePoint;
-            const char splitter = ',';
+            const char splitter = '.';
 
             if(priceToTest.Contains(splitter.ToString()))
             {

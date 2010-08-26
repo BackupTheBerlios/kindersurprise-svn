@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.UI.WebControls;
 using KinderSurprise.DTO;
 using KinderSurprise.Mapper;
@@ -99,7 +100,7 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             Assert.AreEqual("Test", m_MockFigurProperty.FigurName.Text);
             Assert.AreEqual("Desc", m_MockFigurProperty.FigurDescription.Text);
-            Assert.AreEqual("11,11", m_MockFigurProperty.FigurPrice.Text);
+            Assert.AreEqual("11.11", m_MockFigurProperty.FigurPrice.Text);
 
             ISerieService serieService = new SerieService();
             var serieDto = serieService.GetById(1);
@@ -205,5 +206,28 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             Assert.AreEqual(figurDtos.Count, figurService.GetAll().Count);
         }
+		
+		[Test]
+		public void Test_Delete_IfFigurDotIsNotNull()
+		{
+			IFigurService figurService = new FigurService();
+			var oldFigurDtos = figurService.GetAll();
+			
+			figurService.SaveOrUpdate(new FigurDto(0, "test", "desc", (decimal)14.5, new Serie { SerieId = 10 }));
+			/*
+			var newfigurDtos = figurService.GetAll();
+			
+			Assert.AreEqual(oldFigurDtos.Count + 1, newfigurDtos.Count);
+			
+			var figurDto = newfigurDtos.OrderBy(x => x.Serie.SerieId).LastOrDefault();
+			
+			m_MockFigurProperty.FigurDto = figurDto;
+			
+			FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(m_MockFigurProperty);
+			figurPropertyPresenter.Delete(m_MockFigurProperty.FigurDto);
+			
+			Assert.AreEqual(oldFigurDtos.Count, figurService.GetAll().Count);
+			*/
+		}
     }
 }
