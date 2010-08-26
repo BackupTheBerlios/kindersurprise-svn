@@ -184,8 +184,19 @@ namespace KinderSurprise.DAL.Test
 
             Assert.IsFalse(serieRepository.HasId(newSerieDto.SerieId));
         }
-
-        [Test]
+        
+		[Test]
+		[ExpectedException(typeof (NHibernate.Exceptions.GenericADOException))]
+		public void Test_TryInsertSerieWithWrongConstraint_ShouldFail()
+		{
+			ISerieRepository serieRepository = new SerieRepository();
+			
+			SerieDto serieDto = new SerieDto(1, "Name", "Test", new DateTime(2000,1,1), 
+                                             new Category { CategoryId = 10 });
+			serieRepository.Add(serieDto);	
+		}
+		
+		[Test]
         public void Test_GetAllSeriesByCategoryId_CategoryIs1()
         {
             ISerieRepository serieRepository = new SerieRepository();
@@ -211,7 +222,5 @@ namespace KinderSurprise.DAL.Test
 
             Assert.AreEqual(1, serieDtos.Count);
         }
-
-
     }
 }

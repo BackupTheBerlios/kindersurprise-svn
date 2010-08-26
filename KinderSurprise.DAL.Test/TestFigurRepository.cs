@@ -196,6 +196,16 @@ namespace KinderSurprise.DAL.Test
 
             Assert.IsFalse(figurRepository.HasId(figurId));
         }
+		
+		[Test]
+		[ExpectedException(typeof (NHibernate.Exceptions.GenericADOException))]
+		public void Test_TryInsertFigurWithWrongConstraint_ShouldFail()
+		{
+			IFigurRepository figurRepository = new FigurRepository();
+			
+			FigurDto figurDto = new FigurDto(0,"test","desc",(decimal)1.67, new Serie { SerieId = 15 } );
+			figurRepository.Add(figurDto);	
+		}
 
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs1()

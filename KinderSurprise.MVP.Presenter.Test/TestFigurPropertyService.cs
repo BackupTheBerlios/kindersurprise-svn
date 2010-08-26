@@ -208,26 +208,33 @@ namespace KinderSurprise.MVP.Presenter.Test
         }
 		
 		[Test]
-		public void Test_Delete_IfFigurDotIsNotNull()
+		[NUnit.Framework.ExpectedException(typeof(NHibernate.Exceptions.GenericADOException))]
+		public void Test_Delete_IfFigurDtoIsNotNull_ForeignKeyDoesNotExist()
 		{
 			IFigurService figurService = new FigurService();
-			var oldFigurDtos = figurService.GetAll();
 			
 			figurService.SaveOrUpdate(new FigurDto(0, "test", "desc", (decimal)14.5, new Serie { SerieId = 10 }));
-			/*
+		}
+		
+		[Test]
+		public void Test_Delete_IfFigurDtoIsNotNull_SaveSuccessfulExecuted()
+		{
+			IFigurService figurService = new FigurService();
+			
+			figurService.SaveOrUpdate(new FigurDto(0, "test", "desc", (decimal)14.5, new Serie { SerieId = 3 }));
+			
 			var newfigurDtos = figurService.GetAll();
 			
-			Assert.AreEqual(oldFigurDtos.Count + 1, newfigurDtos.Count);
+			Assert.AreEqual(10, newfigurDtos.Count);
 			
-			var figurDto = newfigurDtos.OrderBy(x => x.Serie.SerieId).LastOrDefault();
+			var figurDto = newfigurDtos.OrderBy(x => x.FigurId).LastOrDefault();
 			
 			m_MockFigurProperty.FigurDto = figurDto;
 			
 			FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(m_MockFigurProperty);
 			figurPropertyPresenter.Delete(m_MockFigurProperty.FigurDto);
 			
-			Assert.AreEqual(oldFigurDtos.Count, figurService.GetAll().Count);
-			*/
+			Assert.AreEqual(9, figurService.GetAll().Count);
 		}
     }
 }
