@@ -3,7 +3,6 @@
 <%@ Register TagName="FigurProperty" Src="~/UserControlFigurProperty.ascx" TagPrefix="Tab" %>
 <%@ Register TagName="SerieProperty" Src="~/UserControlSerieProperty.ascx" TagPrefix="Tab" %>
 <%@ Register TagName="CategoryProperty" Src="~/UserControlCategoryProperty.ascx" TagPrefix="Tab" %>
-
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">

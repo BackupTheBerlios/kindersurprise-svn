@@ -30,7 +30,12 @@ namespace KinderSurprise.DAL
 				
 				foreach (Figur figur in figurList)
 				{
-					figurDtos.Add(new FigurDto(figur.FigurId, figur.FigurName, figur.Description, figur.Price, figur.Serie));
+					figurDtos.Add(
+							new FigurDto(figur.FigurId, 
+					                           figur.FigurName, 
+					                           figur.Description, 
+					                           figur.Price, 
+					                           figur.Serie));
 				}
 					                 
 				return figurDtos;
@@ -41,7 +46,7 @@ namespace KinderSurprise.DAL
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
-                var figur = session.Get<Figur>(figurId);
+                Figur figur = session.Get<Figur>(figurId);
              
                 return figur == null
                            ? null
@@ -75,7 +80,12 @@ namespace KinderSurprise.DAL
 				
 				foreach (Figur figur in figurList)
 				{
-					figurDtos.Add(new FigurDto(figur.FigurId, figur.FigurName, figur.Description, figur.Price, figur.Serie));
+					figurDtos.Add(
+					              new FigurDto(figur.FigurId, 
+					                           figur.FigurName, 
+					                           figur.Description, 
+					                           figur.Price, 
+					                           figur.Serie));
 				}
 					                 
 				return figurDtos;

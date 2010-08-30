@@ -46,6 +46,10 @@
     <Compile Include="Mapping\SerieMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serie.cs" />
+    <Compile Include="Picture.cs" />
+    <Compile Include="Mapping\PictureMap.cs" />
+    <Compile Include="Instructions.cs" />
+    <Compile Include="Mapping\InstructionMap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

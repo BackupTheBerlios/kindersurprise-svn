@@ -59,7 +59,7 @@ namespace KinderSurprise.DAL.Test
             Assert.AreEqual("Plastefigur Serie2", figurs[3].Description);
             Assert.AreEqual(4.75, figurs[3].Price);
             Assert.AreEqual(2, figurs[3].Serie.SerieId);
-
+			
             Assert.AreEqual(5, figurs[4].FigurId);
             Assert.AreEqual("Happy Hippo1", figurs[4].FigurName);
             Assert.AreEqual("Figur", figurs[4].Description);
@@ -203,7 +203,7 @@ namespace KinderSurprise.DAL.Test
 		{
 			IFigurRepository figurRepository = new FigurRepository();
 			
-			FigurDto figurDto = new FigurDto(0,"test","desc",(decimal)1.67, new Serie { SerieId = 15 } );
+			FigurDto figurDto = new FigurDto(0,"test","desc",(decimal)1.67, new Serie { SerieId = 15 });
 			figurRepository.Add(figurDto);	
 		}
 

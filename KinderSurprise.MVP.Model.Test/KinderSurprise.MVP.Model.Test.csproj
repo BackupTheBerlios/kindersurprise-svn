@@ -56,6 +56,8 @@
     <Compile Include="TestFigurService.cs" />
     <Compile Include="TestSerieService.cs" />
     <Compile Include="TestValidationHandling.cs" />
+    <Compile Include="TestPictureService.cs" />
+    <Compile Include="TestPictureHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.Mapper\KinderSurprise.Mapper.csproj">

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlCategoryProperty.ascx.cs" Inherits="KinderSurprise.MVP.View.UserControlCategoryProperty" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlCategoryProperty.ascx.cs" Inherits="KinderSurprise.MVP.View.UserControlCategoryProperty" %>
 <style type="text/css">
     .style1
     {
@@ -93,7 +93,7 @@
             &nbsp;</td>
         <td class="style1">
             
-            &nbsp;</td>
+        	&nbsp;</td>
         <td>
             
             &nbsp;</td>
@@ -114,7 +114,6 @@
             <asp:Button ID="BTN_CategoryCancel" runat="server" Text="Abbrechen" />
         </td>
         <td>
-            
             &nbsp;</td>
     </tr>
 </table>

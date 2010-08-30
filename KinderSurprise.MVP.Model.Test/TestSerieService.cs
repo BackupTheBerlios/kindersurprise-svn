@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using KinderSurprise.DTO;
 using KinderSurprise.Mapper;
@@ -45,7 +46,7 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_SaveNewSerieDto()
         {
             SerieService serieService = new SerieService();
-            SerieDto serieDto = new SerieDto(0, "New", "Desc", new DateTime(2000,1,1), new Category { CategoryId  = 1} );
+            SerieDto serieDto = new SerieDto(0, "New", "Desc", new DateTime(2000,1,1), new Category { CategoryId  = 1});
 
             serieService.SaveOrUpdate(serieDto);
 
@@ -86,7 +87,7 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_DeleteSerieDto()
         {
             SerieService serieService = new SerieService();
-            SerieDto serieDto = new SerieDto(0, "New", "Desc", new DateTime(2000, 1,1), new Category{CategoryId = 1} );
+            SerieDto serieDto = new SerieDto(0, "New", "Desc", new DateTime(2000, 1,1), new Category{CategoryId = 1});
 
             serieService.SaveOrUpdate(serieDto);
 

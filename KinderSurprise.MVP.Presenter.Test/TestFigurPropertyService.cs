@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
 using KinderSurprise.DTO;
@@ -130,7 +131,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameIsNotValid()
         {
-            m_MockFigurProperty.FigurDto = new FigurDto(0, string.Empty, "desc", (decimal)100.11, new Serie {SerieId = 1} );
+            m_MockFigurProperty.FigurDto = new FigurDto(0, string.Empty, "desc", (decimal)100.11, new Serie {SerieId = 1});
             
             FigurPropertyPresenter figurPropertyService = new FigurPropertyPresenter(m_MockFigurProperty);
             figurPropertyService.SetFields();

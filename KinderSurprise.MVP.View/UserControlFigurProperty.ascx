@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlFigurProperty.ascx.cs" Inherits="KinderSurprise.MVP.View.UserControlFigurProperty" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlFigurProperty.ascx.cs" Inherits="KinderSurprise.MVP.View.UserControlFigurProperty" %>
 <style type="text/css">
     .style1
     {
@@ -147,7 +147,6 @@
     </tr>
     <tr>
         <td>
-            
             &nbsp;</td>
         <td>
             

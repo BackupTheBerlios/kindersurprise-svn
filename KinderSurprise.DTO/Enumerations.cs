@@ -1,4 +1,4 @@
-﻿namespace KinderSurprise.DTO
+namespace KinderSurprise.DTO
 {
     public enum ETabActivity
     {
@@ -19,4 +19,11 @@
         Property = 0,
         Store = 1
     }
+	
+	public enum EType
+	{
+		Serie = 0,
+		Figur = 1,
+		Instructions = 2
+	}
 }

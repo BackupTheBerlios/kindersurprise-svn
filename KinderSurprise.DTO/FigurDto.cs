@@ -1,4 +1,5 @@
-﻿using KinderSurprise.Mapper;
+using System;
+using KinderSurprise.Mapper;
 
 namespace KinderSurprise.DTO
 {
@@ -11,7 +12,7 @@ namespace KinderSurprise.DTO
         public decimal Price { get; set; }
         public Serie Serie { get; set; }
 
-        public FigurDto(int id, string name, string desc, decimal price, Serie serie)
+		public FigurDto(int id, string name, string desc, decimal price, Serie serie)
         {
             FigurId = id;
             FigurName = name;

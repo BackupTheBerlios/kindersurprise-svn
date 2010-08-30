@@ -44,6 +44,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerieService.cs" />
     <Compile Include="ValidationHandling.cs" />
+    <Compile Include="PictureService.cs" />
+    <Compile Include="PictureHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.DAL\KinderSurprise.DAL.csproj">

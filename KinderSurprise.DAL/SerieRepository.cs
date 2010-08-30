@@ -30,7 +30,13 @@ namespace KinderSurprise.DAL
 				
 				foreach (Serie s in serieList)
 				{
-					serieDtos.Add(new SerieDto(s.SerieId, s.SerieName, s.Description, s.PublicationYear, s.Category ));
+					serieDtos.Add(
+					              new SerieDto(
+					                           s.SerieId, 
+					                           s.SerieName, 
+					                           s.Description, 
+					                           s.PublicationYear, 
+					                           s.Category));
 				}
 				
 				return serieDtos;
@@ -41,11 +47,16 @@ namespace KinderSurprise.DAL
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
-                var s = session.Get<Serie>(serieId);
+                Serie s = session.Get<Serie>(serieId);
 
                 return s == null
                            ? null
-                           : new SerieDto(s.SerieId, s.SerieName, s.Description, s.PublicationYear, new Category { CategoryId = s.Category.CategoryId });
+                           : new SerieDto(
+						               s.SerieId, 
+						               s.SerieName, 
+						               s.Description, 
+						               s.PublicationYear, 
+						               new Category { CategoryId = s.Category.CategoryId });
             }
         }
 
@@ -85,7 +96,12 @@ namespace KinderSurprise.DAL
 				
 				foreach (Serie serie in serieList)
 				{
-					serieDtos.Add(new SerieDto(serie.SerieId, serie.SerieName, serie.Description, serie.PublicationYear, serie.Category));
+					serieDtos.Add(
+					              new SerieDto(serie.SerieId, 
+					                           serie.SerieName, 
+					                           serie.Description, 
+					                           serie.PublicationYear, 
+					                           serie.Category));
 				}
 			
 				return serieDtos;
