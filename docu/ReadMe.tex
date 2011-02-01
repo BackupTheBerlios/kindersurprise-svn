@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\begin{document}
+
+
+\section{KinderSurprise}
+
+Date of Create: 28.01.2011\\
+Date of last Update: 28.01.2011\\
+Author: Enrico Gallus\\
+
+Supposed to be a web-based c\# application used to save and organize a
+kindersurprise collection. 
+\subsection{Aim}
+\begin{itemize}
+  \item web based application
+  \item using database to save information
+  \item platform independent
+  \item user-specific acces to the data
+  \item provide a simple system to show information of categories, series and
+  figures
+  \item make every item editable, deletable and addable
+  \item every serie and figure should consist of a store
+  \item import/export functionality for all the data
+  \item support images for series and figures
+  \item has ebay-interface to sell figures/series
+\end{itemize}
+
+\subsection{Developing Tools}
+I used to work under Debian Testing (Squeeze), using the following Repository
+for Mono: ``deb http://debian.meebey.net/pkg-mono /''
+
+\begin{itemize}
+  \item MonoDevelop v$2.4$
+  \item Mono-Framework
+  \item NHibernate v$2.1.2.4000$
+  \item FluentNHibernate v$1.1$
+  \item MySql v$5.1$
+  \item NUnit v$2.4.7$
+  \item rabbitvcs-nautilus
+\end{itemize}
+
+\subsection{Patterns}
+\begin{itemize}
+  \item MVP
+  \item N-Tier
+  \item TDD
+\end{itemize}
+
+\subsection{Installation}
+
+\subsubsection{Preparation}
+
+Install the compontents mentioned in the Section \"Developing Tools\".
+
+\subsubsection{VCS}
+
+Get the Source Code from the project via Berlios.
+I recommend the rabbitvcs-nautilus package from the distribution. Handling vcs
+can't be easier and you can handle everything over nautilus.
+
+\subsubsection{Setup Database}
+The first step is to set up the database and testdatabase with MySql.
+Please create an user for your mysql instance and create a database named
+``kindersurprise'' and ``testkindersurprise''.
+Afterwards open the projectdir and change to the script folder.
+In there you will find all scripts necessary for the database structure. The
+name is organised as date followed by the function.
+Please execute the containing scripts for both databases in chronological order.
+If no errors occured and the structure was created on both databases, than
+please also execute the testscripts in the test database.
+
+\subsubsection{Setup Database Connection}
+Please open the project with MonoDevelop. Use the sln-file in the projectDir to
+open the solution.
+You have to edit the WebTest.config file in the following projects
+\begin{itemize}
+  \item KinderSurprise.DAL.Test
+  \item KinderSurprise.MVP.Model.Test
+  \item KinderSurprise.MVP.Presenter.Test
+\end{itemize}
+Customize the KinderSurpriseConnection String. Set the database name to
+``testkindersurprise'' if you used the name for the testdatabase. Also change
+the ID to the user you have created in the step before. Change the password.\\
+
+Also edit the Web.Config in the KinderSurprise.MVP.View subproject and make the
+same changes but instead of using the testdatabase use ``kindersurprise''.
+
+\subsubsection{Last Step}
+To verify if everything works well, please execute the unittests defined in the
+the three test projects.
+Compile the project and try to start.
+If any problem or error occure, please don't hesitate to contact me.
+
+\subsection{Workflows}
+\subsubsection{Working with the database}
+If you make changes to the database, please save all the commands to a script
+which can be added to the script-folder. So other developer has it as easy as
+you, to setup the project. No need to mention the filename-specification!?
+\subsubsection{Submitting of Code changes}
+If you want to commit any changes. Please be sure there are no broken unittests.
+I'm still looking for a codecoverage tool under linux which works with c\#. If
+you have any proposal, so please let me know. If there are more developer, maybe
+we can think about using continous integration.
+\end{document}
