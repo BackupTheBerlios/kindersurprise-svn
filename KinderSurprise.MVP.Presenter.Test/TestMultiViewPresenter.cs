@@ -1,5 +1,5 @@
 using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Presenter.Interfaces;
 using NUnit.Framework;
 

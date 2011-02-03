@@ -1,4 +1,4 @@
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Presenter.Interfaces;
 using NUnit.Framework;
 
@@ -33,15 +33,15 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             m_MockCategoryControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockCategoryControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockCategoryControl.Object.CategoryDto);
+            Assert.IsNull(m_MockCategoryControl.Object.Category);
 
             m_MockSerieControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockSerieControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockSerieControl.Object.SerieDto);
+            Assert.IsNull(m_MockSerieControl.Object.Serie);
 
             m_MockFigurControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockFigurControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockFigurControl.Object.FigurDto);
+            Assert.IsNull(m_MockFigurControl.Object.Figur);
         }
 
         [Test]
@@ -54,15 +54,15 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             m_MockCategoryControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockCategoryControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockCategoryControl.Object.CategoryDto);
+            Assert.IsNull(m_MockCategoryControl.Object.Category);
 
             m_MockSerieControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockSerieControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockSerieControl.Object.SerieDto);
+            Assert.IsNull(m_MockSerieControl.Object.Serie);
 
             m_MockFigurControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockFigurControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockFigurControl.Object.FigurDto);
+            Assert.IsNull(m_MockFigurControl.Object.Figur);
         }
 
         [Test]
@@ -75,16 +75,16 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             m_MockCategoryControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Exactly(1));
             m_MockCategoryControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNotNull(m_MockCategoryControl.Object.CategoryDto);
+            Assert.IsNotNull(m_MockCategoryControl.Object.Category);
             //ToDo verify content of dto
 
             m_MockSerieControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockSerieControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockSerieControl.Object.SerieDto);
+            Assert.IsNull(m_MockSerieControl.Object.Serie);
 
             m_MockFigurControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockFigurControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockFigurControl.Object.FigurDto);
+            Assert.IsNull(m_MockFigurControl.Object.Figur);
         }
 
         [Test]
@@ -97,15 +97,15 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             m_MockCategoryControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockCategoryControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Exactly(1));
-            Assert.IsNull(m_MockCategoryControl.Object.CategoryDto);
+            Assert.IsNull(m_MockCategoryControl.Object.Category);
 
             m_MockSerieControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockSerieControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockSerieControl.Object.SerieDto);
+            Assert.IsNull(m_MockSerieControl.Object.Serie);
 
             m_MockFigurControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockFigurControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockFigurControl.Object.FigurDto);
+            Assert.IsNull(m_MockFigurControl.Object.Figur);
         }
 
         [Test]
@@ -118,16 +118,16 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             m_MockCategoryControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockCategoryControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockCategoryControl.Object.CategoryDto);
+            Assert.IsNull(m_MockCategoryControl.Object.Category);
             
             m_MockSerieControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Exactly(1));
             m_MockSerieControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNotNull(m_MockSerieControl.Object.SerieDto);
+            Assert.IsNotNull(m_MockSerieControl.Object.Serie);
             //ToDo verify content of dto
 
             m_MockFigurControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockFigurControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockFigurControl.Object.FigurDto);
+            Assert.IsNull(m_MockFigurControl.Object.Figur);
         }
 
         [Test]
@@ -140,16 +140,16 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             m_MockCategoryControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockCategoryControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockCategoryControl.Object.CategoryDto);
+            Assert.IsNull(m_MockCategoryControl.Object.Category);
             
             m_MockSerieControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockSerieControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Exactly(1));
-            Assert.IsNull(m_MockSerieControl.Object.SerieDto);
+            Assert.IsNull(m_MockSerieControl.Object.Serie);
 
 
             m_MockFigurControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockFigurControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockFigurControl.Object.FigurDto);
+            Assert.IsNull(m_MockFigurControl.Object.Figur);
         }
 
         [Test]
@@ -162,15 +162,15 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             m_MockCategoryControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockCategoryControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockCategoryControl.Object.CategoryDto);
+            Assert.IsNull(m_MockCategoryControl.Object.Category);
 
             m_MockSerieControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockSerieControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockSerieControl.Object.SerieDto);
+            Assert.IsNull(m_MockSerieControl.Object.Serie);
             
             m_MockFigurControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Exactly(1));
             m_MockFigurControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNotNull(m_MockFigurControl.Object.FigurDto);
+            Assert.IsNotNull(m_MockFigurControl.Object.Figur);
             //ToDo verify content of dto
         }
 
@@ -184,16 +184,16 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             m_MockCategoryControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockCategoryControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockCategoryControl.Object.CategoryDto);
+            Assert.IsNull(m_MockCategoryControl.Object.Category);
 
             m_MockSerieControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockSerieControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Never());
-            Assert.IsNull(m_MockSerieControl.Object.SerieDto);
+            Assert.IsNull(m_MockSerieControl.Object.Serie);
 
 
             m_MockFigurControl.Verify(mock => mock.InitializeViewMode(), Moq.Times.Never());
             m_MockFigurControl.Verify(mock => mock.InitializeEditMode(), Moq.Times.Exactly(1));
-            Assert.IsNull(m_MockFigurControl.Object.FigurDto);
+            Assert.IsNull(m_MockFigurControl.Object.Figur);
         }
     }
 }

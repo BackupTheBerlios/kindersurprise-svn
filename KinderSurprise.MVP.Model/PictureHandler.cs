@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.MVP.Model
 {
@@ -8,7 +8,7 @@ namespace KinderSurprise.MVP.Model
 	{
 		// should be used to save pics in a compressed filestream
 		// and load pictures out of the compressed file if necessary
-		public PictureHandler (List<PictureDto> pictureDtos)
+		public PictureHandler (List<Picture> pictures)
 		{
 			throw new NotImplementedException();
 		}

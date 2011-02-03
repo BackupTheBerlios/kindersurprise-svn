@@ -12,7 +12,7 @@ namespace KinderSurprise.DAL
 
 		private static ISessionFactory SessionFactory
 		{
-			get
+			get 
 			{
 				if (m_SessionFactory == null)
 				{

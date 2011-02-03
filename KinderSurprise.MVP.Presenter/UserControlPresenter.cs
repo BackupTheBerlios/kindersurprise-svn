@@ -1,4 +1,4 @@
-﻿using KinderSurprise.DTO;
+﻿using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
@@ -27,7 +27,7 @@ namespace KinderSurprise.MVP.Presenter
                         if (mode == EMode.View)
                         {
                             ICategoryService categoryService = new CategoryService();
-                            m_CategoryControl.CategoryDto = categoryService.GetById(objectId);
+                            m_CategoryControl.Category = categoryService.GetById(objectId);
                             m_CategoryControl.InitializeViewMode();
                         }
                         else if(mode == EMode.New)
@@ -41,7 +41,7 @@ namespace KinderSurprise.MVP.Presenter
                         if (mode == EMode.View)
                         {
                             ISerieService serieService = new SerieService();
-                            m_SerieControl.SerieDto = serieService.GetById(objectId);
+                            m_SerieControl.Serie = serieService.GetById(objectId);
                             m_SerieControl.InitializeViewMode();
                         }
                         else if (mode == EMode.New)
@@ -55,7 +55,7 @@ namespace KinderSurprise.MVP.Presenter
                         if (mode == EMode.View)
                         {
                             IFigurService figurService = new FigurService();
-                            m_FigurControl.FigurDto = figurService.GetById(objectId);
+                            m_FigurControl.Figur = figurService.GetById(objectId);
                             m_FigurControl.InitializeViewMode();
                         }
                         else if (mode == EMode.New)

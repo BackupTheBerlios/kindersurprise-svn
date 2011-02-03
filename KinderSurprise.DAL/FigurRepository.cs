@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using NHibernate;
 
 namespace KinderSurprise.DAL
@@ -20,29 +19,16 @@ namespace KinderSurprise.DAL
             }
         }
 
-        public List<FigurDto> GetAll()
+        public List<Figur> GetAll()
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
-				List<FigurDto> figurDtos = new List<FigurDto>();
 				ICriteria crit = session.CreateCriteria(typeof(Figur));
-				var figurList = crit.List().Cast<Figur>().ToList();
-				
-				foreach (Figur figur in figurList)
-				{
-					figurDtos.Add(
-							new FigurDto(figur.FigurId, 
-					                           figur.FigurName, 
-					                           figur.Description, 
-					                           figur.Price, 
-					                           figur.Serie));
-				}
-					                 
-				return figurDtos;
+				return crit.List().Cast<Figur>().ToList();
             }
         }
 
-        public FigurDto GetById(int figurId)
+        public Figur GetById(int figurId)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
@@ -50,55 +36,40 @@ namespace KinderSurprise.DAL
              
                 return figur == null
                            ? null
-                           : new FigurDto(figur.FigurId, figur.FigurName, figur.Description,
-                                          Convert.ToDecimal(figur.Price),
-                                          new Serie { SerieId = figur.Serie.SerieId });
+                           : figur;
             }
         }
 
-        public void Add(FigurDto figurDto)
+        public void Add(Figur figur)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Save(ConvertToModel(figurDto));
+                    session.Save(figur);
                     transaction.Commit();
                 }
             }
         }
 
-        public List<FigurDto> GetAllBySerieId(int serieId)
+        public List<Figur> GetAllBySerieId(int serieId)
         {
 			using (ISession session = RepositoryBase.OpenSession())
             {
-				List<FigurDto> figurDtos = new List<FigurDto>();
 				ICriteria crit = session.CreateCriteria(typeof(Figur));
 				crit.Add(NHibernate.Criterion.Expression.Eq("Serie.SerieId", serieId));
 								
-				var figurList = crit.List().Cast<Figur>().ToList();
-				
-				foreach (Figur figur in figurList)
-				{
-					figurDtos.Add(
-					              new FigurDto(figur.FigurId, 
-					                           figur.FigurName, 
-					                           figur.Description, 
-					                           figur.Price, 
-					                           figur.Serie));
-				}
-					                 
-				return figurDtos;
+				return crit.List().Cast<Figur>().ToList();
             }
         }
 
-        public void Update(FigurDto figurDto)
+        public void Update(Figur figur)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Update(ConvertToModel(figurDto));
+                    session.Update(figur);
                     transaction.Commit();
                 }
             }
@@ -110,22 +81,10 @@ namespace KinderSurprise.DAL
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Delete(ConvertToModel(GetById(figurId)));
+                    session.Delete(GetById(figurId));
                     transaction.Commit();
                 }
             }
-        }
-
-        private static Figur ConvertToModel(FigurDto figurDto)
-        {
-            return new Figur
-            {
-                FigurId = figurDto.FigurId,
-                FigurName = figurDto.FigurName,
-                Description = figurDto.Description,
-                Price = figurDto.Price,
-                Serie = new Serie { SerieId = figurDto.Serie.SerieId }
-            };
         }
     }
 }

@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
@@ -38,12 +37,12 @@ namespace KinderSurprise.MVP.Presenter
 
         public void SetFields()
         {
-            if (m_SeriePropertyPresenter.SerieDto != null)
+            if (m_SeriePropertyPresenter.Serie != null)
             {
-                m_SeriePropertyPresenter.Name.Text = m_SeriePropertyPresenter.SerieDto.SerieName;
-                m_SeriePropertyPresenter.Description.Text = m_SeriePropertyPresenter.SerieDto.Description;
+                m_SeriePropertyPresenter.Name.Text = m_SeriePropertyPresenter.Serie.SerieName;
+                m_SeriePropertyPresenter.Description.Text = m_SeriePropertyPresenter.Serie.Description;
                 m_SeriePropertyPresenter.PublicationYear.Text =
-                m_SeriePropertyPresenter.SerieDto.PublicationYear.Year.ToString();
+                m_SeriePropertyPresenter.Serie.PublicationYear.Year.ToString();
             }
 
             InitializeCategoryDropDownList();
@@ -60,7 +59,7 @@ namespace KinderSurprise.MVP.Presenter
         private void InitializeCategoryDropDownList()
         {
             ICategoryService categoryService = new CategoryService();
-            List<CategoryDto> categoryDtos = categoryService.GetAll();
+            List<Category> categories = categoryService.GetAll();
             
             //ToDo Select the Category which the serie belongs to
             //if(m_SeriePropertyPresenter.SerieDto == null)
@@ -68,7 +67,7 @@ namespace KinderSurprise.MVP.Presenter
             const string dataValueField = "CategoryId";
             const string dataTextField = "CategoryName";
 
-            m_SeriePropertyPresenter.ChooseCategory.DataSource = categoryDtos;
+            m_SeriePropertyPresenter.ChooseCategory.DataSource = categories;
             m_SeriePropertyPresenter.ChooseCategory.DataValueField = dataValueField;
             m_SeriePropertyPresenter.ChooseCategory.DataTextField = dataTextField;
             m_SeriePropertyPresenter.ChooseCategory.DataBind();    
@@ -76,11 +75,11 @@ namespace KinderSurprise.MVP.Presenter
 
         public void Delete()
         {
-            if (m_SeriePropertyPresenter.SerieDto == null)
+            if (m_SeriePropertyPresenter.Serie == null)
                 return;
 
             ISerieService serieService = new SerieService();
-            serieService.DeleteById(m_SeriePropertyPresenter.SerieDto.SerieId);
+            serieService.DeleteById(m_SeriePropertyPresenter.Serie.SerieId);
         }
 
         public bool Update()
@@ -107,15 +106,15 @@ namespace KinderSurprise.MVP.Presenter
 
             ISerieService serieService = new SerieService();
             serieService.SaveOrUpdate(
-                new SerieDto(m_SeriePropertyPresenter.SerieDto == null ? 0 : m_SeriePropertyPresenter.SerieDto.SerieId,
-                             m_SeriePropertyPresenter.Name.Text,
-                             m_SeriePropertyPresenter.Description.Text,
-                             new DateTime(Convert.ToInt32(m_SeriePropertyPresenter.PublicationYear.Text), 1, 1),
-                             new Mapper.Category
+                new Serie{ SerieId = m_SeriePropertyPresenter.Serie == null ? 0 : m_SeriePropertyPresenter.Serie.SerieId,
+                             SerieName = m_SeriePropertyPresenter.Name.Text,
+                             Description = m_SeriePropertyPresenter.Description.Text,
+                             PublicationYear = new DateTime(Convert.ToInt32(m_SeriePropertyPresenter.PublicationYear.Text), 1, 1),
+                             Category = new Category
                                  {
                                      CategoryId =
                                          Convert.ToInt32(m_SeriePropertyPresenter.ChooseCategory.SelectedValue)
-                                 }));
+                                 } });
             m_SeriePropertyPresenter.ErrorMessage.Visible = false;
             return true;
         }

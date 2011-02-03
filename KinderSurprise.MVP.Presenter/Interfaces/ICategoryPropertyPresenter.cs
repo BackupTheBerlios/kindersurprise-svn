@@ -1,5 +1,5 @@
 ﻿using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.MVP.Presenter.Interfaces
 {
@@ -15,6 +15,6 @@ namespace KinderSurprise.MVP.Presenter.Interfaces
         Button Delete  { get; set; }
         Button Update { get; set; }
         
-        CategoryDto CategoryDto { get; set; }
+        Category Category { get; set; }
     }
 }

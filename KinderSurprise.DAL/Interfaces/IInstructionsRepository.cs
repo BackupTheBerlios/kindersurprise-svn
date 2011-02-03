@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.DAL
 {
 	public interface IInstructionsRepository
 	{
-		List<InstructionsDto> GetByFigurId(int id);
+		List<Instructions> GetByFigurId(int id);
 	}
 }

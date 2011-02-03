@@ -1,4 +1,4 @@
-﻿using KinderSurprise.DTO;
+﻿using KinderSurprise.Model;
 
 namespace KinderSurprise.MVP.Presenter.Interfaces
 {
@@ -6,6 +6,6 @@ namespace KinderSurprise.MVP.Presenter.Interfaces
     {
         void InitializeViewMode();
         void InitializeEditMode();
-        CategoryDto CategoryDto { get; set; }
+        Category Category { get; set; }
     }
 }

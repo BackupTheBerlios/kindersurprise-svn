@@ -1,4 +1,4 @@
-﻿namespace KinderSurprise.Mapper
+﻿namespace KinderSurprise.Model
 {
     public class Category
     {

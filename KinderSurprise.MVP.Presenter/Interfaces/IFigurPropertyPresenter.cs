@@ -1,5 +1,5 @@
 ﻿using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.MVP.Presenter.Interfaces
 {
@@ -17,6 +17,6 @@ namespace KinderSurprise.MVP.Presenter.Interfaces
 
         Label ErrorMessage { get; set; }
 
-        FigurDto FigurDto { get; set; }
+        Figur Figur { get; set; }
     }
 }

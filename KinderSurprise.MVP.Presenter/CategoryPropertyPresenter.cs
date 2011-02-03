@@ -1,4 +1,4 @@
-﻿using KinderSurprise.DTO;
+﻿using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
@@ -40,13 +40,13 @@ namespace KinderSurprise.MVP.Presenter
 
         public void SetFields()
         {
-            if (m_CategoryPropertyPresenter.CategoryDto == null) return;
+            if (m_CategoryPropertyPresenter.Category == null) return;
 
-            m_CategoryPropertyPresenter.NameTextBox.Text = m_CategoryPropertyPresenter.CategoryDto.CategoryName;
-            m_CategoryPropertyPresenter.DescriptionTextBox.Text = m_CategoryPropertyPresenter.CategoryDto.Description;
+            m_CategoryPropertyPresenter.NameTextBox.Text = m_CategoryPropertyPresenter.Category.CategoryName;
+            m_CategoryPropertyPresenter.DescriptionTextBox.Text = m_CategoryPropertyPresenter.Category.Description;
         }
 
-        public bool Update(CategoryDto categoryDto)
+        public bool Update(Category category)
         {
             ValidationHandling validationHandling = new ValidationHandling();
 
@@ -54,9 +54,9 @@ namespace KinderSurprise.MVP.Presenter
             {
                 ICategoryService categoryService = new CategoryService();
                 categoryService.SaveOrUpdate(
-                    new CategoryDto(categoryDto == null
+                    new Category { CategoryId = category == null
                             ? 0
-                            : categoryDto.CategoryId, m_CategoryPropertyPresenter.NameTextBox.Text, m_CategoryPropertyPresenter.DescriptionTextBox.Text));
+                            : category.CategoryId, CategoryName = m_CategoryPropertyPresenter.NameTextBox.Text, Description = m_CategoryPropertyPresenter.DescriptionTextBox.Text} );
                 
                 m_CategoryPropertyPresenter.ErrorLabel.Visible = false;
 
@@ -74,13 +74,13 @@ namespace KinderSurprise.MVP.Presenter
             m_CategoryPropertyPresenter.ErrorLabel.Text = string.Empty;
         }
 
-        public void Delete(CategoryDto categoryDto)
+        public void Delete(Category category)
         {
-            if (categoryDto == null)
+            if (category == null)
                 return;
 
             ICategoryService categoryService = new CategoryService();
-            categoryService.DeleteById(categoryDto.CategoryId);
+            categoryService.DeleteById(category.CategoryId);
         }
     }
 }

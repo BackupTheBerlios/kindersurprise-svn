@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using NUnit.Framework;
 
 namespace KinderSurprise.DAL.Test
@@ -32,7 +31,7 @@ namespace KinderSurprise.DAL.Test
         {
             IFigurRepository figurRepository = new FigurRepository();
 
-            List<FigurDto> figurs = figurRepository.GetAll();
+            List<Figur> figurs = figurRepository.GetAll();
 
             Assert.AreEqual(9, figurs.Count);
 
@@ -98,7 +97,7 @@ namespace KinderSurprise.DAL.Test
 
             const int figurId = 1;
 
-            FigurDto figur = figurRepository.GetById(figurId);
+            Figur figur = figurRepository.GetById(figurId);
 
             Assert.AreEqual(figurId, figur.FigurId);
             Assert.AreEqual("PlasteFigur1", figur.FigurName);
@@ -122,9 +121,9 @@ namespace KinderSurprise.DAL.Test
         {
             IFigurRepository figurRepository = new FigurRepository();
 
-            FigurDto newFigurDto = figurRepository.GetById(1);
-            newFigurDto.FigurName = "Plaste5";
-            figurRepository.Add(newFigurDto);
+            Figur newFigur = figurRepository.GetById(1);
+            newFigur.FigurName = "Plaste5";
+            figurRepository.Add(newFigur);
             int figurId = figurRepository.GetAll().FindLast(x => x.FigurId > 0).FigurId;
             
             Assert.IsTrue(figurRepository.HasId(figurId));
@@ -139,20 +138,20 @@ namespace KinderSurprise.DAL.Test
         {
             IFigurRepository figurRepository = new FigurRepository();
 
-            FigurDto figurDto = new FigurDto(1,"Name","Test",(decimal) 1.11,new Serie{ SerieId = 1});
+            Figur figur = new Figur { FigurId = 1, FigurName = "Name", Description = "Test", Price = (decimal) 1.11, Serie = new Serie { SerieId = 1} };
 
-            figurRepository.Add(figurDto);
+            figurRepository.Add(figur);
 
             int figurId = figurRepository.GetAll().FindLast(x => x.FigurId > 0).FigurId;
 
-            FigurDto newFigurDto = figurRepository.GetById(figurId);
+            Figur newFigur = figurRepository.GetById(figurId);
             
-            Assert.IsNotNull(newFigurDto);
-            Assert.AreEqual(figurId, newFigurDto.FigurId);
-            Assert.AreEqual("Name", newFigurDto.FigurName);
-            Assert.AreEqual("Test", newFigurDto.Description);
-            Assert.AreEqual(1.11, newFigurDto.Price);
-            Assert.AreEqual(1, newFigurDto.Serie.SerieId);
+            Assert.IsNotNull(newFigur);
+            Assert.AreEqual(figurId, newFigur.FigurId);
+            Assert.AreEqual("Name", newFigur.FigurName);
+            Assert.AreEqual("Test", newFigur.Description);
+            Assert.AreEqual(1.11, newFigur.Price);
+            Assert.AreEqual(1, newFigur.Serie.SerieId);
 
             figurRepository.DeleteById(figurId);
 
@@ -164,33 +163,33 @@ namespace KinderSurprise.DAL.Test
         {
             IFigurRepository figurRepository = new FigurRepository();
 
-            FigurDto figurDto = new FigurDto(1, "TestFigur", "TestDesc", (decimal) 1.11, new Serie {SerieId = 1});
+            Figur figur = new Figur { FigurId = 1, FigurName = "TestFigur", Description = "TestDesc", Price = (decimal) 1.11, Serie = new Serie { SerieId = 1} };
 
-            figurRepository.Add(figurDto);
+            figurRepository.Add(figur);
             int figurId = figurRepository.GetAll().FindLast(x => x.FigurId > 0).FigurId;
 
-            figurDto = figurRepository.GetById(figurId);
-            Assert.AreEqual(figurId, figurDto.FigurId);
-            Assert.AreEqual("TestFigur", figurDto.FigurName);
-            Assert.AreEqual("TestDesc", figurDto.Description);
-            Assert.AreEqual(1.11, figurDto.Price);
-            Assert.AreEqual(1, figurDto.Serie.SerieId);
+            figur = figurRepository.GetById(figurId);
+            Assert.AreEqual(figurId, figur.FigurId);
+            Assert.AreEqual("TestFigur", figur.FigurName);
+            Assert.AreEqual("TestDesc", figur.Description);
+            Assert.AreEqual(1.11, figur.Price);
+            Assert.AreEqual(1, figur.Serie.SerieId);
 
-            figurDto.FigurName = "TestFigurOverwritten";
-            figurDto.Description = "TestDescOverwritten";
+            figur.FigurName = "TestFigurOverwritten";
+            figur.Description = "TestDescOverwritten";
 
-            figurRepository.Update(figurDto);
+            figurRepository.Update(figur);
 
-            FigurDto newFigurDto = figurRepository.GetById(figurId);
+            Figur newFigur = figurRepository.GetById(figurId);
 
-            Assert.IsNotNull(newFigurDto);
-            Assert.AreEqual(figurId, newFigurDto.FigurId);
-            Assert.AreEqual("TestFigurOverwritten", newFigurDto.FigurName);
-            Assert.AreEqual("TestDescOverwritten", newFigurDto.Description);
-            Assert.AreEqual(1.11, newFigurDto.Price);
-            Assert.AreEqual(1, figurDto.Serie.SerieId);
+            Assert.IsNotNull(newFigur);
+            Assert.AreEqual(figurId, newFigur.FigurId);
+            Assert.AreEqual("TestFigurOverwritten", newFigur.FigurName);
+            Assert.AreEqual("TestDescOverwritten", newFigur.Description);
+            Assert.AreEqual(1.11, newFigur.Price);
+            Assert.AreEqual(1, figur.Serie.SerieId);
 
-            Assert.IsNotNull(newFigurDto.Serie);
+            Assert.IsNotNull(newFigur.Serie);
 
             figurRepository.DeleteById(figurId);
 
@@ -203,35 +202,35 @@ namespace KinderSurprise.DAL.Test
 		{
 			IFigurRepository figurRepository = new FigurRepository();
 			
-			FigurDto figurDto = new FigurDto(0,"test","desc",(decimal)1.67, new Serie { SerieId = 15 });
-			figurRepository.Add(figurDto);	
+			Figur figur = new Figur { FigurId = 0, FigurName = "test", Description = "desc", Price = (decimal)1.67, Serie = new Serie { SerieId = 15 } };
+			figurRepository.Add(figur);	
 		}
 
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs1()
         {
             IFigurRepository figurRepository = new FigurRepository();
-            List<FigurDto> figurDtos = figurRepository.GetAllBySerieId(1);
+            List<Figur> figurs = figurRepository.GetAllBySerieId(1);
 
-            Assert.AreEqual(2, figurDtos.Count);
+            Assert.AreEqual(2, figurs.Count);
         }
 
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs3()
         {
             IFigurRepository figurRepository = new FigurRepository();
-            List<FigurDto> figurDtos = figurRepository.GetAllBySerieId(3);
+            List<Figur> figurs = figurRepository.GetAllBySerieId(3);
 
-            Assert.AreEqual(3, figurDtos.Count);
+            Assert.AreEqual(3, figurs.Count);
         }
 
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs4()
         {
             IFigurRepository figurRepository = new FigurRepository();
-            List<FigurDto> figurDtos = figurRepository.GetAllBySerieId(4);
+            List<Figur> figurs = figurRepository.GetAllBySerieId(4);
 
-            Assert.AreEqual(1, figurDtos.Count);
+            Assert.AreEqual(1, figurs.Count);
         }
     }
 }

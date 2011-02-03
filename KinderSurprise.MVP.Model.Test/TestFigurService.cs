@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
+using KinderSurprise.Model;
 using NUnit.Framework;
 
 namespace KinderSurprise.MVP.Model.Test
@@ -45,9 +44,9 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_SaveNewFigurDto()
         {
             FigurService figurService = new FigurService();
-            FigurDto figurDto = new FigurDto(0, "New", "Desc", (decimal)1.11, new Serie { SerieId = 1 });
+            Figur figur = new Figur{ FigurId = 0, FigurName = "New", Description = "Desc", Price = (decimal)1.11, Serie = new Serie { SerieId = 1 }};
 
-            figurService.SaveOrUpdate(figurDto);
+            figurService.SaveOrUpdate(figur);
 
             var newFigurDto = figurService.GetAll().LastOrDefault();
 
@@ -65,30 +64,30 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_UpdateExistingFigurDto()
         {
             FigurService figurService = new FigurService();
-            FigurDto figurDto = figurService.GetById(1);
+            Figur figur = figurService.GetById(1);
 
-            Assert.AreEqual("PlasteFigur1", figurDto.FigurName);
+            Assert.AreEqual("PlasteFigur1", figur.FigurName);
 
-            figurDto.FigurName = "PlasteFigur1 overwritten";
+            figur.FigurName = "PlasteFigur1 overwritten";
 
-            figurService.SaveOrUpdate(figurDto);
+            figurService.SaveOrUpdate(figur);
 
-            Assert.AreEqual("PlasteFigur1 overwritten", figurDto.FigurName);
+            Assert.AreEqual("PlasteFigur1 overwritten", figur.FigurName);
 
-            figurDto.FigurName = "PlasteFigur1";
+            figur.FigurName = "PlasteFigur1";
 
-            figurService.SaveOrUpdate(figurDto);
+            figurService.SaveOrUpdate(figur);
 
-            Assert.AreEqual("PlasteFigur1", figurDto.FigurName);
+            Assert.AreEqual("PlasteFigur1", figur.FigurName);
         }
 
         [Test]
         public void Test_DeleteFigurDto()
         {
             FigurService figurService = new FigurService();
-            FigurDto figurDto = new FigurDto(0, "New", "Desc", (decimal)1.11, new Serie{ SerieId = 1 });
+            Figur figur = new Figur { FigurId = 0, FigurName = "New", Description = "Desc", Price = (decimal)1.11, Serie = new Serie { SerieId = 1 }};
 
-            figurService.SaveOrUpdate(figurDto);
+            figurService.SaveOrUpdate(figur);
 
             var newSerieDto = figurService.GetAll().LastOrDefault();
 

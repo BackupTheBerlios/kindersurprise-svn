@@ -1,5 +1,5 @@
 using System.Linq;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using NUnit.Framework;
 
 namespace KinderSurprise.MVP.Model.Test
@@ -41,9 +41,9 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_SaveNewCategoryDto()
         {
             CategoryService categoryService = new CategoryService();
-            CategoryDto categoryDto = new CategoryDto(0,"New","Desc");
+            Category category = new Category { CategoryId = 0, CategoryName = "New", Description = "Desc" };
 
-            categoryService.SaveOrUpdate(categoryDto);
+            categoryService.SaveOrUpdate(category);
 
             var theNewCategoryDto = categoryService.GetAll().LastOrDefault();
 
@@ -59,30 +59,30 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_UpdateExistingDto()
         {
             CategoryService categoryService = new CategoryService();
-            CategoryDto categoryDto = categoryService.GetById(1);
+            Category category = categoryService.GetById(1);
 
-            Assert.AreEqual("Plastik", categoryDto.CategoryName);
+            Assert.AreEqual("Plastik", category.CategoryName);
 
-            categoryDto.CategoryName = "Plastik overwritten";
+            category.CategoryName = "Plastik overwritten";
 
-            categoryService.SaveOrUpdate(categoryDto);
+            categoryService.SaveOrUpdate(category);
 
-            Assert.AreEqual("Plastik overwritten", categoryDto.CategoryName);
+            Assert.AreEqual("Plastik overwritten", category.CategoryName);
 
-            categoryDto.CategoryName = "Plastik";
+            category.CategoryName = "Plastik";
 
-            categoryService.SaveOrUpdate(categoryDto);
+            categoryService.SaveOrUpdate(category);
 
-            Assert.AreEqual("Plastik", categoryDto.CategoryName);
+            Assert.AreEqual("Plastik", category.CategoryName);
         }
 
         [Test]
         public void Test_DeleteCategoryDto()
         {
             CategoryService categoryService = new CategoryService();
-            CategoryDto categoryDto = new CategoryDto(0, "New", "Desc");
+            Category category = new Category{ CategoryId = 0, CategoryName = "New", Description = "Desc" };
 
-            categoryService.SaveOrUpdate(categoryDto);
+            categoryService.SaveOrUpdate(category);
 
             var newCategoryDto = categoryService.GetAll().LastOrDefault();
 

@@ -1,19 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
+using KinderSurprise.Model;
 using NHibernate;
 
 namespace KinderSurprise.DAL
 {
 	public class PictureRepository : IPictureRepository
 	{
-		public List<PictureDto> GetById(int id, EType type)
+		public List<Picture> GetById(int id, EType type)
 		{
 			using (ISession session = RepositoryBase.OpenSession())
 			{
-				List<PictureDto> pictureDtos = new List<PictureDto>();
 				ICriteria crit = session.CreateCriteria(typeof(Picture));
 				if(type.Equals(EType.Figur))
 				{
@@ -28,14 +26,7 @@ namespace KinderSurprise.DAL
 					crit.Add(NHibernate.Criterion.Expression.Eq("Fk_Instructions_Id.Id", id));
 				}
 				
-				var pictureList = crit.List();
-				
-				foreach (Picture p in pictureList)
-				{
-					pictureDtos.Add( new PictureDto(p.Id, p.Path,p.Fk_Figur_Id,  p.Fk_Serie_Id, p.Fk_Instructions_Id));
-				}
-				
-				return pictureDtos;
+				return crit.List().Cast<Picture>().ToList();
 			}
 		}
 	}

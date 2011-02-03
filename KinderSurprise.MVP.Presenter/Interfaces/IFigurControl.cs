@@ -1,10 +1,10 @@
-﻿using KinderSurprise.DTO;
+﻿using KinderSurprise.Model;
 
 namespace KinderSurprise.MVP.Presenter.Interfaces
 {
     public interface IFigurControl
     {
-        FigurDto FigurDto { get; set; }
+        Figur Figur { get; set; }
 
         void InitializeViewMode();
         void InitializeEditMode();

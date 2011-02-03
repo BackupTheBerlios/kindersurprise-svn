@@ -1,22 +1,24 @@
 using System;
 
-namespace KinderSurprise.Mapper
+namespace KinderSurprise.Model
 {
-	public class Instructions
+	public class Picture
 	{
 		public virtual int Id { get; set; }
-		public virtual string Name { get; set; }
+        public virtual string Path { get; set; }
+		public virtual Serie Fk_Serie_Id { get; set; }
 		public virtual Figur Fk_Figur_Id { get; set; }
+		public virtual Instructions Fk_Instructions_Id { get; set; }
 		
 		public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(Instructions)) return false;
-            return Equals((Instructions)obj);
+            if (obj.GetType() != typeof(Picture)) return false;
+            return Equals((Picture)obj);
         }
 
-        public virtual bool Equals(Instructions other)
+        public virtual bool Equals(Picture other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;

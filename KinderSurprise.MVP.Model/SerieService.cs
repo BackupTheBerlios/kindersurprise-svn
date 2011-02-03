@@ -1,40 +1,39 @@
 ﻿using System.Collections.Generic;
 using KinderSurprise.DAL;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Model.Interfaces;
-using KinderSurprise.DTO;
-
 
 namespace KinderSurprise.MVP.Model
 {
     public class SerieService : ISerieService
     {
-        public List<SerieDto> GetAll()
+        public List<Serie> GetAll()
         {
             ISerieRepository serieRepository = new SerieRepository();
             return serieRepository.GetAll();
         }
 
-        public List<SerieDto> GetAllByCategoryId(int categoryId)
+        public List<Serie> GetAllByCategoryId(int categoryId)
         {
             ISerieRepository serieRepository = new SerieRepository();
             return serieRepository.GetAllByCategoryId(categoryId);
         }
 
-        public SerieDto GetById(int serieId)
+        public Serie GetById(int serieId)
         {
             ISerieRepository serieRepository = new SerieRepository();
             return serieRepository.GetById(serieId);
         }
 
-        public void SaveOrUpdate(SerieDto serieDto)
+        public void SaveOrUpdate(Serie serie)
         {
             ISerieRepository serieRepository = new SerieRepository();
             
-            if(serieRepository.HasId(serieDto.SerieId))
-                serieRepository.Update(serieDto);
+            if(serieRepository.HasId(serie.SerieId))
+                serieRepository.Update(serie);
             else
-                serieRepository.Add(serieDto);
+                serieRepository.Add(serie);
         }
 
         public void DeleteById(int serieId)

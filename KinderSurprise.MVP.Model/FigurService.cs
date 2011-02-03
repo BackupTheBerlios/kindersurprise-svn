@@ -1,40 +1,39 @@
 ﻿using System.Collections.Generic;
 using KinderSurprise.DAL;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Model.Interfaces;
-using KinderSurprise.DTO;
-
 
 namespace KinderSurprise.MVP.Model
 {
     public class FigurService : IFigurService
     {
-        public List<FigurDto> GetAll()
+        public List<Figur> GetAll()
         {
             IFigurRepository figurRepository = new FigurRepository();
             return figurRepository.GetAll();
         }
 
-        public List<FigurDto> GetAllBySerieId(int serieId)
+        public List<Figur> GetAllBySerieId(int serieId)
         {
             IFigurRepository figurRepository = new FigurRepository();
             return figurRepository.GetAllBySerieId(serieId);
         }
 
-        public FigurDto GetById(int figurId)
+        public Figur GetById(int figurId)
         {
             IFigurRepository figurRepository = new FigurRepository();
             return figurRepository.GetById(figurId);
         }
 
-        public void SaveOrUpdate(FigurDto figurDto)
+        public void SaveOrUpdate(Figur figur)
         {
             IFigurRepository figurRepository = new FigurRepository();
 
-            if(figurRepository.HasId(figurDto.FigurId))
-                figurRepository.Update(figurDto);
+            if(figurRepository.HasId(figur.FigurId))
+                figurRepository.Update(figur);
             else
-                figurRepository.Add(figurDto);
+                figurRepository.Add(figur);
         }
 
         public void DeleteById(int figurId)

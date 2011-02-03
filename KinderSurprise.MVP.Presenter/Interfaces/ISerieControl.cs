@@ -1,10 +1,10 @@
-﻿using KinderSurprise.DTO;
+﻿using KinderSurprise.Model;
 
 namespace KinderSurprise.MVP.Presenter.Interfaces
 {
     public interface ISerieControl
     {
-        SerieDto SerieDto { get; set; }
+        Serie Serie { get; set; }
 
         void InitializeViewMode();
         void InitializeEditMode();

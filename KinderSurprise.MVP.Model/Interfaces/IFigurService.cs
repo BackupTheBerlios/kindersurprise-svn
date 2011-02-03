@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.MVP.Model.Interfaces
 {
     public interface IFigurService
     {
-        List<FigurDto> GetAll();
-        List<FigurDto> GetAllBySerieId(int serieId);
-        FigurDto GetById(int figurId);
-        void SaveOrUpdate(FigurDto figurDto);
+        List<Figur> GetAll();
+        List<Figur> GetAllBySerieId(int serieId);
+        Figur GetById(int figurId);
+        void SaveOrUpdate(Figur figur);
         void DeleteById(int figurId);
     }
 }

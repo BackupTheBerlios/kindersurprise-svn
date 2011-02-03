@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Presenter;
 using KinderSurprise.MVP.Presenter.Interfaces;
 
@@ -68,9 +68,9 @@ namespace KinderSurprise.MVP.View
 
         #region Property
 
-        public FigurDto FigurDto
+        public Figur Figur
         {
-            get { return (FigurDto) Session["FigurDto"]; }
+            get { return (Figur) Session["FigurDto"]; }
             set { Session["FigurDto"] = value; }
         }
 
@@ -105,7 +105,7 @@ namespace KinderSurprise.MVP.View
             //ToDo Ask if the user really wants to delete
 
             FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(this);
-            figurPropertyPresenter.Delete(FigurDto);
+            figurPropertyPresenter.Delete(Figur);
 
             ReloadTreeView();
         }
@@ -114,7 +114,7 @@ namespace KinderSurprise.MVP.View
         {
             FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(this);
 
-            if(figurPropertyPresenter.Update(FigurDto))
+            if(figurPropertyPresenter.Update(Figur))
                 ReloadTreeView();
         }
 
@@ -122,7 +122,7 @@ namespace KinderSurprise.MVP.View
 
         public void InitializeEditMode()
         {
-            FigurDto = null;
+            Figur = null;
             FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(this);
             
             figurPropertyPresenter.SetToEditMode();

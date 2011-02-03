@@ -1,33 +1,33 @@
 using System;
 using System.Collections.Generic;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using KinderSurprise.DAL;
 
 namespace KinderSurprise.MVP.Model
 {
 	public class PictureService
 	{
-		private List<PictureDto> m_PictureDtos;
+		private List<Picture> m_Pictures;
 		
 		public PictureService(int id, EType type)
 		{
 			PictureRepository pictureRepository = new PictureRepository();
-			List<PictureDto> pictureDtos = pictureRepository.GetById(id, type);
+			List<Picture> pictures = pictureRepository.GetById(id, type);
 			
-			if(pictureDtos == null)
-				m_PictureDtos = new List<PictureDto>();
+			if(pictures == null)
+				m_Pictures = new List<Picture>();
 			else
-				m_PictureDtos = pictureDtos;			
+				m_Pictures = pictures;			
 		}
 		
 		public int GetSize()
 		{
-			return m_PictureDtos.Count;
+			return m_Pictures.Count;
 		}
 		
-		public List<PictureDto> GetPictures()
+		public List<Picture> GetPictures()
 		{
-			return m_PictureDtos;
+			return m_Pictures;
 		}
 	}
 }

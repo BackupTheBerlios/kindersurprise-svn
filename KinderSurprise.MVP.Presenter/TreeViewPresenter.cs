@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
@@ -68,11 +68,11 @@ namespace KinderSurprise.MVP.Presenter
             ISerieService serieService = new SerieService();
             IFigurService figurService = new FigurService();
 
-            var categoryDtos = categoryService.GetAll();
-            if(categoryDtos.Count == 0)
-                categoryDtos.Add(new CategoryDto(0,"dummy","dummy"));
+            var categories = categoryService.GetAll();
+            if(categories.Count == 0)
+                categories.Add(new Category { CategoryId = 0, CategoryName = "dummy", Description = "dummy" });
             
-            foreach (var categoryDto in categoryDtos)
+            foreach (var categoryDto in categories)
             {
                 TreeNode nodeCategory = new TreeNode
                                             {

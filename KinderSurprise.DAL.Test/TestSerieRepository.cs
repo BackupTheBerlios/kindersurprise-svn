@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using NUnit.Framework;
 using MySql.Data;
 
@@ -34,7 +33,7 @@ namespace KinderSurprise.DAL.Test
         {
             ISerieRepository serieRepository = new SerieRepository();
 
-            List<SerieDto> series = serieRepository.GetAll();
+            List<Serie> series = serieRepository.GetAll();
 
             Assert.AreEqual(5, series.Count);
 
@@ -76,13 +75,13 @@ namespace KinderSurprise.DAL.Test
 
             const int serieId = 1;
 
-            SerieDto serieDto = serieRepository.GetById(serieId);
+            Serie serie = serieRepository.GetById(serieId);
 
-            Assert.AreEqual(serieId, serieDto.SerieId);
-            Assert.AreEqual("Plaste1", serieDto.SerieName);
-            Assert.AreEqual("Plasteserie 1", serieDto.Description);
-            Assert.AreEqual(new DateTime(2008, 1, 1), serieDto.PublicationYear);
-            Assert.AreEqual(1, serieDto.Category.CategoryId);
+            Assert.AreEqual(serieId, serie.SerieId);
+            Assert.AreEqual("Plaste1", serie.SerieName);
+            Assert.AreEqual("Plasteserie 1", serie.Description);
+            Assert.AreEqual(new DateTime(2008, 1, 1), serie.PublicationYear);
+            Assert.AreEqual(1, serie.Category.CategoryId);
         }
 
         [Test]
@@ -92,9 +91,9 @@ namespace KinderSurprise.DAL.Test
 
             const int serieId = -1;
 
-            SerieDto serieDto = serieRepository.GetById(serieId);
+            Serie serie = serieRepository.GetById(serieId);
 
-            Assert.IsNull(serieDto);
+            Assert.IsNull(serie);
         }
 
         [Test]
@@ -104,9 +103,9 @@ namespace KinderSurprise.DAL.Test
 
             Assert.IsTrue(serieRepository.HasId(1));
 
-            SerieDto oldSerieDto = serieRepository.GetById(1);
-            oldSerieDto.SerieName = "Plaste5";
-            serieRepository.Add(oldSerieDto);
+            Serie oldSerie = serieRepository.GetById(1);
+            oldSerie.SerieName = "Plaste5";
+            serieRepository.Add(oldSerie);
             int serieId = serieRepository.GetAll().FindLast(x => x.SerieId > 0).SerieId;
 
             serieRepository.DeleteById(serieId);
@@ -119,31 +118,31 @@ namespace KinderSurprise.DAL.Test
         {
             ISerieRepository serieRepository = new SerieRepository();
 
-            SerieDto serieDto = new SerieDto(0, "TestSerie", "TestDesc", new DateTime(2000,1,1), 
-                                             new Category
+            Serie serie = new Serie { SerieId = 0, SerieName = "TestSerie", Description = "TestDesc", PublicationYear = new DateTime(2000,1,1), 
+                                             Category = new Category
                                                  {
                                                      CategoryId = 1,
                                                      CategoryName = "TestCategory",
                                                      Description = "TestDescCat"
-                                                 });
-            serieRepository.Add(serieDto);
+                                                 } };
+            serieRepository.Add(serie);
             int serieId = serieRepository.GetAll().FindLast(x => x.SerieId > 0).SerieId;
 
-            serieDto = serieRepository.GetById(serieId);
-            serieDto.SerieName = "TestSerieOverwritten";
-            serieDto.Description = "TestDescOverwritten";
+            serie = serieRepository.GetById(serieId);
+            serie.SerieName = "TestSerieOverwritten";
+            serie.Description = "TestDescOverwritten";
 
-            serieRepository.Update(serieDto);
+            serieRepository.Update(serie);
             
-            SerieDto newSerieDto = serieRepository.GetById(serieId);
+            Serie newSerie = serieRepository.GetById(serieId);
 
-            Assert.IsNotNull(newSerieDto);
-            Assert.AreEqual(serieId, newSerieDto.SerieId);
-            Assert.AreEqual("TestSerieOverwritten", newSerieDto.SerieName);
-            Assert.AreEqual("TestDescOverwritten", newSerieDto.Description);
-            Assert.AreEqual(new DateTime(2000,1,1), newSerieDto.PublicationYear);
+            Assert.IsNotNull(newSerie);
+            Assert.AreEqual(serieId, newSerie.SerieId);
+            Assert.AreEqual("TestSerieOverwritten", newSerie.SerieName);
+            Assert.AreEqual("TestDescOverwritten", newSerie.Description);
+            Assert.AreEqual(new DateTime(2000,1,1), newSerie.PublicationYear);
                 
-            Assert.IsNotNull(newSerieDto.Category);
+            Assert.IsNotNull(newSerie.Category);
 
             serieRepository.DeleteById(serieId);
 
@@ -155,34 +154,34 @@ namespace KinderSurprise.DAL.Test
         {
             ISerieRepository serieRepository = new SerieRepository();
 
-            SerieDto serieDto = new SerieDto(1, "Name", "Test", new DateTime(2000,1,1), 
-                                             new Category
+            Serie serie = new Serie { SerieId = 1, SerieName = "Name", Description = "Test", PublicationYear =  new DateTime(2000,1,1), 
+                                             Category = new Category
                                                  {
                                                      CategoryId = 1,
                                                      CategoryName = "TestCategory",
                                                      Description = "TestDesc"
-                                                 });
+                                                 } };
 
-            serieRepository.Add(serieDto);
+            serieRepository.Add(serie);
 
             int serieId = serieRepository.GetAll().FindLast(x => x.SerieId > 0).SerieId;
 
-            SerieDto newSerieDto = serieRepository.GetById(serieId);
+            Serie newSerie = serieRepository.GetById(serieId);
             
-            Assert.IsNotNull(newSerieDto);
-            Assert.AreEqual(serieId, newSerieDto.SerieId);
-            Assert.AreEqual("Name", newSerieDto.SerieName);
-            Assert.AreEqual("Test", newSerieDto.Description);
-            Assert.AreEqual(new DateTime(2000, 1, 1), newSerieDto.PublicationYear);
+            Assert.IsNotNull(newSerie);
+            Assert.AreEqual(serieId, newSerie.SerieId);
+            Assert.AreEqual("Name", newSerie.SerieName);
+            Assert.AreEqual("Test", newSerie.Description);
+            Assert.AreEqual(new DateTime(2000, 1, 1), newSerie.PublicationYear);
 
-            Assert.IsNotNull(newSerieDto.Category);
-            Assert.AreEqual(1, newSerieDto.Category.CategoryId);
+            Assert.IsNotNull(newSerie.Category);
+            Assert.AreEqual(1, newSerie.Category.CategoryId);
             //Assert.AreEqual("TestCategory", newSerieDto.FK_Category_ID.CategoryName);
             //Assert.AreEqual("TestDesc", newSerieDto.FK_Category_ID.Description);
 
-            serieRepository.DeleteById(newSerieDto.SerieId);
+            serieRepository.DeleteById(newSerie.SerieId);
 
-            Assert.IsFalse(serieRepository.HasId(newSerieDto.SerieId));
+            Assert.IsFalse(serieRepository.HasId(newSerie.SerieId));
         }
         
 		[Test]
@@ -191,36 +190,36 @@ namespace KinderSurprise.DAL.Test
 		{
 			ISerieRepository serieRepository = new SerieRepository();
 			
-			SerieDto serieDto = new SerieDto(1, "Name", "Test", new DateTime(2000,1,1), 
-                                             new Category { CategoryId = 10 });
-			serieRepository.Add(serieDto);	
+			Serie serie = new Serie { SerieId = 1, SerieName = "Name", Description = "Test", PublicationYear = new DateTime(2000,1,1), 
+                                             Category = new Category { CategoryId = 10 } };
+			serieRepository.Add(serie);	
 		}
 		
 		[Test]
         public void Test_GetAllSeriesByCategoryId_CategoryIs1()
         {
             ISerieRepository serieRepository = new SerieRepository();
-            var serieDtos = serieRepository.GetAllByCategoryId(1);
+            var series = serieRepository.GetAllByCategoryId(1);
 
-            Assert.AreEqual(2, serieDtos.Count);
+            Assert.AreEqual(2, series.Count);
         }
 
         [Test]
         public void Test_GetAllSeriesByCategoryId_CategoryIs2()
         {
             ISerieRepository serieRepository = new SerieRepository();
-            var serieDtos = serieRepository.GetAllByCategoryId(2);
+            var series = serieRepository.GetAllByCategoryId(2);
 
-            Assert.AreEqual(2, serieDtos.Count);
+            Assert.AreEqual(2, series.Count);
         }
 
         [Test]
         public void Test_GetAllSeriesByCategoryId_CategoryIs3()
         {
             ISerieRepository serieRepository = new SerieRepository();
-            var serieDtos = serieRepository.GetAllByCategoryId(3);
+            var series = serieRepository.GetAllByCategoryId(3);
 
-            Assert.AreEqual(1, serieDtos.Count);
+            Assert.AreEqual(1, series.Count);
         }
     }
 }

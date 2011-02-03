@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.DAL
 {
 	public interface IPictureRepository
 	{
-		List<PictureDto> GetById(int id, EType type);
+		List<Picture> GetById(int id, EType type);
 	}
 }

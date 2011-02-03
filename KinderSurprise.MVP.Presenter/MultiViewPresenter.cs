@@ -1,4 +1,4 @@
-﻿using KinderSurprise.DTO;
+﻿using KinderSurprise.Model;
 using KinderSurprise.MVP.Presenter.Interfaces;
 
 namespace KinderSurprise.MVP.Presenter

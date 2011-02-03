@@ -39,17 +39,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
-    <Compile Include="Figur.cs" />
-    <Compile Include="Mapping\CategoryMap.cs" />
-    <Compile Include="Mapping\FigurMap.cs" />
-    <Compile Include="Mapping\SerieMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serie.cs" />
-    <Compile Include="Picture.cs" />
-    <Compile Include="Mapping\PictureMap.cs" />
-    <Compile Include="Instructions.cs" />
-    <Compile Include="Mapping\InstructionMap.cs" />
+    <Compile Include="CategoryMap.cs" />
+    <Compile Include="FigurMap.cs" />
+    <Compile Include="InstructionMap.cs" />
+    <Compile Include="PictureMap.cs" />
+    <Compile Include="SerieMap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -63,4 +58,17 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+    <Folder Include="Mapping\" />
+    <Folder Include="Mapping\" />
+    <Folder Include="Mapping\" />
+    <Folder Include="Mapping\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KinderSurprise.Model\KinderSurprise.Model.csproj">
+      <Project>{E831D0AF-40F4-4348-95C9-80C7D869A76E}</Project>
+      <Name>KinderSurprise.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

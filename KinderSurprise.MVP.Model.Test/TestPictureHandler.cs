@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using NUnit.Framework;
 
 namespace KinderSurprise.MVP.Model.Test
@@ -13,11 +13,11 @@ namespace KinderSurprise.MVP.Model.Test
 		public void Test_LoadPictures_NotACorrectPath()
 		{
 			PictureService pictureService = new PictureService(2, EType.Instructions);
-			List<PictureDto> pictureDtos = pictureService.GetPictures();
+			List<Picture> pictures = pictureService.GetPictures();
 			
 			Assert.AreEqual(1, pictureService.GetSize());
 				
-			PictureHandler pictureHandler = new PictureHandler(pictureDtos);
+			PictureHandler pictureHandler = new PictureHandler(pictures);
 			pictureHandler.LoadPictures();
 		}
 		
@@ -26,11 +26,11 @@ namespace KinderSurprise.MVP.Model.Test
 		public void Test_LoadPictures_NoPictureChosen()
 		{
 			PictureService pictureService = new PictureService(10, EType.Instructions);
-			List<PictureDto> pictureDtos = pictureService.GetPictures();
+			List<Picture> pictures = pictureService.GetPictures();
 			
 			Assert.AreEqual(0, pictureService.GetSize());
 				
-			PictureHandler pictureHandler = new PictureHandler(pictureDtos);
+			PictureHandler pictureHandler = new PictureHandler(pictures);
 			pictureHandler.LoadPictures();
 		}
 		
@@ -39,11 +39,11 @@ namespace KinderSurprise.MVP.Model.Test
 		public void Test_SavePicturesToGlobalFolder()
 		{
 			PictureService pictureService = new PictureService(2, EType.Instructions);
-			List<PictureDto> pictureDtos = pictureService.GetPictures();
+			List<Picture> pictures = pictureService.GetPictures();
 			
 			Assert.AreEqual(1, pictureService.GetSize());
 				
-			PictureHandler pictureHandler = new PictureHandler(pictureDtos);
+			PictureHandler pictureHandler = new PictureHandler(pictures);
 			pictureHandler.SavePictures();
 		}
 	}

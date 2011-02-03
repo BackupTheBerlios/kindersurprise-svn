@@ -1,5 +1,5 @@
 using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
@@ -80,7 +80,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         public void Test_SetFields_CategoryDtoIsNotNull()
         {
             var categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
-            m_MockCategoryProperty.CategoryDto = new CategoryDto(0, "Test", "Desc");
+            m_MockCategoryProperty.Category = new Category { CategoryId = 0, CategoryName = "Test", Description = "Desc"};
 
             categoryPropertyPresenter.SetFields();  
             
@@ -91,7 +91,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_SetFields_CategoryDtoIsNull()
         {
-            m_MockCategoryProperty.CategoryDto = null;
+            m_MockCategoryProperty.Category = null;
             var categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
             
             categoryPropertyPresenter.SetFields();
@@ -117,11 +117,11 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameIsNotValid()
         {
-            m_MockCategoryProperty.CategoryDto = new CategoryDto(0, string.Empty, "desc");
+            m_MockCategoryProperty.Category = new Category{ CategoryId = 0, CategoryName = string.Empty, Description = "desc"};
             
             var categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
             categoryPropertyPresenter.SetFields();
-            Assert.IsFalse(categoryPropertyPresenter.Update(m_MockCategoryProperty.CategoryDto));
+            Assert.IsFalse(categoryPropertyPresenter.Update(m_MockCategoryProperty.Category));
 
             Assert.IsTrue(m_MockCategoryProperty.ErrorLabel.Visible);
             Assert.AreEqual("Bitte geben Sie der Kategorie einen Namen!", m_MockCategoryProperty.ErrorLabel.Text);
@@ -130,11 +130,11 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameIsValid()
         {
-            m_MockCategoryProperty.CategoryDto = new CategoryDto(0, "test", "desc");
+            m_MockCategoryProperty.Category = new Category{ CategoryId = 0, CategoryName = "test", Description = "desc"};
 
             CategoryPropertyPresenter categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
             categoryPropertyPresenter.SetFields();
-            Assert.IsTrue(categoryPropertyPresenter.Update(m_MockCategoryProperty.CategoryDto));
+            Assert.IsTrue(categoryPropertyPresenter.Update(m_MockCategoryProperty.Category));
 
             Assert.IsFalse(m_MockCategoryProperty.ErrorLabel.Visible);
             Assert.AreEqual(string.Empty, m_MockCategoryProperty.ErrorLabel.Text);
@@ -148,14 +148,14 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Delete_IfCategoryDtoIsNull()
         {
-            m_MockCategoryProperty.CategoryDto = null;
+            m_MockCategoryProperty.Category = null;
 
             ICategoryService categoryService = new CategoryService();
 
             var categoryDtos = categoryService.GetAll();
             
             CategoryPropertyPresenter categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
-            categoryPropertyPresenter.Delete(m_MockCategoryProperty.CategoryDto);
+            categoryPropertyPresenter.Delete(m_MockCategoryProperty.Category);
 
             Assert.AreEqual(categoryDtos.Count, categoryService.GetAll().Count);
         }

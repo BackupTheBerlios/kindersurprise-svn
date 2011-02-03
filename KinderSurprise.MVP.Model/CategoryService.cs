@@ -1,33 +1,33 @@
 ﻿using System.Collections.Generic;
 using KinderSurprise.DAL;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Model.Interfaces;
-using KinderSurprise.DTO;
 
 namespace KinderSurprise.MVP.Model
 {
     public class CategoryService : ICategoryService
     {
-        public List<CategoryDto> GetAll()
+        public List<Category> GetAll()
         {
             ICategoryRepository categoryRepository = new CategoryRepository();
             return categoryRepository.GetAll();
         }
 
-        public CategoryDto GetById(int categoryId)
+        public Category GetById(int categoryId)
         {
             ICategoryRepository categoryRepository = new CategoryRepository();
             return categoryRepository.GetById(categoryId);
         }
 
-        public void SaveOrUpdate(CategoryDto categoryDto)
+        public void SaveOrUpdate(Category category)
         {
             ICategoryRepository categoryRepository = new CategoryRepository();
             
-            if(categoryRepository.HasId(categoryDto.CategoryId))
-                categoryRepository.Update(categoryDto);
+            if(categoryRepository.HasId(category.CategoryId))
+                categoryRepository.Update(category);
             else
-                categoryRepository.Add(categoryDto);
+                categoryRepository.Add(category);
 
         }
 

@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
+using KinderSurprise.Model;
 using NUnit.Framework;
 
 namespace KinderSurprise.MVP.Model.Test
@@ -46,9 +45,9 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_SaveNewSerieDto()
         {
             SerieService serieService = new SerieService();
-            SerieDto serieDto = new SerieDto(0, "New", "Desc", new DateTime(2000,1,1), new Category { CategoryId  = 1});
+            Serie serie = new Serie { SerieId = 0, SerieName = "New", Description = "Desc", PublicationYear = new DateTime(2000,1,1), Category = new Category { CategoryId  = 1}};
 
-            serieService.SaveOrUpdate(serieDto);
+            serieService.SaveOrUpdate(serie);
 
             var theNewSerieDto = serieService.GetAll().LastOrDefault();
 
@@ -66,30 +65,30 @@ namespace KinderSurprise.MVP.Model.Test
         public void Test_UpdateExistingSerieDto()
         {
             SerieService serieService = new SerieService();
-            SerieDto serieDto = serieService.GetById(1);
+            Serie serie = serieService.GetById(1);
 
-            Assert.AreEqual("Plaste1", serieDto.SerieName);
+            Assert.AreEqual("Plaste1", serie.SerieName);
 
-            serieDto.SerieName = "Plaste1 overwritten";
+            serie.SerieName = "Plaste1 overwritten";
 
-            serieService.SaveOrUpdate(serieDto);
+            serieService.SaveOrUpdate(serie);
 
-            Assert.AreEqual("Plaste1 overwritten", serieDto.SerieName);
+            Assert.AreEqual("Plaste1 overwritten", serie.SerieName);
 
-            serieDto.SerieName = "Plaste1";
+            serie.SerieName = "Plaste1";
 
-            serieService.SaveOrUpdate(serieDto);
+            serieService.SaveOrUpdate(serie);
 
-            Assert.AreEqual("Plaste1", serieDto.SerieName);
+            Assert.AreEqual("Plaste1", serie.SerieName);
         }
 
         [Test]
         public void Test_DeleteSerieDto()
         {
             SerieService serieService = new SerieService();
-            SerieDto serieDto = new SerieDto(0, "New", "Desc", new DateTime(2000, 1,1), new Category{CategoryId = 1});
+            Serie serie = new Serie{ SerieId = 0, SerieName = "New", Description = "Desc", PublicationYear = new DateTime(2000, 1,1), Category = new Category{CategoryId = 1}};
 
-            serieService.SaveOrUpdate(serieDto);
+            serieService.SaveOrUpdate(serie);
 
             var newSerieDto = serieService.GetAll().LastOrDefault();
 

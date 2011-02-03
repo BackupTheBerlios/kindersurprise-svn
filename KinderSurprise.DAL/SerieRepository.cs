@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using NHibernate;
 
 namespace KinderSurprise.DAL
@@ -20,43 +19,24 @@ namespace KinderSurprise.DAL
             }
         }
 
-        public List<SerieDto> GetAll()
+        public List<Serie> GetAll()
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
-                List<SerieDto> serieDtos = new List<SerieDto>();
 				ICriteria crit = session.CreateCriteria(typeof(Serie));
-				var serieList = crit.List().Cast<Serie>().ToList();
-				
-				foreach (Serie s in serieList)
-				{
-					serieDtos.Add(
-					              new SerieDto(
-					                           s.SerieId, 
-					                           s.SerieName, 
-					                           s.Description, 
-					                           s.PublicationYear, 
-					                           s.Category));
-				}
-				
-				return serieDtos;
+				return crit.List().Cast<Serie>().ToList();
             }
         }
 
-        public SerieDto GetById(int serieId)
+        public Serie GetById(int serieId)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
-                Serie s = session.Get<Serie>(serieId);
+                Serie serie = session.Get<Serie>(serieId);
 
-                return s == null
+                return serie == null
                            ? null
-                           : new SerieDto(
-						               s.SerieId, 
-						               s.SerieName, 
-						               s.Description, 
-						               s.PublicationYear, 
-						               new Category { CategoryId = s.Category.CategoryId });
+                           : serie;
             }
         }
 
@@ -66,78 +46,45 @@ namespace KinderSurprise.DAL
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Delete(ConvertToModel(GetById(serieId)));
+                    session.Delete(GetById(serieId));
                     transaction.Commit();
                 }
             }
         }
 
-        public void Add(SerieDto serieDto)
+        public void Add(Serie serie)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Save(ConvertToModel(serieDto));
+                    session.Save(serie);
                     transaction.Commit();
                 }
             }
         }
 
-        public List<SerieDto> GetAllByCategoryId(int categoryId)
+        public List<Serie> GetAllByCategoryId(int categoryId)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
-				List<SerieDto> serieDtos = new List<SerieDto>();
 				ICriteria crit = session.CreateCriteria(typeof(Serie));
 				crit.Add(NHibernate.Criterion.Expression.Eq("Category.CategoryId", categoryId));
 								
-				var serieList = crit.List().Cast<Serie>().ToList();
-				
-				foreach (Serie serie in serieList)
-				{
-					serieDtos.Add(
-					              new SerieDto(serie.SerieId, 
-					                           serie.SerieName, 
-					                           serie.Description, 
-					                           serie.PublicationYear, 
-					                           serie.Category));
-				}
-			
-				return serieDtos;
+				return crit.List().Cast<Serie>().ToList();
 			}
         }
 
-        public void Update(SerieDto serieDto)
+        public void Update(Serie serie)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Update(ConvertToModel(serieDto));
+                    session.Update(serie);
                     transaction.Commit();
                 }
             }
-        }
-
-        private static Serie ConvertToModel(SerieDto serieDto)
-        {
-            var serie = new Serie
-                            {
-                                SerieId = serieDto.SerieId,
-                                SerieName = serieDto.SerieName,
-                                Description = serieDto.Description,
-                                PublicationYear = serieDto.PublicationYear,
-                                Category =
-                                    new Category
-                                        {
-                                            CategoryId = serieDto.Category.CategoryId,
-                                            CategoryName = serieDto.Category.CategoryName,
-                                            Description = serieDto.Category.Description
-                                        }
-                            };
-            
-            return serie;
         }
     }
 }

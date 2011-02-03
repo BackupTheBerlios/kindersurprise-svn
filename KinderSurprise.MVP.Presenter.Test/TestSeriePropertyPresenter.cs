@@ -2,8 +2,7 @@ using System;
 using System.Linq;
 using System.Web.UI.WebControls;
 using KinderSurprise.DAL;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
@@ -75,8 +74,8 @@ namespace KinderSurprise.MVP.Presenter.Test
         public void Test_SetFields_CateogryDtoIsNotNull()
         {
             SeriePropertyPresenter seriePropertyService = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
-            m_MockSeriePropertyPresenter.SerieDto = new SerieDto(0, "Test", "Desc", new DateTime(2000, 1, 1),
-                                                        new Mapper.Category {CategoryId = 1});
+            m_MockSeriePropertyPresenter.Serie = new Serie{ SerieId = 0, SerieName = "Test", Description = "Desc", PublicationYear = new DateTime(2000, 1, 1),
+                                                        Category = new Category {CategoryId = 1}};
             seriePropertyService.SetFields();
 
             Assert.AreEqual("Test", m_MockSeriePropertyPresenter.Name.Text);
@@ -94,7 +93,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         public void Test_SetFields_CategoryDtoIsNull()
         {
             SeriePropertyPresenter seriePropertyService = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
-            m_MockSeriePropertyPresenter.SerieDto = null;
+            m_MockSeriePropertyPresenter.Serie = null;
             seriePropertyService.SetFields();
 
             Assert.AreEqual(string.Empty, m_MockSeriePropertyPresenter.Name.Text);
@@ -128,7 +127,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameIsNotValid()
         {
-            m_MockSeriePropertyPresenter.SerieDto = new SerieDto(0, string.Empty, "desc", new DateTime(2001, 1, 1), new Category { CategoryId = 1 });
+            m_MockSeriePropertyPresenter.Serie = new Serie { SerieId = 0, SerieName = string.Empty, Description = "desc", PublicationYear = new DateTime(2001, 1, 1), Category = new Category { CategoryId = 1 }};
 
             SeriePropertyPresenter seriePropertyService = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             seriePropertyService.SetFields();
@@ -143,7 +142,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfYearIsNotValid()
         {
-            m_MockSeriePropertyPresenter.SerieDto = new SerieDto(0, "name", "desc", new DateTime(1700, 1, 1), new Mapper.Category { CategoryId = 1 });
+            m_MockSeriePropertyPresenter.Serie = new Serie{ SerieId = 0, SerieName = "name", Description = "desc", PublicationYear = new DateTime(1700, 1, 1), Category = new Category { CategoryId = 1 }};
 
             SeriePropertyPresenter seriePropertyService = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             seriePropertyService.SetFields();
@@ -158,7 +157,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfYearAndNameAreNotValid()
         {
-            m_MockSeriePropertyPresenter.SerieDto = new SerieDto(0, string.Empty, "desc", new DateTime(1700, 1, 1), new Category { CategoryId = 1 });
+            m_MockSeriePropertyPresenter.Serie = new Serie  { SerieId = 0, SerieName = string.Empty, Description = "desc", PublicationYear = new DateTime(1700, 1, 1), Category = new Category { CategoryId = 1 }};
 
             SeriePropertyPresenter seriePropertyService = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             seriePropertyService.SetFields();
@@ -174,7 +173,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameAndYearAreValid()
         {
-            m_MockSeriePropertyPresenter.SerieDto = new SerieDto(0, "test serie update", "desc serie update", new DateTime(1981, 1, 1), new Mapper.Category { CategoryId = 1 });
+            m_MockSeriePropertyPresenter.Serie = new Serie{ SerieId = 0, SerieName = "test serie update", Description = "desc serie update", PublicationYear = new DateTime(1981, 1, 1), Category = new Category { CategoryId = 1 }};
 
             SeriePropertyPresenter seriePropertyService = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             seriePropertyService.SetFields();
@@ -193,7 +192,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Delete_IfSerieDtoIsNull()
         {
-            m_MockSeriePropertyPresenter.SerieDto = null;
+            m_MockSeriePropertyPresenter.Serie = null;
 
             ISerieService serieService = new SerieService();
             var serieDtos = serieService.GetAll();
@@ -209,12 +208,12 @@ namespace KinderSurprise.MVP.Presenter.Test
         {
             ISerieService serieService = new SerieService();
 			int oldSerieCount = serieService.GetAll().Count;
-			serieService.SaveOrUpdate(new SerieDto(0, "Test", "test", DateTime.Today, new Category { CategoryId = 1})); 
+			serieService.SaveOrUpdate(new Serie{ SerieId = 0, SerieName = "Test", Description = "test", PublicationYear = DateTime.Today, Category = new Category { CategoryId = 1}}); 
             
 			var serieDtos = serieService.GetAll();
 			
 			Assert.AreEqual(oldSerieCount + 1, serieDtos.Count);
-			m_MockSeriePropertyPresenter.SerieDto = serieDtos.OrderBy(x => x.SerieId).LastOrDefault();
+			m_MockSeriePropertyPresenter.Serie = serieDtos.OrderBy(x => x.SerieId).LastOrDefault();
 
             
 

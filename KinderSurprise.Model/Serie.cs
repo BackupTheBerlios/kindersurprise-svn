@@ -1,6 +1,6 @@
 using System;
 
-namespace KinderSurprise.Mapper
+namespace KinderSurprise.Model
 {
     public class Serie
     {

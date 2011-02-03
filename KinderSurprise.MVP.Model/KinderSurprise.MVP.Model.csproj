@@ -52,13 +52,9 @@
       <Project>{0766CFF6-F00E-4811-BCD4-3A3ACD5D06A9}</Project>
       <Name>KinderSurprise.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KinderSurprise.DTO\KinderSurprise.DTO.csproj">
-      <Project>{80645808-7284-4A28-BA9D-9470D68D5E53}</Project>
-      <Name>KinderSurprise.DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\KinderSurprise.Mapper\KinderSurprise.Mapper.csproj">
-      <Project>{ACEAF6B9-CDA7-4F07-9FD7-9E1724799AA5}</Project>
-      <Name>KinderSurprise.Mapper</Name>
+    <ProjectReference Include="..\KinderSurprise.Model\KinderSurprise.Model.csproj">
+      <Project>{E831D0AF-40F4-4348-95C9-80C7D869A76E}</Project>
+      <Name>KinderSurprise.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

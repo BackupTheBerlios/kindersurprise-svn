@@ -1,5 +1,5 @@
 ﻿using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.MVP.Presenter.Interfaces
 {
@@ -18,6 +18,6 @@ namespace KinderSurprise.MVP.Presenter.Interfaces
         TextBox PublicationYear { get; set; }
         DropDownList ChooseCategory { get; set; }
 
-        SerieDto SerieDto { get; set; }
+        Serie Serie { get; set; }
     }
 }

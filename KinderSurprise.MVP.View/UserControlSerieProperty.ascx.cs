@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Presenter;
 using KinderSurprise.MVP.Presenter.Interfaces;
 
@@ -74,9 +74,9 @@ namespace KinderSurprise.MVP.View
 
         #region Properties
 
-        public SerieDto SerieDto 
+        public Serie Serie 
         {
-            get { return (SerieDto) Session["SerieDto"]; }
+            get { return (Serie) Session["SerieDto"]; }
             set { Session["SerieDto"] = value; }
         }
 
@@ -144,7 +144,7 @@ namespace KinderSurprise.MVP.View
 
         public void InitializeEditMode()
         {
-            SerieDto = null;
+            Serie = null;
             SeriePropertyPresenter seriePropertyPresenter = new SeriePropertyPresenter(this);
             seriePropertyPresenter.SetToEditMode();
             seriePropertyPresenter.SetFieldsEmpty();

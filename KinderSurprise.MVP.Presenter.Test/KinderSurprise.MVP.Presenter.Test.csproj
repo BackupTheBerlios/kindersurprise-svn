@@ -76,14 +76,6 @@
       <Project>{0766CFF6-F00E-4811-BCD4-3A3ACD5D06A9}</Project>
       <Name>KinderSurprise.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KinderSurprise.DTO\KinderSurprise.DTO.csproj">
-      <Project>{80645808-7284-4A28-BA9D-9470D68D5E53}</Project>
-      <Name>KinderSurprise.DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\KinderSurprise.Mapper\KinderSurprise.Mapper.csproj">
-      <Project>{ACEAF6B9-CDA7-4F07-9FD7-9E1724799AA5}</Project>
-      <Name>KinderSurprise.Mapper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KinderSurprise.MVP.Model\KinderSurprise.MVP.Model.csproj">
       <Project>{CDC97DAE-3879-44B4-91D5-2926D375AED1}</Project>
       <Name>KinderSurprise.MVP.Model</Name>
@@ -92,9 +84,9 @@
       <Project>{431C4DA1-C2FC-409E-89D5-99A0F599E71B}</Project>
       <Name>KinderSurprise.MVP.Presenter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KinderSurprise.DAL.Test\KinderSurprise.DAL.Test.csproj">
-      <Project>{59E7C73B-EE9F-45E5-A287-2068CB41A771}</Project>
-      <Name>KinderSurprise.DAL.Test</Name>
+    <ProjectReference Include="..\KinderSurprise.Model\KinderSurprise.Model.csproj">
+      <Project>{E831D0AF-40F4-4348-95C9-80C7D869A76E}</Project>
+      <Name>KinderSurprise.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

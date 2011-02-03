@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using KinderSurprise.DTO;
-using KinderSurprise.Mapper;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using NHibernate;
 
 
@@ -21,31 +20,23 @@ namespace KinderSurprise.DAL
             }
         }
 
-        public List<CategoryDto> GetAll()
+        public List<Category> GetAll()
         {
 			using (ISession session = RepositoryBase.OpenSession())
             {
-				List<CategoryDto> categoryDtos = new List<CategoryDto>();
 				ICriteria crit = session.CreateCriteria(typeof(Category));
-				var categoryList = crit.List().Cast<Category>().ToList();
-				
-				foreach (Category category in categoryList)
-				{
-					categoryDtos.Add(new CategoryDto(category.CategoryId, category.CategoryName, category.Description));
-				}
-					                 
-				return categoryDtos;
+				return crit.List().Cast<Category>().ToList();
 	        }
 		}
 
-        public CategoryDto GetById(int categoryId)
+        public Category GetById(int categoryId)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
                 var category = session.Get<Category>(categoryId);
                 return category == null
                            ? null
-                           : new CategoryDto(category.CategoryId, category.CategoryName, category.Description);
+                           : category;
             }
         }
 
@@ -55,47 +46,34 @@ namespace KinderSurprise.DAL
             {
                 using(ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Delete(ConvertToModel(GetById(categoryId)));
+                    session.Delete(GetById(categoryId));
                     transaction.Commit();
                 }
             }
         }
 
-        public void Update(CategoryDto categoryDto)
+        public void Update(Category category)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
                 using(ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Update(ConvertToModel(categoryDto));
+                    session.Update(category);
                     transaction.Commit();
                 }
             }
         }
 
-        public void Add(CategoryDto categoryDto)
+        public void Add(Category category)
         {
             using (ISession session = RepositoryBase.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    session.Save(ConvertToModel(categoryDto));
+                    session.Save(category);
                     transaction.Commit();
                 }
             }
-        }
-
-        private static Category ConvertToModel(CategoryDto categoryDto)
-        {
-            return new Category
-                       {
-
-                           CategoryId = categoryDto.CategoryId,
-                           CategoryName = categoryDto.CategoryName,
-                           Description =
-                               categoryDto.Description,
-
-                       };
         }
     }
 }

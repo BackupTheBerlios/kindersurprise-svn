@@ -1,5 +1,5 @@
 using System;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using NUnit.Framework;
 
 namespace KinderSurprise.MVP.Model.Test

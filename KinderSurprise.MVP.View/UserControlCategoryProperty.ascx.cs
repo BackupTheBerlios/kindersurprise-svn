@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 using KinderSurprise.MVP.Presenter;
 using KinderSurprise.MVP.Presenter.Interfaces;
 
@@ -63,9 +63,9 @@ namespace KinderSurprise.MVP.View
 
         #region Properties
 
-        public CategoryDto CategoryDto
+        public Category Category
         {
-            get { return (CategoryDto) Session["CategoryDto"]; }
+            get { return (Category) Session["CategoryDto"]; }
             set { Session["CategoryDto"] = value; }
         }
 
@@ -109,7 +109,7 @@ namespace KinderSurprise.MVP.View
         {
             CategoryPropertyPresenter categoryPropertyPresenter = new CategoryPropertyPresenter(this);
 
-            if (categoryPropertyPresenter.Update(CategoryDto))
+            if (categoryPropertyPresenter.Update(Category))
                 ReloadTreeView();
         }
 
@@ -118,7 +118,7 @@ namespace KinderSurprise.MVP.View
             //ToDo Ask if the user really wants to delete
             
             CategoryPropertyPresenter categoryPropertyPresenter = new CategoryPropertyPresenter(this);
-            categoryPropertyPresenter.Delete(CategoryDto);
+            categoryPropertyPresenter.Delete(Category);
 
             ReloadTreeView();
         }
@@ -141,16 +141,16 @@ namespace KinderSurprise.MVP.View
 
         public void InitializeEditMode()
         {
-            CategoryDto = null;
+            Category = null;
             var categoryPropertyPresenter = new CategoryPropertyPresenter(this);
             
             categoryPropertyPresenter.SetButtonToEditMode();
             categoryPropertyPresenter.SetFieldsEmpty();
         }
 
-        public void InitializeViewMode(CategoryDto categoryDto)
+        public void InitializeViewMode(Category category)
         {
-            CategoryDto = categoryDto;
+            Category = category;
             var categoryPropertyPresenter = new CategoryPropertyPresenter(this);
 
             categoryPropertyPresenter.SetButtonToViewMode();

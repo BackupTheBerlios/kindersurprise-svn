@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using KinderSurprise.DTO;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.DAL.Interfaces
 {
     public interface ISerieRepository
     {
         bool HasId(int serieId);
-        List<SerieDto> GetAll();
-        SerieDto GetById(int serieId);
+        List<Serie> GetAll();
+        Serie GetById(int serieId);
         void DeleteById(int serieId);
-        void Add(SerieDto serieDto);
-        List<SerieDto> GetAllByCategoryId(int categoryId);
-        void Update(SerieDto serieDto);
+        void Add(Serie serie);
+        List<Serie> GetAllByCategoryId(int categoryId);
+        void Update(Serie serie);
     }
 }
