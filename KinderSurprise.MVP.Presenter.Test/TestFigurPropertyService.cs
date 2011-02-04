@@ -28,9 +28,9 @@ namespace KinderSurprise.MVP.Presenter.Test
             m_MockFigurProperty.DeleteButton = new Button();
             m_MockFigurProperty.CancelButton = new Button();
             m_MockFigurProperty.ErrorMessage = new Label();
-            m_MockFigurProperty.FigurName = new TextBox();
-            m_MockFigurProperty.FigurDescription = new TextBox();
-            m_MockFigurProperty.FigurPrice = new TextBox();
+            m_MockFigurProperty.Name = new TextBox();
+            m_MockFigurProperty.Description = new TextBox();
+            m_MockFigurProperty.Price = new TextBox();
             m_MockFigurProperty.ChooseSerie = new DropDownList();
 			m_MockFigurProperty.Figur = null;
         }
@@ -78,15 +78,15 @@ namespace KinderSurprise.MVP.Presenter.Test
 
             figurPropertyPresenter.SetFields();
 
-            Assert.AreEqual(string.Empty, m_MockFigurProperty.FigurName.Text);
-            Assert.AreEqual(string.Empty, m_MockFigurProperty.FigurDescription.Text);
-            Assert.AreEqual(string.Empty, m_MockFigurProperty.FigurPrice.Text);
+            Assert.AreEqual(string.Empty, m_MockFigurProperty.Name.Text);
+            Assert.AreEqual(string.Empty, m_MockFigurProperty.Description.Text);
+            Assert.AreEqual(string.Empty, m_MockFigurProperty.Price.Text);
 
             ISerieService serieService = new SerieService();
             var serieDto = serieService.GetById(1);
 
-            Assert.AreEqual(serieDto.SerieId.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
-            Assert.AreEqual(serieDto.SerieName, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
+            Assert.AreEqual(serieDto.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
+            Assert.AreEqual(serieDto.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
         }
 
         [Test]
@@ -94,19 +94,19 @@ namespace KinderSurprise.MVP.Presenter.Test
         {
             FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(m_MockFigurProperty);
 
-            m_MockFigurProperty.Figur = new Figur{ FigurId = 0, FigurName = "Test", Description = "Desc", Price = (decimal)11.11, Serie = new Serie { SerieId = 1 }};
+            m_MockFigurProperty.Figur = new Figur{ Id = 0, Name = "Test", Description = "Desc", Price = (decimal)11.11, Serie = new Serie { Id = 1 }};
 
             figurPropertyPresenter.SetFields();
 
-            Assert.AreEqual("Test", m_MockFigurProperty.FigurName.Text);
-            Assert.AreEqual("Desc", m_MockFigurProperty.FigurDescription.Text);
-            Assert.AreEqual("11.11", m_MockFigurProperty.FigurPrice.Text);
+            Assert.AreEqual("Test", m_MockFigurProperty.Name.Text);
+            Assert.AreEqual("Desc", m_MockFigurProperty.Description.Text);
+            Assert.AreEqual("11.11", m_MockFigurProperty.Price.Text);
 
             ISerieService serieService = new SerieService();
             var serieDto = serieService.GetById(1);
 
-            Assert.AreEqual(serieDto.SerieId.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
-            Assert.AreEqual(serieDto.SerieName, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
+            Assert.AreEqual(serieDto.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
+            Assert.AreEqual(serieDto.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
         }
 
         [Test]
@@ -116,21 +116,21 @@ namespace KinderSurprise.MVP.Presenter.Test
             
             figurPropertyPresenter.SetFieldsEmpty();
 
-            Assert.AreEqual(string.Empty, m_MockFigurProperty.FigurName.Text);
-            Assert.AreEqual(string.Empty, m_MockFigurProperty.FigurDescription.Text);
-            Assert.AreEqual(string.Empty, m_MockFigurProperty.FigurPrice.Text);
+            Assert.AreEqual(string.Empty, m_MockFigurProperty.Name.Text);
+            Assert.AreEqual(string.Empty, m_MockFigurProperty.Description.Text);
+            Assert.AreEqual(string.Empty, m_MockFigurProperty.Price.Text);
 
             ISerieService serieService = new SerieService();
             var serieDto = serieService.GetById(1);
 
-            Assert.AreEqual(serieDto.SerieId.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
-            Assert.AreEqual(serieDto.SerieName, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
+            Assert.AreEqual(serieDto.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
+            Assert.AreEqual(serieDto.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
         }
 
         [Test]
         public void Test_Update_IfNameIsNotValid()
         {
-            m_MockFigurProperty.Figur = new Figur{ FigurId = 0, FigurName = string.Empty, Description = "desc", Price = (decimal)100.11, Serie = new Serie {SerieId = 1}};
+            m_MockFigurProperty.Figur = new Figur{ Id = 0, Name = string.Empty, Description = "desc", Price = (decimal)100.11, Serie = new Serie {Id = 1}};
             
             FigurPropertyPresenter figurPropertyService = new FigurPropertyPresenter(m_MockFigurProperty);
             figurPropertyService.SetFields();
@@ -145,7 +145,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfPriceIsNotValid()
         {
-            m_MockFigurProperty.Figur = new Figur{ FigurId = 0, FigurName = "test", Description = "desc", Price = (decimal)-10.11, Serie = new Serie { SerieId = 1 }};
+            m_MockFigurProperty.Figur = new Figur{ Id = 0, Name = "test", Description = "desc", Price = (decimal)-10.11, Serie = new Serie { Id = 1 }};
 
             FigurPropertyPresenter figurPropertyService = new FigurPropertyPresenter(m_MockFigurProperty);
             figurPropertyService.SetFields();
@@ -160,7 +160,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameAndPriceAreNotValid()
         {
-            m_MockFigurProperty.Figur = new Figur{ FigurId = 0, FigurName = string.Empty, Description = "desc", Price = (decimal)0.111, Serie = new Serie { SerieId = 1 }};
+            m_MockFigurProperty.Figur = new Figur{ Id = 0, Name = string.Empty, Description = "desc", Price = (decimal)0.111, Serie = new Serie { Id = 1 }};
 
             FigurPropertyPresenter figurPropertyService = new FigurPropertyPresenter(m_MockFigurProperty);
             figurPropertyService.SetFields();
@@ -176,7 +176,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameAndPriceAreValid()
         {
-            m_MockFigurProperty.Figur = new Figur{ FigurId = 0, FigurName = "name", Description = "desc", Price = (decimal)11.11, Serie = new Serie { SerieId = 1 }};
+            m_MockFigurProperty.Figur = new Figur{ Id = 0, Name = "name", Description = "desc", Price = (decimal)11.11, Serie = new Serie { Id = 1 }};
 
             FigurPropertyPresenter figurPropertyService = new FigurPropertyPresenter(m_MockFigurProperty);
             figurPropertyService.SetFields();
@@ -189,7 +189,7 @@ namespace KinderSurprise.MVP.Presenter.Test
             //Revert saving
             IFigurService figurService = new FigurService();
             var figurs = figurService.GetAll();
-            figurService.DeleteById(figurs[figurs.Count - 1].FigurId);
+            figurService.DeleteById(figurs[figurs.Count - 1].Id);
         }
 
         [Test]
@@ -213,7 +213,7 @@ namespace KinderSurprise.MVP.Presenter.Test
 		{
 			IFigurService figurService = new FigurService();
 			
-			figurService.SaveOrUpdate(new Figur{ FigurId = 0, FigurName = "test", Description = "desc", Price = (decimal)14.5, Serie = new Serie { SerieId = 10 }});
+			figurService.SaveOrUpdate(new Figur{ Id = 0, Name = "test", Description = "desc", Price = (decimal)14.5, Serie = new Serie { Id = 10 }});
 		}
 		
 		[Test]
@@ -221,15 +221,15 @@ namespace KinderSurprise.MVP.Presenter.Test
 		{
 			IFigurService figurService = new FigurService();
 			
-			figurService.SaveOrUpdate(new Figur{ FigurId = 0, FigurName = "test", Description = "desc", Price = (decimal)14.5, Serie = new Serie { SerieId = 3 }});
+			figurService.SaveOrUpdate(new Figur{ Id = 0, Name = "test", Description = "desc", Price = (decimal)14.5, Serie = new Serie { Id = 3 }});
 			
-			var newfigurDtos = figurService.GetAll();
+			var newfigurs = figurService.GetAll();
 			
-			Assert.AreEqual(10, newfigurDtos.Count);
+			Assert.AreEqual(10, newfigurs.Count);
 			
-			var figurDto = newfigurDtos.OrderBy(x => x.FigurId).LastOrDefault();
+			var figur = newfigurs.OrderBy(x => x.Id).LastOrDefault();
 			
-			m_MockFigurProperty.Figur = figurDto;
+			m_MockFigurProperty.Figur = figur;
 			
 			FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(m_MockFigurProperty);
 			figurPropertyPresenter.Delete(m_MockFigurProperty.Figur);

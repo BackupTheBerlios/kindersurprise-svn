@@ -2,9 +2,8 @@ using System;
 
 namespace KinderSurprise.Model
 {
-	public class Instructions
+	public class Instructions : BaseObject
 	{
-		public virtual int Id { get; set; }
 		public virtual string Name { get; set; }
 		public virtual Figur Fk_Figur_Id { get; set; }
 		

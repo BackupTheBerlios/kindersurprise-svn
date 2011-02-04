@@ -70,33 +70,33 @@ namespace KinderSurprise.MVP.Presenter
 
             var categories = categoryService.GetAll();
             if(categories.Count == 0)
-                categories.Add(new Category { CategoryId = 0, CategoryName = "dummy", Description = "dummy" });
+                categories.Add(new Category { Id = 0, Name = "dummy", Description = "dummy" });
             
             foreach (var categoryDto in categories)
             {
                 TreeNode nodeCategory = new TreeNode
                                             {
-                                                Text = categoryDto.CategoryName,
+                                                Text = categoryDto.Name,
                                                 ToolTip = categoryDto.Description,
-                                                Value = categoryDto.CategoryId.ToString()
+                                                Value = categoryDto.Id.ToString()
                                             };
-                foreach (var serieDto in serieService.GetAllByCategoryId(categoryDto.CategoryId))
+                foreach (var serieDto in serieService.GetAllByCategoryId(categoryDto.Id))
                 {
                     TreeNode nodeSerie = new TreeNode
                                              {
-                                                 Text = serieDto.SerieName,
+                                                 Text = serieDto.Name,
                                                  ToolTip = serieDto.Description,
-                                                 Value = serieDto.SerieId.ToString()
+                                                 Value = serieDto.Id.ToString()
                                              };
                     nodeCategory.ChildNodes.Add(nodeSerie);
 
-                    foreach (var figurDto in figurService.GetAllBySerieId(serieDto.SerieId))
+                    foreach (var figurDto in figurService.GetAllBySerieId(serieDto.Id))
                     {
                         TreeNode nodeFigur = new TreeNode
                                                  {
-                                                     Text = figurDto.FigurName,
+                                                     Text = figurDto.Name,
                                                      ToolTip = figurDto.Description,
-                                                     Value = figurDto.FigurId.ToString()
+                                                     Value = figurDto.Id.ToString()
                                                  };
                         nodeSerie.ChildNodes.Add(nodeFigur);
                     }

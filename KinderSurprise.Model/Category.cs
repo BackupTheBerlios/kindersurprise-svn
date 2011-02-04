@@ -1,9 +1,6 @@
 ﻿namespace KinderSurprise.Model
 {
-    public class Category
+    public class Category : Object
     {
-        public virtual int CategoryId { get; set; }
-        public virtual string CategoryName { get; set; }
-        public virtual string Description { get; set; }
     }
 }

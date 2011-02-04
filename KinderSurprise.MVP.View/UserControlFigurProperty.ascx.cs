@@ -34,19 +34,19 @@ namespace KinderSurprise.MVP.View
             set { BTN_Cancel = value; }
         }
 
-        public TextBox FigurName
+        public TextBox Name
         {
             get { return TB_Figur_Name; }
             set { TB_Figur_Name = value; }
         }
 
-        public TextBox FigurDescription
+        public TextBox Description
         {
             get { return TB_Figur_Description; }
             set { TB_Figur_Description = value; }
         }
 
-        public TextBox FigurPrice
+        public TextBox Price
         {
             get { return TB_Figur_Price; }
             set { TB_Figur_Price = value; }

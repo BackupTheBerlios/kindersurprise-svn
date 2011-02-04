@@ -8,8 +8,8 @@ namespace KinderSurprise.Mapper
         public FigurMap()
         {
             Table("tFigur");
-            Id(x => x.FigurId);
-            Map(x => x.FigurName);
+            Id(x => x.Id).Column("FigurId");
+            Map(x => x.Name).Column("FigurName");
             Map(x => x.Description);
             Map(x => x.Price);
             References(x => x.Serie, "FK_Serie_ID");

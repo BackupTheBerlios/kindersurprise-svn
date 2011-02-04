@@ -1,10 +1,7 @@
 namespace KinderSurprise.Model
 {
-    public class Figur
+    public class Figur : Object
     {
-        public virtual int FigurId { get; set; }
-        public virtual string FigurName { get; set; }
-        public virtual string Description { get; set; }
         public virtual decimal Price { get; set; }
         public virtual Serie Serie { get; set; }
 

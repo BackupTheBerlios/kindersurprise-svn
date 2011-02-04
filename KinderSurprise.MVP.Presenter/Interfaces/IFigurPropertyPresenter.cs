@@ -10,9 +10,9 @@ namespace KinderSurprise.MVP.Presenter.Interfaces
         Button DeleteButton { get; set; }
         Button CancelButton { get; set; }
 
-        TextBox FigurName { get; set; }
-        TextBox FigurDescription { get; set; }
-        TextBox FigurPrice { get; set; }
+        TextBox Name { get; set; }
+        TextBox Description { get; set; }
+        TextBox Price { get; set; }
         DropDownList ChooseSerie { get; set; }
 
         Label ErrorMessage { get; set; }

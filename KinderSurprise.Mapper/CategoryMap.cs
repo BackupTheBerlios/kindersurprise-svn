@@ -8,8 +8,8 @@ namespace KinderSurprise.Mapper
         public CategoryMap()
         {
             Table("tCategory");
-            Id(x => x.CategoryId);
-            Map(x => x.CategoryName);
+            Id(x => x.Id).Column("CategoryId");
+            Map(x => x.Name).Column("CategoryName");
             Map(x => x.Description);
             Cache.ReadWrite();
         }

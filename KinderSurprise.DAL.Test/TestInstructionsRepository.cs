@@ -1,4 +1,5 @@
 using System;
+using KinderSurprise.DAL.Interfaces;
 using NUnit.Framework;
 
 namespace KinderSurprise.DAL.Test

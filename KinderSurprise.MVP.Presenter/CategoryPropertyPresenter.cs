@@ -42,7 +42,7 @@ namespace KinderSurprise.MVP.Presenter
         {
             if (m_CategoryPropertyPresenter.Category == null) return;
 
-            m_CategoryPropertyPresenter.NameTextBox.Text = m_CategoryPropertyPresenter.Category.CategoryName;
+            m_CategoryPropertyPresenter.NameTextBox.Text = m_CategoryPropertyPresenter.Category.Name;
             m_CategoryPropertyPresenter.DescriptionTextBox.Text = m_CategoryPropertyPresenter.Category.Description;
         }
 
@@ -54,9 +54,9 @@ namespace KinderSurprise.MVP.Presenter
             {
                 ICategoryService categoryService = new CategoryService();
                 categoryService.SaveOrUpdate(
-                    new Category { CategoryId = category == null
+                    new Category { Id = category == null
                             ? 0
-                            : category.CategoryId, CategoryName = m_CategoryPropertyPresenter.NameTextBox.Text, Description = m_CategoryPropertyPresenter.DescriptionTextBox.Text} );
+                            : category.Id, Name = m_CategoryPropertyPresenter.NameTextBox.Text, Description = m_CategoryPropertyPresenter.DescriptionTextBox.Text} );
                 
                 m_CategoryPropertyPresenter.ErrorLabel.Visible = false;
 
@@ -80,7 +80,7 @@ namespace KinderSurprise.MVP.Presenter
                 return;
 
             ICategoryService categoryService = new CategoryService();
-            categoryService.DeleteById(category.CategoryId);
+            categoryService.DeleteById(category.Id);
         }
     }
 }

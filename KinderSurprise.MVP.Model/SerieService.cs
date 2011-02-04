@@ -30,7 +30,7 @@ namespace KinderSurprise.MVP.Model
         {
             ISerieRepository serieRepository = new SerieRepository();
             
-            if(serieRepository.HasId(serie.SerieId))
+            if(serieRepository.HasId(serie.Id))
                 serieRepository.Update(serie);
             else
                 serieRepository.Add(serie);

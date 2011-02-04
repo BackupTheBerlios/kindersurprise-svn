@@ -1,21 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
 using NHibernate;
-using NHibernate.LambdaExtensions;
 
 namespace KinderSurprise.DAL
 {
-	public class InstructionsRepository : IInstructionsRepository
+	public class InstructionsRepository : IInstructionRepository
 	{
 		public List<Instructions> GetByFigurId(int id)
 		{
-			using (ISession session = SessionBase.OpenSession())
+			using (ISession session = RepositoryBase.OpenSession())
 			{
 				ICriteria crit = session.CreateCriteria(typeof(Instructions));
-				crit.Add<Instructions>(exp => exp.Fk_Figur_Id.Id == id);
+				crit.Add(NHibernate.Criterion.Expression.Eq("Fk_Figur_Id.FigurId", id));
 				
 				return crit.List().Cast<Instructions>().ToList();
 			}

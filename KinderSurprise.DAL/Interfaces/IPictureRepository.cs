@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using KinderSurprise.Model;
 
-namespace KinderSurprise.DAL
+namespace KinderSurprise.DAL.Interfaces
 {
 	public interface IPictureRepository
 	{

@@ -80,7 +80,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         public void Test_SetFields_CategoryDtoIsNotNull()
         {
             var categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
-            m_MockCategoryProperty.Category = new Category { CategoryId = 0, CategoryName = "Test", Description = "Desc"};
+            m_MockCategoryProperty.Category = new Category { Id = 0, Name = "Test", Description = "Desc"};
 
             categoryPropertyPresenter.SetFields();  
             
@@ -117,7 +117,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameIsNotValid()
         {
-            m_MockCategoryProperty.Category = new Category{ CategoryId = 0, CategoryName = string.Empty, Description = "desc"};
+            m_MockCategoryProperty.Category = new Category{ Id = 0, Name = string.Empty, Description = "desc"};
             
             var categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
             categoryPropertyPresenter.SetFields();
@@ -130,7 +130,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         [Test]
         public void Test_Update_IfNameIsValid()
         {
-            m_MockCategoryProperty.Category = new Category{ CategoryId = 0, CategoryName = "test", Description = "desc"};
+            m_MockCategoryProperty.Category = new Category{ Id = 0, Name = "test", Description = "desc"};
 
             CategoryPropertyPresenter categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
             categoryPropertyPresenter.SetFields();
@@ -142,7 +142,7 @@ namespace KinderSurprise.MVP.Presenter.Test
             //Revert saving
             ICategoryService categoryService = new CategoryService();
             var categories = categoryService.GetAll();
-            categoryService.DeleteById(categories[categories.Count - 1].CategoryId);
+            categoryService.DeleteById(categories[categories.Count - 1].Id);
         }
 
         [Test]

@@ -30,7 +30,7 @@ namespace KinderSurprise.MVP.Model
         {
             IFigurRepository figurRepository = new FigurRepository();
 
-            if(figurRepository.HasId(figur.FigurId))
+            if(figurRepository.HasId(figur.Id))
                 figurRepository.Update(figur);
             else
                 figurRepository.Add(figur);

@@ -62,8 +62,6 @@
     <Folder Include="Mapping\" />
     <Folder Include="Mapping\" />
     <Folder Include="Mapping\" />
-    <Folder Include="Mapping\" />
-    <Folder Include="Mapping\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.Model\KinderSurprise.Model.csproj">

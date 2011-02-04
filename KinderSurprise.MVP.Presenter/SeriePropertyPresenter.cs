@@ -39,7 +39,7 @@ namespace KinderSurprise.MVP.Presenter
         {
             if (m_SeriePropertyPresenter.Serie != null)
             {
-                m_SeriePropertyPresenter.Name.Text = m_SeriePropertyPresenter.Serie.SerieName;
+                m_SeriePropertyPresenter.Name.Text = m_SeriePropertyPresenter.Serie.Name;
                 m_SeriePropertyPresenter.Description.Text = m_SeriePropertyPresenter.Serie.Description;
                 m_SeriePropertyPresenter.PublicationYear.Text =
                 m_SeriePropertyPresenter.Serie.PublicationYear.Year.ToString();
@@ -64,8 +64,8 @@ namespace KinderSurprise.MVP.Presenter
             //ToDo Select the Category which the serie belongs to
             //if(m_SeriePropertyPresenter.SerieDto == null)
 
-            const string dataValueField = "CategoryId";
-            const string dataTextField = "CategoryName";
+            const string dataValueField = "Id";
+            const string dataTextField = "Name";
 
             m_SeriePropertyPresenter.ChooseCategory.DataSource = categories;
             m_SeriePropertyPresenter.ChooseCategory.DataValueField = dataValueField;
@@ -79,7 +79,7 @@ namespace KinderSurprise.MVP.Presenter
                 return;
 
             ISerieService serieService = new SerieService();
-            serieService.DeleteById(m_SeriePropertyPresenter.Serie.SerieId);
+            serieService.DeleteById(m_SeriePropertyPresenter.Serie.Id);
         }
 
         public bool Update()
@@ -106,13 +106,13 @@ namespace KinderSurprise.MVP.Presenter
 
             ISerieService serieService = new SerieService();
             serieService.SaveOrUpdate(
-                new Serie{ SerieId = m_SeriePropertyPresenter.Serie == null ? 0 : m_SeriePropertyPresenter.Serie.SerieId,
-                             SerieName = m_SeriePropertyPresenter.Name.Text,
+                new Serie{ Id = m_SeriePropertyPresenter.Serie == null ? 0 : m_SeriePropertyPresenter.Serie.Id,
+                             Name = m_SeriePropertyPresenter.Name.Text,
                              Description = m_SeriePropertyPresenter.Description.Text,
                              PublicationYear = new DateTime(Convert.ToInt32(m_SeriePropertyPresenter.PublicationYear.Text), 1, 1),
                              Category = new Category
                                  {
-                                     CategoryId =
+                                     Id =
                                          Convert.ToInt32(m_SeriePropertyPresenter.ChooseCategory.SelectedValue)
                                  } });
             m_SeriePropertyPresenter.ErrorMessage.Visible = false;

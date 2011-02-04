@@ -2,11 +2,8 @@ using System;
 
 namespace KinderSurprise.Model
 {
-    public class Serie
+    public class Serie : Object
     {
-        public virtual int SerieId { get; set; }
-        public virtual string SerieName { get; set; }
-        public virtual string Description { get; set; }
         public virtual DateTime PublicationYear { get; set; }
         public virtual Category Category { get; set; }
 

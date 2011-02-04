@@ -1,12 +1,11 @@
 using FluentNHibernate;
-using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using System.Configuration;
 using System.Reflection;
 
 namespace KinderSurprise.DAL
 {
-	public static class RepositoryBase
+	public static class SessionBase
 	{
 		private static ISessionFactory m_SessionFactory;
 
@@ -17,13 +16,14 @@ namespace KinderSurprise.DAL
 				if (m_SessionFactory == null)
 				{
 					string conn = ConfigurationManager.ConnectionStrings["KinderSurpriseConnection"].ToString();
-										
-					var configuration = MySQLConfiguration
+					
+					var configuration = FluentNHibernate.Cfg.Db.MySQLConfiguration
 						.Standard
                         .ConnectionString(c => c.Is(conn))
                         .ShowSql()
                         .Cache(c => c.ProviderClass(typeof(NHibernate.Cache.HashtableCacheProvider).AssemblyQualifiedName).UseQueryCache())
                         .ConfigureProperties(new NHibernate.Cfg.Configuration());
+						
 
 				    var persistenceModel = new PersistenceModel();
                     persistenceModel.AddMappingsFromAssembly(Assembly.Load("KinderSurprise.Mapper"));

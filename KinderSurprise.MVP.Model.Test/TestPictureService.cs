@@ -12,7 +12,7 @@ namespace KinderSurprise.MVP.Model.Test
 		{
 			SerieService serieService = new SerieService();
 			var serieDto = serieService.GetById(4);
-			PictureService pictureService = new PictureService(serieDto.SerieId, EType.Serie);
+			PictureService pictureService = new PictureService(serieDto.Id, EType.Serie);
 			Assert.AreEqual(0, pictureService.GetSize());
 		}
 		
@@ -21,7 +21,7 @@ namespace KinderSurprise.MVP.Model.Test
 		{
 			SerieService serieService = new SerieService();
 			var serieDto = serieService.GetById(5);
-			PictureService pictureService = new PictureService(serieDto.SerieId, EType.Serie);
+			PictureService pictureService = new PictureService(serieDto.Id, EType.Serie);
 			Assert.AreEqual(1, pictureService.GetSize());
 		}
 		
@@ -30,7 +30,7 @@ namespace KinderSurprise.MVP.Model.Test
 		{
 			SerieService serieService = new SerieService();
 			var serieDto = serieService.GetById(4);
-			PictureService pictureService = new PictureService(serieDto.SerieId, EType.Serie);
+			PictureService pictureService = new PictureService(serieDto.Id, EType.Serie);
 			Assert.AreEqual(0, pictureService.GetPictures().Count);
 		}
 		
@@ -39,7 +39,7 @@ namespace KinderSurprise.MVP.Model.Test
 		{
 			FigurService figurService = new FigurService();
 			var figurDto = figurService.GetById(5);
-			PictureService pictureService = new PictureService(figurDto.FigurId, EType.Figur);
+			PictureService pictureService = new PictureService(figurDto.Id, EType.Figur);
 			Assert.AreEqual(2, pictureService.GetPictures().Count);
 			
 		}

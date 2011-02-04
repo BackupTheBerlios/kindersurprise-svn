@@ -35,16 +35,16 @@ namespace KinderSurprise.DAL.Test
 
             Assert.AreEqual(3, categories.Count);
 
-            Assert.AreEqual(1, categories[0].CategoryId);
-            Assert.AreEqual("Plastik", categories[0].CategoryName);
+            Assert.AreEqual(1, categories[0].Id);
+            Assert.AreEqual("Plastik", categories[0].Name);
             Assert.AreEqual("Alles was plaste ist", categories[0].Description);
 
-            Assert.AreEqual(2, categories[1].CategoryId);
-            Assert.AreEqual("Figur", categories[1].CategoryName);
+            Assert.AreEqual(2, categories[1].Id);
+            Assert.AreEqual("Figur", categories[1].Name);
             Assert.AreEqual("Alle Figuren", categories[1].Description);
 
-            Assert.AreEqual(3, categories[2].CategoryId);
-            Assert.AreEqual("Zinn", categories[2].CategoryName);
+            Assert.AreEqual(3, categories[2].Id);
+            Assert.AreEqual("Zinn", categories[2].Name);
             Assert.AreEqual("Zinnfiguren", categories[2].Description);
         }
 
@@ -57,8 +57,8 @@ namespace KinderSurprise.DAL.Test
 
             Category category = categoryRepository.GetById(categoryId);
 
-            Assert.AreEqual(categoryId, category.CategoryId);
-            Assert.AreEqual("Plastik", category.CategoryName);
+            Assert.AreEqual(categoryId, category.Id);
+            Assert.AreEqual("Plastik", category.Name);
             Assert.AreEqual("Alles was plaste ist", category.Description);
         }
 
@@ -81,21 +81,21 @@ namespace KinderSurprise.DAL.Test
 
             Category category = new Category 
 			{ 
-				CategoryId = 0, 
-				CategoryName = "Test", 
+				Id = 0, 
+				Name = "Test", 
 				Description = "Test" 
 			};
             categoryRepository.Add(category);
 
-            int categoryId = categoryRepository.GetAll().FindLast(x => x.CategoryId > 0).CategoryId;
+            int categoryId = categoryRepository.GetAll().FindLast(x => x.Id > 0).Id;
             Category newCategory = categoryRepository.GetById(categoryId);
 
             Assert.IsNotNull(newCategory);
-            Assert.AreEqual(categoryId, newCategory.CategoryId);
-            Assert.AreEqual("Test", newCategory.CategoryName);
+            Assert.AreEqual(categoryId, newCategory.Id);
+            Assert.AreEqual("Test", newCategory.Name);
             Assert.AreEqual("Test", newCategory.Description);
 
-            int categoryIdToDelete = categoryRepository.GetAll().FindLast(x => x.CategoryId > 0).CategoryId;
+            int categoryIdToDelete = categoryRepository.GetAll().FindLast(x => x.Id > 0).Id;
 
             categoryRepository.DeleteById(categoryIdToDelete);
 
@@ -106,12 +106,12 @@ namespace KinderSurprise.DAL.Test
         {
             ICategoryRepository categoryRepository = new CategoryRepository();
 
-            Category category = new Category { CategoryId = 0, CategoryName = "Figur", Description = "Alle Figuren" };
+            Category category = new Category { Id = 0, Name = "Figur", Description = "Alle Figuren" };
             categoryRepository.Add(category);
             
-            int categoryId = categoryRepository.GetAll().FindLast(x => x.CategoryId > 0).CategoryId;
+            int categoryId = categoryRepository.GetAll().FindLast(x => x.Id > 0).Id;
             category = categoryRepository.GetById(categoryId);
-            category.CategoryName = "Test";
+            category.Name = "Test";
             category.Description = "Test";
             
             categoryRepository.Update(category);
@@ -119,8 +119,8 @@ namespace KinderSurprise.DAL.Test
             Category newCategory = categoryRepository.GetById(categoryId);
 
             Assert.IsNotNull(newCategory);
-            Assert.AreEqual(categoryId, newCategory.CategoryId);
-            Assert.AreEqual("Test", newCategory.CategoryName);
+            Assert.AreEqual(categoryId, newCategory.Id);
+            Assert.AreEqual("Test", newCategory.Name);
             Assert.AreEqual("Test", newCategory.Description);
 
             categoryRepository.DeleteById(categoryId);
@@ -133,10 +133,10 @@ namespace KinderSurprise.DAL.Test
         {
             ICategoryRepository categoryRepository = new CategoryRepository();
 
-            Category category = new Category { CategoryId = 0, CategoryName = "Test", Description = "Test" };
+            Category category = new Category { Id = 0, Name = "Test", Description = "Test" };
             categoryRepository.Add(category);
 
-            int categoryId = categoryRepository.GetAll().FindLast(x => x.CategoryId > 0).CategoryId;
+            int categoryId = categoryRepository.GetAll().FindLast(x => x.Id > 0).Id;
             
             categoryRepository.DeleteById(categoryId);
 

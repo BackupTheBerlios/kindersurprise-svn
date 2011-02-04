@@ -24,7 +24,7 @@ namespace KinderSurprise.MVP.Model
         {
             ICategoryRepository categoryRepository = new CategoryRepository();
             
-            if(categoryRepository.HasId(category.CategoryId))
+            if(categoryRepository.HasId(category.Id))
                 categoryRepository.Update(category);
             else
                 categoryRepository.Add(category);

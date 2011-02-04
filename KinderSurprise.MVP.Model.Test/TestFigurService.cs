@@ -33,31 +33,31 @@ namespace KinderSurprise.MVP.Model.Test
             var figur = figurService.GetById(1);
 
             Assert.IsNotNull(figur);
-            Assert.AreEqual(1, figur.FigurId);
-            Assert.AreEqual("PlasteFigur1", figur.FigurName);
+            Assert.AreEqual(1, figur.Id);
+            Assert.AreEqual("PlasteFigur1", figur.Name);
             Assert.AreEqual("Plastefigur Serie1", figur.Description);
             Assert.AreEqual(18.00, figur.Price);
-            Assert.AreEqual(1, figur.Serie.SerieId);
+            Assert.AreEqual(1, figur.Serie.Id);
         }
 
         [Test]
         public void Test_SaveNewFigurDto()
         {
             FigurService figurService = new FigurService();
-            Figur figur = new Figur{ FigurId = 0, FigurName = "New", Description = "Desc", Price = (decimal)1.11, Serie = new Serie { SerieId = 1 }};
+            Figur figur = new Figur{ Id = 0, Name = "New", Description = "Desc", Price = (decimal)1.11, Serie = new Serie { Id = 1 }};
 
             figurService.SaveOrUpdate(figur);
 
             var newFigurDto = figurService.GetAll().LastOrDefault();
 
-            Assert.AreEqual("New", newFigurDto.FigurName);
+            Assert.AreEqual("New", newFigurDto.Name);
             Assert.AreEqual("Desc", newFigurDto.Description);
             Assert.AreEqual(1.11, newFigurDto.Price);
-            Assert.AreEqual(1, newFigurDto.Serie.SerieId);
+            Assert.AreEqual(1, newFigurDto.Serie.Id);
 
-            figurService.DeleteById(newFigurDto.FigurId);
+            figurService.DeleteById(newFigurDto.Id);
 
-            Assert.IsNull(figurService.GetById(newFigurDto.FigurId));
+            Assert.IsNull(figurService.GetById(newFigurDto.Id));
         }
 
         [Test]
@@ -66,39 +66,39 @@ namespace KinderSurprise.MVP.Model.Test
             FigurService figurService = new FigurService();
             Figur figur = figurService.GetById(1);
 
-            Assert.AreEqual("PlasteFigur1", figur.FigurName);
+            Assert.AreEqual("PlasteFigur1", figur.Name);
 
-            figur.FigurName = "PlasteFigur1 overwritten";
-
-            figurService.SaveOrUpdate(figur);
-
-            Assert.AreEqual("PlasteFigur1 overwritten", figur.FigurName);
-
-            figur.FigurName = "PlasteFigur1";
+            figur.Name = "PlasteFigur1 overwritten";
 
             figurService.SaveOrUpdate(figur);
 
-            Assert.AreEqual("PlasteFigur1", figur.FigurName);
+            Assert.AreEqual("PlasteFigur1 overwritten", figur.Name);
+
+            figur.Name = "PlasteFigur1";
+
+            figurService.SaveOrUpdate(figur);
+
+            Assert.AreEqual("PlasteFigur1", figur.Name);
         }
 
         [Test]
         public void Test_DeleteFigurDto()
         {
             FigurService figurService = new FigurService();
-            Figur figur = new Figur { FigurId = 0, FigurName = "New", Description = "Desc", Price = (decimal)1.11, Serie = new Serie { SerieId = 1 }};
+            Figur figur = new Figur { Id = 0, Name = "New", Description = "Desc", Price = (decimal)1.11, Serie = new Serie { Id = 1 }};
 
             figurService.SaveOrUpdate(figur);
 
             var newSerieDto = figurService.GetAll().LastOrDefault();
 
-            Assert.AreEqual("New", newSerieDto.FigurName);
+            Assert.AreEqual("New", newSerieDto.Name);
             Assert.AreEqual("Desc", newSerieDto.Description);
             Assert.AreEqual(1.11, newSerieDto.Price);
-            Assert.AreEqual(1, newSerieDto.Serie.SerieId);
+            Assert.AreEqual(1, newSerieDto.Serie.Id);
 
-            figurService.DeleteById(newSerieDto.FigurId);
+            figurService.DeleteById(newSerieDto.Id);
 
-            Assert.IsNull(figurService.GetById(newSerieDto.FigurId));
+            Assert.IsNull(figurService.GetById(newSerieDto.Id));
         }
 
         [Test]
