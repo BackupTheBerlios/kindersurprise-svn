@@ -1,17 +1,25 @@
 using System.Collections.Generic;
+using KinderSurprise.BootStrap;
 using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.DAL.Test
 {
     [TestFixture]
     public class TestFigurRepository
     {
+		[SetUp]
+		public void Initialize()
+		{
+			Testing.Initialize();	
+		}
+		
         [Test]
         public void Test_ExistFigurId_Exist()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             const int figurId = 1;
 
             Assert.IsTrue(figurRepository.HasId(figurId));
@@ -20,7 +28,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_ExistFigurId_ExistNot()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             const int figurId = -1;
 
             Assert.IsFalse(figurRepository.HasId(figurId));
@@ -29,7 +37,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetAllFigurs()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
 
             List<Figur> figurs = figurRepository.GetAll();
 
@@ -93,7 +101,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetFigurById_ValidId()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
 
             const int figurId = 1;
 
@@ -109,7 +117,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetFigurById_NotValidId()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
 
             const int figurId = -1;
 
@@ -119,7 +127,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_DeleteFigurById()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
 
             Figur newFigur = figurRepository.GetById(1);
             newFigur.Name = "Plaste5";
@@ -136,7 +144,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_AddFigur()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
 
             Figur figur = new Figur { Id = 1, Name = "Name", Description = "Test", Price = (decimal) 1.11, Serie = new Serie { Id = 1} };
 
@@ -161,7 +169,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_UpdateFigur()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
 
             Figur figur = new Figur { Id = 1, Name = "TestFigur", Description = "TestDesc", Price = (decimal) 1.11, Serie = new Serie { Id = 1} };
 
@@ -200,7 +208,7 @@ namespace KinderSurprise.DAL.Test
 		[ExpectedException(typeof (NHibernate.Exceptions.GenericADOException))]
 		public void Test_TryInsertFigurWithWrongConstraint_ShouldFail()
 		{
-			IFigurRepository figurRepository = new FigurRepository();
+			IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
 			
 			Figur figur = new Figur { Id = 0, Name = "test", Description = "desc", Price = (decimal)1.67, Serie = new Serie { Id = 15 } };
 			figurRepository.Add(figur);	
@@ -209,7 +217,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs1()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             List<Figur> figurs = figurRepository.GetAllBySerieId(1);
 
             Assert.AreEqual(2, figurs.Count);
@@ -218,7 +226,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs3()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             List<Figur> figurs = figurRepository.GetAllBySerieId(3);
 
             Assert.AreEqual(3, figurs.Count);
@@ -227,7 +235,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs4()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             List<Figur> figurs = figurRepository.GetAllBySerieId(4);
 
             Assert.AreEqual(1, figurs.Count);

@@ -78,6 +78,10 @@
       <Project>{E831D0AF-40F4-4348-95C9-80C7D869A76E}</Project>
       <Name>KinderSurprise.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KinderSurprise.BootStrap\KinderSurprise.BootStrap.csproj">
+      <Project>{CF3B425E-4B3A-4B0C-BD00-D6EF14B28709}</Project>
+      <Name>KinderSurprise.BootStrap</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.Debug.config">

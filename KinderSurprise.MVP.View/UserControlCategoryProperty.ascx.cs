@@ -9,7 +9,7 @@ namespace KinderSurprise.MVP.View
 {
     public partial class UserControlCategoryProperty : UserControl, ICategoryPropertyPresenter, ICategoryControl
     {
-        #region Presenter Properties
+        #region Model Properties
 
         public Label ErrorLabel
         {

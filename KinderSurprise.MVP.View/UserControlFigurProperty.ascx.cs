@@ -8,7 +8,7 @@ namespace KinderSurprise.MVP.View
 {
     public partial class UserControlFigurProperty : System.Web.UI.UserControl, IFigurPropertyPresenter, IFigurControl
     {
-        #region Properties Presenter
+        #region Model Properties
 
         public Button NewFigurButton
         {

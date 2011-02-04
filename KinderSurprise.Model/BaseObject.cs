@@ -1,4 +1,3 @@
-using System;
 namespace KinderSurprise.Model
 {
 	public abstract class BaseObject

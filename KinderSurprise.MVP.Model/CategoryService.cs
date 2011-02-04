@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using KinderSurprise.DAL;
 using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
 using KinderSurprise.MVP.Model.Interfaces;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Model
 {
@@ -10,19 +10,19 @@ namespace KinderSurprise.MVP.Model
     {
         public List<Category> GetAll()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
             return categoryRepository.GetAll();
         }
 
         public Category GetById(int categoryId)
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
             return categoryRepository.GetById(categoryId);
         }
 
         public void SaveOrUpdate(Category category)
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
             
             if(categoryRepository.HasId(category.Id))
                 categoryRepository.Update(category);
@@ -33,7 +33,7 @@ namespace KinderSurprise.MVP.Model
 
         public void DeleteById(int categoryId)
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
             categoryRepository.DeleteById(categoryId);
         }
     }

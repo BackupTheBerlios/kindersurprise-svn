@@ -1,17 +1,25 @@
 using System.Collections.Generic;
+using KinderSurprise.BootStrap;
 using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.DAL.Test
 {
     [TestFixture]
 	public class TestCategoryRepository
     {
+		[SetUp]
+		public void Initialize()
+		{
+			Testing.Initialize();	
+		}
+		
         [Test]
         public void Test_ExistCategoryId_Exist()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
             const int categoryId = 1;
 
             Assert.IsTrue(categoryRepository.HasId(categoryId));
@@ -20,7 +28,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_ExistCategoryId_DoesntExist()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
             const int categoryId = -1;
 
             Assert.IsFalse(categoryRepository.HasId(categoryId));
@@ -29,7 +37,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetAllCategories()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
 
             List<Category> categories = categoryRepository.GetAll();
 
@@ -51,7 +59,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetCategoryById_ValidId()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
             
             const int categoryId = 1;
 
@@ -65,7 +73,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetCategoryById_NotValidId()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
 
             const int categoryId = -1;
 
@@ -77,7 +85,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_AddCategory()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
 
             Category category = new Category 
 			{ 
@@ -104,7 +112,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_UpdateCategory()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
 
             Category category = new Category { Id = 0, Name = "Figur", Description = "Alle Figuren" };
             categoryRepository.Add(category);
@@ -131,7 +139,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_DeleteCategoryById()
         {
-            ICategoryRepository categoryRepository = new CategoryRepository();
+            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
 
             Category category = new Category { Id = 0, Name = "Test", Description = "Test" };
             categoryRepository.Add(category);

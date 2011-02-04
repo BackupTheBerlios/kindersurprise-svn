@@ -1,5 +1,5 @@
-using KinderSurprise.Model;
 using FluentNHibernate.Mapping;
+using KinderSurprise.Model;
 
 namespace KinderSurprise.Mapper
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using KinderSurprise.BootStrap;
 
 namespace KinderSurprise.MVP.View
 {
@@ -7,8 +8,7 @@ namespace KinderSurprise.MVP.View
 
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
-
+			Productive.Initialize();
         }
 
         void Application_End(object sender, EventArgs e)

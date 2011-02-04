@@ -1,4 +1,3 @@
-using System;
 using KinderSurprise.Model;
 using NUnit.Framework;
 

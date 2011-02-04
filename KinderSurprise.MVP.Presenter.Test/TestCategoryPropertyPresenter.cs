@@ -1,4 +1,5 @@
 using System.Web.UI.WebControls;
+using KinderSurprise.BootStrap;
 using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
@@ -9,7 +10,6 @@ namespace KinderSurprise.MVP.Presenter.Test
 {
 
     [TestFixture]
-
     public class TestCategoryPropertyPresenter
     {
         #region MockObjectWithInitializationAndDispose
@@ -19,6 +19,8 @@ namespace KinderSurprise.MVP.Presenter.Test
         [SetUp]
         public void Setup()
         {
+			Testing.Initialize();
+			
 			Moq.Mock<ICategoryPropertyPresenter> mockCategoryProperty = new Moq.Mock<ICategoryPropertyPresenter>();
 			mockCategoryProperty.SetupAllProperties();
 			m_MockCategoryProperty = mockCategoryProperty.Object;

@@ -8,7 +8,7 @@ namespace KinderSurprise.MVP.View
 {
     public partial class UserControlSerieProperty : System.Web.UI.UserControl, ISeriePropertyPresenter, ISerieControl
     {
-        #region Presenter Properties
+        #region Model Properties
 
         public Button NewSerieButton
         {

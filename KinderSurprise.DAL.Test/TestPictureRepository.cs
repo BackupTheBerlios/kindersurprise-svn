@@ -1,18 +1,25 @@
-using System;
 using System.Collections.Generic;
+using KinderSurprise.BootStrap;
 using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.DAL.Test
 {
 	[TestFixture]
 	public class TestPictureRepository
 	{
+		[SetUp]
+		public void Initialize()
+		{
+			Testing.Initialize();	
+		}
+		
 		[Test]
 		public void Test_GetById_IdDoesNotExist_IsFigur()
 		{
-			IPictureRepository pictureRepository = new PictureRepository();
+			IPictureRepository pictureRepository = ObjectFactory.GetInstance<IPictureRepository>();
 			List<Picture> pictures = pictureRepository.GetById(0, EType.Figur);
 			Assert.AreEqual(0, pictures.Count);
 		}
@@ -20,7 +27,7 @@ namespace KinderSurprise.DAL.Test
 		[Test]
 		public void Test_GetById_IdDoesNotExist_IsSerie()
 		{
-			IPictureRepository pictureRepository = new PictureRepository();
+			IPictureRepository pictureRepository = ObjectFactory.GetInstance<IPictureRepository>();
 			List<Picture> pictures = pictureRepository.GetById(0, EType.Serie);
 			Assert.AreEqual(0, pictures.Count);
 		}
@@ -28,7 +35,7 @@ namespace KinderSurprise.DAL.Test
 		[Test]
 		public void Test_GetById_IdDoesNotExist_IsInstructions()
 		{
-			IPictureRepository pictureRepository = new PictureRepository();
+			IPictureRepository pictureRepository = ObjectFactory.GetInstance<IPictureRepository>();
 			List<Picture> pictures = pictureRepository.GetById(6, EType.Instructions);
 			Assert.AreEqual(0, pictures.Count);
 		}
@@ -36,7 +43,7 @@ namespace KinderSurprise.DAL.Test
 		[Test]
 		public void Test_GetById_IdExistAndIsSerie()
 		{
-			IPictureRepository pictureRepository = new PictureRepository();
+			IPictureRepository pictureRepository = ObjectFactory.GetInstance<IPictureRepository>();
 			List<Picture> pictures = pictureRepository.GetById(5, EType.Serie);
 			Assert.AreEqual(1, pictures.Count);
 			Assert.AreEqual("1.jpg", pictures[0].Path);
@@ -48,7 +55,7 @@ namespace KinderSurprise.DAL.Test
 		[Test]
 		public void Test_GetById_IdExistAndIsFigur()
 		{
-			IPictureRepository pictureRepository = new PictureRepository();
+			IPictureRepository pictureRepository = ObjectFactory.GetInstance<IPictureRepository>();
 			List<Picture> pictures = pictureRepository.GetById(3, EType.Figur);
 			Assert.AreEqual(1, pictures.Count);
 			Assert.AreEqual("2.jpg", pictures[0].Path);
@@ -61,7 +68,7 @@ namespace KinderSurprise.DAL.Test
 		[Test]
 		public void Test_GetById_ExistIsFigurAndHasTwoEntries()
 		{
-			IPictureRepository pictureRepository = new PictureRepository();
+			IPictureRepository pictureRepository = ObjectFactory.GetInstance<IPictureRepository>();
 			List<Picture> pictures = pictureRepository.GetById(5, EType.Figur);
 			Assert.AreEqual(2, pictures.Count);
 			
@@ -77,7 +84,7 @@ namespace KinderSurprise.DAL.Test
 		}
 		public void Test_GetById_ExistIsInstructionsAndHasOneEntry()
 		{
-			IPictureRepository pictureRepository = new PictureRepository();
+			IPictureRepository pictureRepository = ObjectFactory.GetInstance<IPictureRepository>();
 			List<Picture> pictures = pictureRepository.GetById(2, EType.Instructions);
 			Assert.AreEqual(1, pictures.Count);
 			

@@ -1,19 +1,26 @@
 using System;
 using System.Collections.Generic;
+using KinderSurprise.BootStrap;
 using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
 using NUnit.Framework;
-using MySql.Data;
+using StructureMap;
 
 namespace KinderSurprise.DAL.Test
 {
     [TestFixture]
     public class TestSerieRepository
     {
+		[SetUp]
+		public void Initialize()
+		{
+			Testing.Initialize();	
+		}
+		
         [Test]
         public void Test_ExistSerieId_DoesntExist()
         {
-            ISerieRepository serieRepository = new SerieRepository();
+            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
             const int serieId = 1;
 
             Assert.IsTrue(serieRepository.HasId(serieId));
@@ -22,7 +29,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_ExistSerieId_DoesExist()
         {
-            ISerieRepository serieRepository = new SerieRepository();
+            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
             const int serieId = -1;
 
             Assert.IsFalse(serieRepository.HasId(serieId));
@@ -31,7 +38,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetAllSeries()
         {
-            ISerieRepository serieRepository = new SerieRepository();
+            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
 
             List<Serie> series = serieRepository.GetAll();
 
@@ -71,7 +78,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetSerieById_ValidId()
         {
-            ISerieRepository serieRepository = new SerieRepository();
+            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
 
             const int serieId = 1;
 
@@ -87,7 +94,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_GetSerieById_NotValidId()
         {
-            ISerieRepository serieRepository = new SerieRepository();
+            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
 
             const int serieId = -1;
 
@@ -99,7 +106,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_DeleteSerieById()
         {
-            ISerieRepository serieRepository = new SerieRepository();
+            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
 
             Assert.IsTrue(serieRepository.HasId(1));
 
@@ -116,7 +123,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_UpdateSerie()
         {
-            ISerieRepository serieRepository = new SerieRepository();
+            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
 
             Serie serie = new Serie { Id = 0, Name = "TestSerie", Description = "TestDesc", PublicationYear = new DateTime(2000,1,1), 
                                              Category = new Category
@@ -152,7 +159,7 @@ namespace KinderSurprise.DAL.Test
         [Test]
         public void Test_AddSerie()
         {
-            ISerieRepository serieRepository = new SerieRepository();
+            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
 
             Serie serie = new Serie { Id = 1, Name = "Name", Description = "Test", PublicationYear =  new DateTime(2000,1,1), 
                                              Category = new Category
@@ -188,7 +195,7 @@ namespace KinderSurprise.DAL.Test
 		[ExpectedException(typeof (NHibernate.Exceptions.GenericADOException))]
 		public void Test_TryInsertSerieWithWrongConstraint_ShouldFail()
 		{
-			ISerieRepository serieRepository = new SerieRepository();
+			ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
 			
 			Serie serie = new Serie { Id = 1, Name = "Name", Description = "Test", PublicationYear = new DateTime(2000,1,1), 
                                              Category = new Category { Id = 10 } };

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Linq;
+using KinderSurprise.BootStrap;
 using KinderSurprise.Model;
 using NUnit.Framework;
 
@@ -7,6 +9,12 @@ namespace KinderSurprise.MVP.Model.Test
 	[TestFixture]
     public class TestCategoryService
     {
+		[SetUp]
+		public void Initialize()
+		{
+			Testing.Initialize();
+		}
+		
         [Test]
         public void Test_GetAll()
         {

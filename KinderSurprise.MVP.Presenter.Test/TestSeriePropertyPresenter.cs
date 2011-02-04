@@ -1,13 +1,11 @@
 using System;
 using System.Linq;
 using System.Web.UI.WebControls;
-using KinderSurprise.DAL;
 using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
 using NUnit.Framework;
-using NHibernate;
 
 namespace KinderSurprise.MVP.Presenter.Test
 {

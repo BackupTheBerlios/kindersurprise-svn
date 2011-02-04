@@ -1,5 +1,3 @@
-using System;
-
 namespace KinderSurprise.Model
 {
 	public class Picture : BaseObject

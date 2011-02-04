@@ -1,7 +1,7 @@
-using FluentNHibernate;
-using NHibernate;
 using System.Configuration;
 using System.Reflection;
+using FluentNHibernate;
+using NHibernate;
 
 namespace KinderSurprise.DAL
 {

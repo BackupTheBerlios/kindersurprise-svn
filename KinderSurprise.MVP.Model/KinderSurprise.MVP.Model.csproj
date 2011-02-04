@@ -34,6 +34,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\structuremap_v2.6.1\StructureMap.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryService.cs" />
@@ -46,6 +50,7 @@
     <Compile Include="ValidationHandling.cs" />
     <Compile Include="PictureService.cs" />
     <Compile Include="PictureHandler.cs" />
+    <Compile Include="Interfaces\IPictureService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.DAL\KinderSurprise.DAL.csproj">
@@ -65,4 +70,9 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
 </Project>

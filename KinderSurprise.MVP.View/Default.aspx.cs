@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 using KinderSurprise.Model;
-using KinderSurprise.MVP.Model;
-using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter;
 using KinderSurprise.MVP.Presenter.Interfaces;
 

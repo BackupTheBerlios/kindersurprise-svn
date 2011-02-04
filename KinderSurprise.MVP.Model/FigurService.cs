@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using KinderSurprise.DAL;
 using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
 using KinderSurprise.MVP.Model.Interfaces;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Model
 {
@@ -10,25 +10,25 @@ namespace KinderSurprise.MVP.Model
     {
         public List<Figur> GetAll()
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             return figurRepository.GetAll();
         }
 
         public List<Figur> GetAllBySerieId(int serieId)
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             return figurRepository.GetAllBySerieId(serieId);
         }
 
         public Figur GetById(int figurId)
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             return figurRepository.GetById(figurId);
         }
 
         public void SaveOrUpdate(Figur figur)
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
 
             if(figurRepository.HasId(figur.Id))
                 figurRepository.Update(figur);
@@ -38,7 +38,7 @@ namespace KinderSurprise.MVP.Model
 
         public void DeleteById(int figurId)
         {
-            IFigurRepository figurRepository = new FigurRepository();
+            IFigurRepository figurRepository = ObjectFactory.GetInstance<IFigurRepository>();
             figurRepository.DeleteById(figurId);
         }
     }

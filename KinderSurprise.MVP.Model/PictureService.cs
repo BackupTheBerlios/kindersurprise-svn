@@ -1,17 +1,17 @@
-using System;
 using System.Collections.Generic;
+using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
-using KinderSurprise.DAL;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Model
 {
-	public class PictureService
+	public class PictureService : IPictureService
 	{
 		private List<Picture> m_Pictures;
 		
 		public PictureService(int id, EType type)
 		{
-			PictureRepository pictureRepository = new PictureRepository();
+			IPictureRepository pictureRepository = ObjectFactory.GetInstance<IPictureRepository>();
 			List<Picture> pictures = pictureRepository.GetById(id, type);
 			
 			if(pictures == null)

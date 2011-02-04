@@ -2,6 +2,7 @@
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Presenter
 {
@@ -49,10 +50,10 @@ namespace KinderSurprise.MVP.Presenter
         public bool Update(Category category)
         {
             ValidationHandling validationHandling = new ValidationHandling();
-
-            if (validationHandling.IsValidString(m_CategoryPropertyPresenter.NameTextBox.Text))
+			ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();		
+            
+			if (validationHandling.IsValidString(m_CategoryPropertyPresenter.NameTextBox.Text))
             {
-                ICategoryService categoryService = new CategoryService();
                 categoryService.SaveOrUpdate(
                     new Category { Id = category == null
                             ? 0
@@ -79,7 +80,7 @@ namespace KinderSurprise.MVP.Presenter
             if (category == null)
                 return;
 
-            ICategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             categoryService.DeleteById(category.Id);
         }
     }

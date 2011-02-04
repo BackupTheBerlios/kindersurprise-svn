@@ -3,15 +3,16 @@
   <MonoDevelop.Ide.Workbench ctype="Workbench">
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="KinderSurprise.Model" expanded="True" />
-          <Node name="KinderSurprise.MVP.Model.Test" expanded="True" />
-          <Node name="KinderSurprise.MVP.Presenter" expanded="True">
-            <Node name="Interfaces" expanded="True" />
+        <State expanded="True">
+          <Node name="KinderSurprise.DAL" expanded="True">
+            <Node name="SessionBase.cs" selected="True" />
           </Node>
-          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True" />
-          <Node name="KinderSurprise.MVP.View" expanded="True">
-            <Node name="UserControlFigurProperty.ascx" expanded="True" />
+          <Node name="KinderSurprise.DAL.Test" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.Model" expanded="True" />
+          <Node name="KinderSurprise.Model.Test" expanded="True">
+            <Node name="References" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -30,7 +31,19 @@
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="KinderSurprise.Model.Test" expanded="True">
+            <Node name="KinderSurprise" expanded="True">
+              <Node name="Model" expanded="True">
+                <Node name="TestModel" expanded="True">
+                  <Node name="TestSchema" expanded="True">
+                    <Node name="SameAsBefore_ButWith_PersistenceSpecification" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -40,6 +53,7 @@
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.MVP.Model.Test/TestFigurService.cs" line="108" />
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestPictureRepository.cs" line="66" />
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestInstructionsRepository.cs" line="12" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.Model.Test/TestSchema.cs" line="38" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore">
