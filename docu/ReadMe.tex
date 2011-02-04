@@ -2,11 +2,14 @@
 
 \begin{document}
 
+\tableofcontents
 
-\section{KinderSurprise}
+\newpage
+
+\section*{KinderSurprise}
 
 Date of Create: 28.01.2011\\
-Date of last Update: 28.01.2011\\
+Date of last Update: 04.02.2011\\
 Author: Enrico Gallus\\
 
 Supposed to be a web-based c\# application used to save and organize a
@@ -37,12 +40,16 @@ for Mono: ``deb http://debian.meebey.net/pkg-mono /''
   \item FluentNHibernate v$1.1$
   \item MySql v$5.1$
   \item NUnit v$2.4.7$
+  \item Moq $v4.0.10827$
+  \item NhLambdaExtensions $v1.0.10.0$
+  \item structuremap $v2.6.1$
   \item rabbitvcs-nautilus
 \end{itemize}
 
 \subsection{Patterns}
 \begin{itemize}
   \item MVP
+  \item Dependency Injection
   \item N-Tier
   \item TDD
 \end{itemize}
@@ -91,6 +98,24 @@ To verify if everything works well, please execute the unittests defined in the
 the three test projects.
 Compile the project and try to start.
 If any problem or error occure, please don't hesitate to contact me.
+
+\subsection{Using .net under Visual Studio}
+If you rather would use visual studio under windows than to use the mono
+framework, you have to change to modify some parts of the project.
+After open the solution file of the project the ui-project will maybe not be
+loaded correctly. If this error occured than you have to modify the solution
+file of the $KinderSurprise.MVP.View$ project like described in the file
+$windows_changes.txt$.
+Please comment out the part existing in the $windows_changes.txt$ in the
+solution file of the $KinderSurprise.MVP.View$. And copy the
+$windows_changes.txt$ content in the soltution file.
+Afterwards reload the project.
+\newline
+On the other side the $Nunit.framework.dll$ does not belong to the lib order.
+Mono is using the class directly from the system. So the references under visual
+studio are not correct. Delete all incorrect references to the dll in all the
+test projects. Copy the Nunit.Framework.dll to the lib directory and
+reference in the test-projects this libary.
 
 \subsection{Workflows}
 \subsubsection{Working with the database}
