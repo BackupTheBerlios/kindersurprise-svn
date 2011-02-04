@@ -4,6 +4,7 @@ using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Presenter
 {
@@ -64,39 +65,39 @@ namespace KinderSurprise.MVP.Presenter
 
         public void FillTreeView()
         {
-            ICategoryService categoryService = new CategoryService();
-            ISerieService serieService = new SerieService();
-            IFigurService figurService = new FigurService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
 
             var categories = categoryService.GetAll();
             if(categories.Count == 0)
                 categories.Add(new Category { Id = 0, Name = "dummy", Description = "dummy" });
             
-            foreach (var categoryDto in categories)
+            foreach (var category in categories)
             {
                 TreeNode nodeCategory = new TreeNode
                                             {
-                                                Text = categoryDto.Name,
-                                                ToolTip = categoryDto.Description,
-                                                Value = categoryDto.Id.ToString()
+                                                Text = category.Name,
+                                                ToolTip = category.Description,
+                                                Value = category.Id.ToString()
                                             };
-                foreach (var serieDto in serieService.GetAllByCategoryId(categoryDto.Id))
+                foreach (var serie in serieService.GetAllByCategoryId(category.Id))
                 {
                     TreeNode nodeSerie = new TreeNode
                                              {
-                                                 Text = serieDto.Name,
-                                                 ToolTip = serieDto.Description,
-                                                 Value = serieDto.Id.ToString()
+                                                 Text = serie.Name,
+                                                 ToolTip = serie.Description,
+                                                 Value = serie.Id.ToString()
                                              };
                     nodeCategory.ChildNodes.Add(nodeSerie);
 
-                    foreach (var figurDto in figurService.GetAllBySerieId(serieDto.Id))
+                    foreach (var figur in figurService.GetAllBySerieId(serie.Id))
                     {
                         TreeNode nodeFigur = new TreeNode
                                                  {
-                                                     Text = figurDto.Name,
-                                                     ToolTip = figurDto.Description,
-                                                     Value = figurDto.Id.ToString()
+                                                     Text = figur.Name,
+                                                     ToolTip = figur.Description,
+                                                     Value = figur.Id.ToString()
                                                  };
                         nodeSerie.ChildNodes.Add(nodeFigur);
                     }

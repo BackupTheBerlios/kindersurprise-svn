@@ -65,8 +65,8 @@ namespace KinderSurprise.MVP.View
 
         public Category Category
         {
-            get { return (Category) Session["CategoryDto"]; }
-            set { Session["CategoryDto"] = value; }
+            get { return (Category) Session["Category"]; }
+            set { Session["Category"] = value; }
         }
 
         #endregion Properties

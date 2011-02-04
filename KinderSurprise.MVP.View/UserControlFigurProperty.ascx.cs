@@ -70,8 +70,8 @@ namespace KinderSurprise.MVP.View
 
         public Figur Figur
         {
-            get { return (Figur) Session["FigurDto"]; }
-            set { Session["FigurDto"] = value; }
+            get { return (Figur) Session["Figur"]; }
+            set { Session["Figur"] = value; }
         }
 
         #endregion

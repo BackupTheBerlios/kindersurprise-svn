@@ -4,6 +4,7 @@ using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Presenter
 {
@@ -57,7 +58,7 @@ namespace KinderSurprise.MVP.Presenter
 
         private void InitializeCategoryDropDownList()
         {
-            ICategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             List<Category> categories = categoryService.GetAll();
             
             //ToDo Select the Category which the serie belongs to
@@ -77,23 +78,23 @@ namespace KinderSurprise.MVP.Presenter
             if (m_SeriePropertyPresenter.Serie == null)
                 return;
 
-            ISerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             serieService.DeleteById(m_SeriePropertyPresenter.Serie.Id);
         }
 
         public bool Update()
         {
-            ValidationHandling validationHandling = new ValidationHandling();
+            IValidator validator = ObjectFactory.GetInstance<IValidator>();
             bool notValid = false;
 
 
-            if (!validationHandling.IsValidString(m_SeriePropertyPresenter.Name.Text))
+            if (!validator.IsValidString(m_SeriePropertyPresenter.Name.Text))
             {
                 m_SeriePropertyPresenter.ErrorMessage.Visible = true;
                 m_SeriePropertyPresenter.ErrorMessage.Text = "Bitte geben Sie einen Namen für die Serie ein!" + Environment.NewLine;
                 notValid = true;
             }
-            if (!validationHandling.IsValidYear(m_SeriePropertyPresenter.PublicationYear.Text))
+            if (!validator.IsValidYear(m_SeriePropertyPresenter.PublicationYear.Text))
             {
                 m_SeriePropertyPresenter.ErrorMessage.Visible = true;
                 m_SeriePropertyPresenter.ErrorMessage.Text += "Bitte geben Sie ein gültiges Jahr ein!" + Environment.NewLine;
@@ -103,7 +104,7 @@ namespace KinderSurprise.MVP.Presenter
             if (notValid)
                 return false;
 
-            ISerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             serieService.SaveOrUpdate(
                 new Serie{ Id = m_SeriePropertyPresenter.Serie == null ? 0 : m_SeriePropertyPresenter.Serie.Id,
                              Name = m_SeriePropertyPresenter.Name.Text,

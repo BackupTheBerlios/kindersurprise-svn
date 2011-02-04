@@ -49,10 +49,10 @@ namespace KinderSurprise.MVP.Presenter
 
         public bool Update(Category category)
         {
-            ValidationHandling validationHandling = new ValidationHandling();
+            IValidator validator = ObjectFactory.GetInstance<IValidator>();
 			ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();		
             
-			if (validationHandling.IsValidString(m_CategoryPropertyPresenter.NameTextBox.Text))
+			if (validator.IsValidString(m_CategoryPropertyPresenter.NameTextBox.Text))
             {
                 categoryService.SaveOrUpdate(
                     new Category { Id = category == null

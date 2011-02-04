@@ -1,7 +1,9 @@
 using System;
 using System.Linq;
 using KinderSurprise.Model;
+using KinderSurprise.MVP.Model.Interfaces;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Model.Test
 {
@@ -11,7 +13,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetAll()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             var series = serieService.GetAll();
 
             Assert.AreEqual(5, series.Count);
@@ -20,7 +22,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetById_NotValidId()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             var serie = serieService.GetById(-1);
 
             Assert.IsNull(serie);
@@ -29,7 +31,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetById_ValidId()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             var serie = serieService.GetById(1);
 
             Assert.IsNotNull(serie);
@@ -41,29 +43,29 @@ namespace KinderSurprise.MVP.Model.Test
         }
 
         [Test]
-        public void Test_SaveNewSerieDto()
+        public void Test_SaveNewSerie()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             Serie serie = new Serie { Id = 0, Name = "New", Description = "Desc", PublicationYear = new DateTime(2000,1,1), Category = new Category { Id  = 1}};
 
             serieService.SaveOrUpdate(serie);
 
-            var theNewSerieDto = serieService.GetAll().LastOrDefault();
+            var theNewSerie = serieService.GetAll().LastOrDefault();
 
-            Assert.AreEqual("New", theNewSerieDto.Name);
-            Assert.AreEqual("Desc", theNewSerieDto.Description);
-            Assert.AreEqual(new DateTime(2000, 1, 1), theNewSerieDto.PublicationYear);
-            Assert.AreEqual(1, theNewSerieDto.Category.Id);
+            Assert.AreEqual("New", theNewSerie.Name);
+            Assert.AreEqual("Desc", theNewSerie.Description);
+            Assert.AreEqual(new DateTime(2000, 1, 1), theNewSerie.PublicationYear);
+            Assert.AreEqual(1, theNewSerie.Category.Id);
 
-            serieService.DeleteById(theNewSerieDto.Id);
+            serieService.DeleteById(theNewSerie.Id);
 
-            Assert.IsNull(serieService.GetById(theNewSerieDto.Id));
+            Assert.IsNull(serieService.GetById(theNewSerie.Id));
         }
 
         [Test]
-        public void Test_UpdateExistingSerieDto()
+        public void Test_UpdateExistingSerie()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             Serie serie = serieService.GetById(1);
 
             Assert.AreEqual("Plaste1", serie.Name);
@@ -82,29 +84,29 @@ namespace KinderSurprise.MVP.Model.Test
         }
 
         [Test]
-        public void Test_DeleteSerieDto()
+        public void Test_DeleteSerie()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             Serie serie = new Serie{ Id = 0, Name = "New", Description = "Desc", PublicationYear = new DateTime(2000, 1,1), Category = new Category{Id = 1}};
 
             serieService.SaveOrUpdate(serie);
 
-            var newSerieDto = serieService.GetAll().LastOrDefault();
+            var newSerie = serieService.GetAll().LastOrDefault();
 
-            Assert.AreEqual("New", newSerieDto.Name);
-            Assert.AreEqual("Desc", newSerieDto.Description);
-            Assert.AreEqual(new DateTime(2000, 1, 1), newSerieDto.PublicationYear);
-            Assert.AreEqual(1, newSerieDto.Category.Id);
+            Assert.AreEqual("New", newSerie.Name);
+            Assert.AreEqual("Desc", newSerie.Description);
+            Assert.AreEqual(new DateTime(2000, 1, 1), newSerie.PublicationYear);
+            Assert.AreEqual(1, newSerie.Category.Id);
 
-            serieService.DeleteById(newSerieDto.Id);
+            serieService.DeleteById(newSerie.Id);
 
-            Assert.IsNull(serieService.GetById(newSerieDto.Id));
+            Assert.IsNull(serieService.GetById(newSerie.Id));
         }
 
         [Test]
         public void Test_GetAllSeriesByCategoryId_IdIs1()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             var series = serieService.GetAllByCategoryId(1);
 
             Assert.AreEqual(2, series.Count);
@@ -113,7 +115,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetAllSeriesByCategoryId_IdIs2()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             var series = serieService.GetAllByCategoryId(2);
 
             Assert.AreEqual(2, series.Count);
@@ -122,7 +124,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetAllSeriesByCategoryId_IdIs3()
         {
-            SerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             var series = serieService.GetAllByCategoryId(3);
 
             Assert.AreEqual(1, series.Count);

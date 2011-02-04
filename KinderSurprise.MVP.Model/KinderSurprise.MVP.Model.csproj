@@ -47,10 +47,11 @@
     <Compile Include="Interfaces\ISerieService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerieService.cs" />
-    <Compile Include="ValidationHandling.cs" />
     <Compile Include="PictureService.cs" />
     <Compile Include="PictureHandler.cs" />
+    <Compile Include="Validator.cs" />
     <Compile Include="Interfaces\IPictureService.cs" />
+    <Compile Include="Interfaces\IValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.DAL\KinderSurprise.DAL.csproj">

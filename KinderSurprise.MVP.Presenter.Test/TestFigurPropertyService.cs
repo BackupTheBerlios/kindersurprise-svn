@@ -6,6 +6,7 @@ using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Presenter.Test
 {
@@ -69,7 +70,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         }
 
         [Test]
-        public void Test_SetFields_FigurDtoIsNull()
+        public void Test_SetFields_FigurIsNull()
         {
             FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(m_MockFigurProperty);
 
@@ -81,15 +82,15 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual(string.Empty, m_MockFigurProperty.Description.Text);
             Assert.AreEqual(string.Empty, m_MockFigurProperty.Price.Text);
 
-            ISerieService serieService = new SerieService();
-            var serieDto = serieService.GetById(1);
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
+            var serie = serieService.GetById(1);
 
-            Assert.AreEqual(serieDto.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
-            Assert.AreEqual(serieDto.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
+            Assert.AreEqual(serie.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
+            Assert.AreEqual(serie.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
         }
 
         [Test]
-        public void Test_SetFields_FigurDtoIsNotNull()
+        public void Test_SetFields_FigurIsNotNull()
         {
             FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(m_MockFigurProperty);
 
@@ -101,11 +102,11 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual("Desc", m_MockFigurProperty.Description.Text);
             Assert.AreEqual("11.11", m_MockFigurProperty.Price.Text);
 
-            ISerieService serieService = new SerieService();
-            var serieDto = serieService.GetById(1);
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
+            var serie = serieService.GetById(1);
 
-            Assert.AreEqual(serieDto.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
-            Assert.AreEqual(serieDto.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
+            Assert.AreEqual(serie.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
+            Assert.AreEqual(serie.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
         }
 
         [Test]
@@ -119,11 +120,11 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual(string.Empty, m_MockFigurProperty.Description.Text);
             Assert.AreEqual(string.Empty, m_MockFigurProperty.Price.Text);
 
-            ISerieService serieService = new SerieService();
-            var serieDto = serieService.GetById(1);
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
+            var serie = serieService.GetById(1);
 
-            Assert.AreEqual(serieDto.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
-            Assert.AreEqual(serieDto.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
+            Assert.AreEqual(serie.Id.ToString(), m_MockFigurProperty.ChooseSerie.SelectedItem.Value);
+            Assert.AreEqual(serie.Name, m_MockFigurProperty.ChooseSerie.SelectedItem.Text);
         }
 
         [Test]
@@ -186,39 +187,39 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual(string.Empty, m_MockFigurProperty.ErrorMessage.Text);
 
             //Revert saving
-            IFigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             var figurs = figurService.GetAll();
             figurService.DeleteById(figurs[figurs.Count - 1].Id);
         }
 
         [Test]
-        public void Test_Delete_IfFigurDtoIsNull()
+        public void Test_Delete_IfFigurIsNull()
         {
             m_MockFigurProperty.Figur = null;
 
-            IFigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
 
-            var figurDtos = figurService.GetAll();
+            var figurs = figurService.GetAll();
 
             FigurPropertyPresenter figurPropertyPresenter = new FigurPropertyPresenter(m_MockFigurProperty);
             figurPropertyPresenter.Delete(m_MockFigurProperty.Figur);
 
-            Assert.AreEqual(figurDtos.Count, figurService.GetAll().Count);
+            Assert.AreEqual(figurs.Count, figurService.GetAll().Count);
         }
 		
 		[Test]
 		[NUnit.Framework.ExpectedException(typeof(NHibernate.Exceptions.GenericADOException))]
-		public void Test_Delete_IfFigurDtoIsNotNull_ForeignKeyDoesNotExist()
+		public void Test_Delete_IfFigurIsNotNull_ForeignKeyDoesNotExist()
 		{
-			IFigurService figurService = new FigurService();
+			IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
 			
 			figurService.SaveOrUpdate(new Figur{ Id = 0, Name = "test", Description = "desc", Price = (decimal)14.5, Serie = new Serie { Id = 10 }});
 		}
 		
 		[Test]
-		public void Test_Delete_IfFigurDtoIsNotNull_SaveSuccessfulExecuted()
+		public void Test_Delete_IfFigurIsNotNull_SaveSuccessfulExecuted()
 		{
-			IFigurService figurService = new FigurService();
+			IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
 			
 			figurService.SaveOrUpdate(new Figur{ Id = 0, Name = "test", Description = "desc", Price = (decimal)14.5, Serie = new Serie { Id = 3 }});
 			

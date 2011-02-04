@@ -1,16 +1,25 @@
 using System.Linq;
+using KinderSurprise.BootStrap;
 using KinderSurprise.Model;
+using KinderSurprise.MVP.Model.Interfaces;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Model.Test
 {
     [TestFixture]
     public class TestFigurService
     {
+		[SetUp]
+		public void Setup()
+		{
+			Testing.Initialize();
+		}
+		
         [Test]
         public void Test_GetAll()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             var figurs = figurService.GetAll();
 
             Assert.AreEqual(9, figurs.Count);
@@ -19,7 +28,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetById_NotValidId()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             var figur = figurService.GetById(-1);
 
             Assert.IsNull(figur);
@@ -28,7 +37,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetById_ValidId()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             var figur = figurService.GetById(1);
 
             Assert.IsNotNull(figur);
@@ -40,29 +49,29 @@ namespace KinderSurprise.MVP.Model.Test
         }
 
         [Test]
-        public void Test_SaveNewFigurDto()
+        public void Test_SaveNewFigur()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             Figur figur = new Figur{ Id = 0, Name = "New", Description = "Desc", Price = (decimal)1.11, Serie = new Serie { Id = 1 }};
 
             figurService.SaveOrUpdate(figur);
 
-            var newFigurDto = figurService.GetAll().LastOrDefault();
+            var newFigur = figurService.GetAll().LastOrDefault();
 
-            Assert.AreEqual("New", newFigurDto.Name);
-            Assert.AreEqual("Desc", newFigurDto.Description);
-            Assert.AreEqual(1.11, newFigurDto.Price);
-            Assert.AreEqual(1, newFigurDto.Serie.Id);
+            Assert.AreEqual("New", newFigur.Name);
+            Assert.AreEqual("Desc", newFigur.Description);
+            Assert.AreEqual(1.11, newFigur.Price);
+            Assert.AreEqual(1, newFigur.Serie.Id);
 
-            figurService.DeleteById(newFigurDto.Id);
+            figurService.DeleteById(newFigur.Id);
 
-            Assert.IsNull(figurService.GetById(newFigurDto.Id));
+            Assert.IsNull(figurService.GetById(newFigur.Id));
         }
 
         [Test]
-        public void Test_UpdateExistingFigurDto()
+        public void Test_UpdateExistingFigur()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             Figur figur = figurService.GetById(1);
 
             Assert.AreEqual("PlasteFigur1", figur.Name);
@@ -81,29 +90,29 @@ namespace KinderSurprise.MVP.Model.Test
         }
 
         [Test]
-        public void Test_DeleteFigurDto()
+        public void Test_DeleteFigur()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             Figur figur = new Figur { Id = 0, Name = "New", Description = "Desc", Price = (decimal)1.11, Serie = new Serie { Id = 1 }};
 
             figurService.SaveOrUpdate(figur);
 
-            var newSerieDto = figurService.GetAll().LastOrDefault();
+            var newSerie = figurService.GetAll().LastOrDefault();
 
-            Assert.AreEqual("New", newSerieDto.Name);
-            Assert.AreEqual("Desc", newSerieDto.Description);
-            Assert.AreEqual(1.11, newSerieDto.Price);
-            Assert.AreEqual(1, newSerieDto.Serie.Id);
+            Assert.AreEqual("New", newSerie.Name);
+            Assert.AreEqual("Desc", newSerie.Description);
+            Assert.AreEqual(1.11, newSerie.Price);
+            Assert.AreEqual(1, newSerie.Serie.Id);
 
-            figurService.DeleteById(newSerieDto.Id);
+            figurService.DeleteById(newSerie.Id);
 
-            Assert.IsNull(figurService.GetById(newSerieDto.Id));
+            Assert.IsNull(figurService.GetById(newSerie.Id));
         }
 
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs1()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             var figurs = figurService.GetAllBySerieId(1);
 
             Assert.AreEqual(2, figurs.Count);
@@ -112,7 +121,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs3()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             var figurs = figurService.GetAllBySerieId(3);
 
             Assert.AreEqual(3, figurs.Count);
@@ -121,7 +130,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetAllFigursBySerieId_IdIs5()
         {
-            FigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             var figurs = figurService.GetAllBySerieId(5);
 
             Assert.AreEqual(1, figurs.Count);

@@ -5,6 +5,7 @@ using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Presenter.Test
 {
@@ -79,7 +80,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         }
 
         [Test]
-        public void Test_SetFields_CategoryDtoIsNotNull()
+        public void Test_SetFields_CategoryIsNotNull()
         {
             var categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
             m_MockCategoryProperty.Category = new Category { Id = 0, Name = "Test", Description = "Desc"};
@@ -91,7 +92,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         }
 
         [Test]
-        public void Test_SetFields_CategoryDtoIsNull()
+        public void Test_SetFields_CategoryIsNull()
         {
             m_MockCategoryProperty.Category = null;
             var categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
@@ -142,24 +143,24 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual(string.Empty, m_MockCategoryProperty.ErrorLabel.Text);
 
             //Revert saving
-            ICategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             var categories = categoryService.GetAll();
             categoryService.DeleteById(categories[categories.Count - 1].Id);
         }
 
         [Test]
-        public void Test_Delete_IfCategoryDtoIsNull()
+        public void Test_Delete_IfCategoryIsNull()
         {
             m_MockCategoryProperty.Category = null;
 
-            ICategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
 
-            var categoryDtos = categoryService.GetAll();
+            var categories = categoryService.GetAll();
             
             CategoryPropertyPresenter categoryPropertyPresenter = new CategoryPropertyPresenter(m_MockCategoryProperty);
             categoryPropertyPresenter.Delete(m_MockCategoryProperty.Category);
 
-            Assert.AreEqual(categoryDtos.Count, categoryService.GetAll().Count);
+            Assert.AreEqual(categories.Count, categoryService.GetAll().Count);
         }
     }
 }

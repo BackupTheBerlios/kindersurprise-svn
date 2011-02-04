@@ -49,15 +49,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\structuremap_v2.6.1\StructureMap.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCategoryService.cs" />
     <Compile Include="TestFigurService.cs" />
     <Compile Include="TestSerieService.cs" />
-    <Compile Include="TestValidationHandling.cs" />
     <Compile Include="TestPictureService.cs" />
     <Compile Include="TestPictureHandler.cs" />
+    <Compile Include="TestValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.MVP.Model\KinderSurprise.MVP.Model.csproj">

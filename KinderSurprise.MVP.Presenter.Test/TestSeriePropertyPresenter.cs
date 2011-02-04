@@ -6,6 +6,7 @@ using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Presenter.Test
 {
@@ -69,7 +70,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         }
 
         [Test]
-        public void Test_SetFields_CateogryDtoIsNotNull()
+        public void Test_SetFields_CateogryIsNotNull()
         {
             SeriePropertyPresenter seriePropertyService = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             m_MockSeriePropertyPresenter.Serie = new Serie{ Id = 0, Name = "Test", Description = "Desc", PublicationYear = new DateTime(2000, 1, 1),
@@ -80,15 +81,15 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual("Desc", m_MockSeriePropertyPresenter.Description.Text);
             Assert.AreEqual("2000", m_MockSeriePropertyPresenter.PublicationYear.Text);
 
-            ICategoryService categoryService = new CategoryService();
-            var categoryDto = categoryService.GetById(1);
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
+            var category = categoryService.GetById(1);
 
-            Assert.AreEqual(categoryDto.Id.ToString(), m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Value);
-            Assert.AreEqual(categoryDto.Name, m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Text);
+            Assert.AreEqual(category.Id.ToString(), m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Value);
+            Assert.AreEqual(category.Name, m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Text);
         }
 
         [Test]
-        public void Test_SetFields_CategoryDtoIsNull()
+        public void Test_SetFields_CategoryIsNull()
         {
             SeriePropertyPresenter seriePropertyService = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             m_MockSeriePropertyPresenter.Serie = null;
@@ -98,11 +99,11 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual(string.Empty, m_MockSeriePropertyPresenter.Description.Text);
             Assert.AreEqual(string.Empty, m_MockSeriePropertyPresenter.PublicationYear.Text);
 
-            ICategoryService categoryService = new CategoryService();
-            var categoryDto = categoryService.GetById(1);
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
+            var category = categoryService.GetById(1);
 
-            Assert.AreEqual(categoryDto.Id.ToString(), m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Value);
-            Assert.AreEqual(categoryDto.Name, m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Text);
+            Assert.AreEqual(category.Id.ToString(), m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Value);
+            Assert.AreEqual(category.Name, m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Text);
         }
 
         [Test]
@@ -115,11 +116,11 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual(string.Empty, m_MockSeriePropertyPresenter.Description.Text);
             Assert.AreEqual(string.Empty, m_MockSeriePropertyPresenter.PublicationYear.Text);
             
-            ICategoryService categoryService = new CategoryService();
-            var categoryDto = categoryService.GetById(1);
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
+            var category = categoryService.GetById(1);
 
-            Assert.AreEqual(categoryDto.Id.ToString(), m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Value);
-            Assert.AreEqual(categoryDto.Name, m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Text);
+            Assert.AreEqual(category.Id.ToString(), m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Value);
+            Assert.AreEqual(category.Name, m_MockSeriePropertyPresenter.ChooseCategory.SelectedItem.Text);
         }
 
         [Test]
@@ -182,43 +183,43 @@ namespace KinderSurprise.MVP.Presenter.Test
             Assert.AreEqual(string.Empty, m_MockSeriePropertyPresenter.ErrorMessage.Text);
 
             //Revert saving
-            ISerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             var series = serieService.GetAll();
             serieService.DeleteById(series[series.Count - 1].Id);
         }
 
         [Test]
-        public void Test_Delete_IfSerieDtoIsNull()
+        public void Test_Delete_IfSerieIsNull()
         {
             m_MockSeriePropertyPresenter.Serie = null;
 
-            ISerieService serieService = new SerieService();
-            var serieDtos = serieService.GetAll();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
+            var series = serieService.GetAll();
 
             SeriePropertyPresenter seriePropertyPresenter = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             seriePropertyPresenter.Delete();
 
-            Assert.AreEqual(serieDtos.Count, serieService.GetAll().Count);
+            Assert.AreEqual(series.Count, serieService.GetAll().Count);
         }
 
         [Test]
-        public void Test_Delete_IfSerieDtoIsNotNull()
+        public void Test_Delete_IfSerieIsNotNull()
         {
-            ISerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
 			int oldSerieCount = serieService.GetAll().Count;
 			serieService.SaveOrUpdate(new Serie{ Id = 0, Name = "Test", Description = "test", PublicationYear = DateTime.Today, Category = new Category { Id = 1}}); 
             
-			var serieDtos = serieService.GetAll();
+			var series = serieService.GetAll();
 			
-			Assert.AreEqual(oldSerieCount + 1, serieDtos.Count);
-			m_MockSeriePropertyPresenter.Serie = serieDtos.OrderBy(x => x.Id).LastOrDefault();
+			Assert.AreEqual(oldSerieCount + 1, series.Count);
+			m_MockSeriePropertyPresenter.Serie = series.OrderBy(x => x.Id).LastOrDefault();
 
             
 
             SeriePropertyPresenter seriePropertyPresenter = new SeriePropertyPresenter(m_MockSeriePropertyPresenter);
             seriePropertyPresenter.Delete();
 
-            Assert.AreEqual(serieDtos.Count-1, serieService.GetAll().Count);
+            Assert.AreEqual(series.Count-1, serieService.GetAll().Count);
         }
     }
 }

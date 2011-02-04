@@ -21,6 +21,9 @@ namespace KinderSurprise.BootStrap
 				
 				// register model
 				x.For<ICategoryService>().Use<CategoryService>();
+				x.For<IFigurService>().Use<FigurService>();
+				x.For<ISerieService>().Use<SerieService>();
+				x.For<IValidator>().Use<Validator>();
             });
         }
     }

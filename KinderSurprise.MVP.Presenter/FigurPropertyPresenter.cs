@@ -4,6 +4,7 @@ using KinderSurprise.Model;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.MVP.Presenter.Interfaces;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Presenter
 {
@@ -53,7 +54,7 @@ namespace KinderSurprise.MVP.Presenter
 
         private void InitializeCategoryDropDownList()
         {
-            ISerieService serieService = new SerieService();
+            ISerieService serieService = ObjectFactory.GetInstance<ISerieService>();
             List<Serie> series = serieService.GetAll();
 
             /*if (m_FigurPropertyPresenter.Figur == null)
@@ -75,16 +76,16 @@ namespace KinderSurprise.MVP.Presenter
 
         public bool Update(Figur figur)
         {
-            ValidationHandling validationHandling = new ValidationHandling();
+            IValidator validator = ObjectFactory.GetInstance<IValidator>();
             bool isValid = true;
 
-            if (!validationHandling.IsValidString(m_FigurPropertyPresenter.Name.Text))
+            if (!validator.IsValidString(m_FigurPropertyPresenter.Name.Text))
             {
                 m_FigurPropertyPresenter.ErrorMessage.Text = "Bitte geben Sie einen Namen für die Figur ein!" + Environment.NewLine;
                 m_FigurPropertyPresenter.ErrorMessage.Visible = true;
                 isValid = false;
             }
-            if (!validationHandling.IsValidPrice(m_FigurPropertyPresenter.Price.Text))
+            if (!validator.IsValidPrice(m_FigurPropertyPresenter.Price.Text))
             {
                 m_FigurPropertyPresenter.ErrorMessage.Text += "Bitte geben Sie einen gültigen Preis ein!" + Environment.NewLine;
                 m_FigurPropertyPresenter.ErrorMessage.Visible = true;
@@ -94,7 +95,7 @@ namespace KinderSurprise.MVP.Presenter
             if (!isValid)
                 return false;
 
-            IFigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             figurService.SaveOrUpdate(new Figur { Id = figur == null ? 0 : figur.Id, Name = m_FigurPropertyPresenter.Name.Text,
                                                    Description = m_FigurPropertyPresenter.Description.Text,
                                                    Price = Convert.ToDecimal(m_FigurPropertyPresenter.Price.Text),
@@ -109,7 +110,7 @@ namespace KinderSurprise.MVP.Presenter
             if (figur == null)
                 return;
 
-            IFigurService figurService = new FigurService();
+            IFigurService figurService = ObjectFactory.GetInstance<IFigurService>();
             figurService.DeleteById(figur.Id);
 
         }

@@ -76,8 +76,8 @@ namespace KinderSurprise.MVP.View
 
         public Serie Serie 
         {
-            get { return (Serie) Session["SerieDto"]; }
-            set { Session["SerieDto"] = value; }
+            get { return (Serie) Session["Serie"]; }
+            set { Session["Serie"] = value; }
         }
 
         #endregion

@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using KinderSurprise.BootStrap;
 using KinderSurprise.Model;
+using KinderSurprise.MVP.Model.Interfaces;
 using NUnit.Framework;
+using StructureMap;
 
 namespace KinderSurprise.MVP.Model.Test
 {
@@ -18,7 +20,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetAll()
         {
-            CategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             var categories = categoryService.GetAll();
 
             Assert.AreEqual(3, categories.Count);
@@ -27,7 +29,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetById_NotValidId()
         {
-            CategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             var category = categoryService.GetById(-1);
 
             Assert.IsNull(category);
@@ -36,7 +38,7 @@ namespace KinderSurprise.MVP.Model.Test
         [Test]
         public void Test_GetById_ValidId()
         {
-            CategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             var category = categoryService.GetById(1);
 
             Assert.IsNotNull(category);
@@ -46,27 +48,27 @@ namespace KinderSurprise.MVP.Model.Test
         }
 
         [Test]
-        public void Test_SaveNewCategoryDto()
+        public void Test_SaveNewCategory()
         {
-            CategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             Category category = new Category { Id = 0, Name = "New", Description = "Desc" };
 
             categoryService.SaveOrUpdate(category);
 
-            var theNewCategoryDto = categoryService.GetAll().LastOrDefault();
+            var theNewCategory = categoryService.GetAll().LastOrDefault();
 
-            Assert.AreEqual("New", theNewCategoryDto.Name);
-            Assert.AreEqual("Desc", theNewCategoryDto.Description);
+            Assert.AreEqual("New", theNewCategory.Name);
+            Assert.AreEqual("Desc", theNewCategory.Description);
 
-            categoryService.DeleteById(theNewCategoryDto.Id);
+            categoryService.DeleteById(theNewCategory.Id);
 
-            Assert.IsNull(categoryService.GetById(theNewCategoryDto.Id));
+            Assert.IsNull(categoryService.GetById(theNewCategory.Id));
         }
 
         [Test]
-        public void Test_UpdateExistingDto()
+        public void Test_UpdateExistingCategory()
         {
-            CategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             Category category = categoryService.GetById(1);
 
             Assert.AreEqual("Plastik", category.Name);
@@ -85,21 +87,21 @@ namespace KinderSurprise.MVP.Model.Test
         }
 
         [Test]
-        public void Test_DeleteCategoryDto()
+        public void Test_DeleteCategory()
         {
-            CategoryService categoryService = new CategoryService();
+            ICategoryService categoryService = ObjectFactory.GetInstance<ICategoryService>();
             Category category = new Category{ Id = 0, Name = "New", Description = "Desc" };
 
             categoryService.SaveOrUpdate(category);
 
-            var newCategoryDto = categoryService.GetAll().LastOrDefault();
+            var newCategory = categoryService.GetAll().LastOrDefault();
 
-            Assert.AreEqual("New", newCategoryDto.Name);
-            Assert.AreEqual("Desc", newCategoryDto.Description);
+            Assert.AreEqual("New", newCategory.Name);
+            Assert.AreEqual("Desc", newCategory.Description);
 
-            categoryService.DeleteById(newCategoryDto.Id);
+            categoryService.DeleteById(newCategory.Id);
 
-            Assert.IsNull(categoryService.GetById(newCategoryDto.Id));
+            Assert.IsNull(categoryService.GetById(newCategory.Id));
         }
     }
 }

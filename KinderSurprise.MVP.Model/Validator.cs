@@ -1,6 +1,6 @@
 namespace KinderSurprise.MVP.Model
 {
-    public class ValidationHandling
+    public class Validator : IValidator
     {
         public bool IsValidString(string stringToTest)
         {
