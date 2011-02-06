@@ -10,7 +10,8 @@ namespace KinderSurprise.DAL.Interfaces
 		List<T> GetAll();
 		T GetById(int id);
 		void DeleteById(int id);
-		void Add(T dto);
+		int Add(T dto);
+		void Update(T dto);
 	}
 }
 

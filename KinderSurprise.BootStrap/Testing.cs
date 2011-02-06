@@ -1,4 +1,5 @@
 using KinderSurprise.DAL;
+using KinderSurprise.DAL.Fake;
 using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
@@ -15,7 +16,7 @@ namespace KinderSurprise.BootStrap
 				// register repository classes
                 x.For<IInstructionsRepository>().Use<InstructionsRepository>();
 				x.For<IFigurRepository>().Use<FigurRepository>();
-				x.For<ICategoryRepository>().Use<CategoryRepository>();
+				x.For<ICategoryRepository>().Use<FakeCategoryRepository>();
 				x.For<IPictureRepository>().Use<PictureRepository>();
 				x.For<ISerieRepository>().Use<SerieRepository>();
 				

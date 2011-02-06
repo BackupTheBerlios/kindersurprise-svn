@@ -1,39 +1,71 @@
+using System.Collections.Generic;
 using KinderSurprise.BootStrap;
+using KinderSurprise.DAL.Test;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.Model;
 using NUnit.Framework;
 using StructureMap;
 
-namespace KinderSurprise.DAL.Test
+namespace KinderSurprise.DAL.TestInstructionsRepos
 {
 	[TestFixture]
-	public class TestInstructionsRepository
+	public class WhenRequestingInstructionForFigurByIdWithoutInstruction : RepositoryBase
 	{
+		private IInstructionsRepository m_InstructionsRepository;
+		private List<Instructions> m_Instructions;
+		
 		[SetUp]
-		public void Initialize()
+		protected override void Preparation ()
 		{
-			Productive.Initialize();
+			m_InstructionsRepository = ObjectFactory.GetInstance<IInstructionsRepository>();
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_Instructions = m_InstructionsRepository.GetByFigurId(1);
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
 		}
 		
 		[Test]
-		public void Test_GetByFigurId_IdDoesNotExist()
+		public void ShouldHaveNoInstructions()
 		{
-			IInstructionsRepository instructionsRepository = 
-				ObjectFactory.GetInstance<IInstructionsRepository>();
-			
-			var instructions = instructionsRepository.GetByFigurId(1);
-			
-			Assert.AreEqual(0, instructions.Count);
+			Assert.AreEqual(0, m_Instructions.Count);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenRequestingInstructionForFigurByIdWithInstruction : RepositoryBase
+	{
+		private IInstructionsRepository m_InstructionsRepository;
+		private List<Instructions> m_Instructions;
+		
+		[SetUp]
+		protected override void Preparation ()
+		{
+			m_InstructionsRepository = ObjectFactory.GetInstance<IInstructionsRepository>();
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_Instructions = m_InstructionsRepository.GetByFigurId(3);
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
 		}
 		
 		[Test]
-		public void Test_GetByFigurId_Valid()
+		public void ShouldHaveInstructions()
 		{
-			IInstructionsRepository instructionsRepository = 
-				ObjectFactory.GetInstance<IInstructionsRepository>();
-			var instructions = instructionsRepository.GetByFigurId(3);
-			
-			Assert.AreEqual(2, instructions[0].Id);
-			Assert.AreEqual("instruction2", instructions[0].Name);
+			Assert.AreEqual(2, m_Instructions[0].Id);
+			Assert.AreEqual("instruction2", m_Instructions[0].Name);
 		}
 	}
 }

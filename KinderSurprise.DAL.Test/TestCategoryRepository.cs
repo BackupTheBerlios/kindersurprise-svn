@@ -1,154 +1,299 @@
 using System.Collections.Generic;
 using KinderSurprise.BootStrap;
 using KinderSurprise.DAL.Interfaces;
+using KinderSurprise.DAL.Test;
 using KinderSurprise.Model;
 using NUnit.Framework;
 using StructureMap;
 
-namespace KinderSurprise.DAL.Test
+namespace KinderSurprise.DAL.TestCategoryRepos
 {
-    [TestFixture]
-	public class TestCategoryRepository
+	[TestFixture]
+	public class WhenCheckingIfValidCategoryExist : RepositoryBase
     {
+		private const int CategoryId = 1;
+		private ICategoryRepository m_CategoryRepository;
+		private bool m_ReturnValue;
+		
 		[SetUp]
-		public void Initialize()
+		protected override void Preparation ()
 		{
-			Testing.Initialize();	
+			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
+			Because();
 		}
 		
-        [Test]
-        public void Test_ExistCategoryId_Exist()
-        {
-            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-            const int categoryId = 1;
+		protected override void Because ()
+		{
+			m_ReturnValue = m_CategoryRepository.HasId(CategoryId);
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
+		}
+		
+		[Test]
+		public void ShouldReturnTrue()
+		{
+			Assert.IsTrue(m_ReturnValue);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenCheckingIfInvalidCategoryExist : RepositoryBase
+    {
+		private const int CategoryId = -1;
+		private ICategoryRepository m_CategoryRepository;
+		private bool m_ReturnValue;
+		
+		[SetUp]
+		protected override void Preparation ()
+		{
+			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_ReturnValue = m_CategoryRepository.HasId(CategoryId);
+		}
+			
+		[TearDown]
+		protected override void TearDown ()
+		{
+		}
+		
+		[Test]
+		public void ShouldReturnFalse()
+		{
+			Assert.IsFalse(m_ReturnValue);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenRequestingAllCategories : RepositoryBase
+    {
+		private ICategoryRepository m_CategoryRepository;
+		private List<Category> m_Categories;
+		
+		[SetUp]
+		protected override void Preparation ()
+		{
+			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_Categories = m_CategoryRepository.GetAll();
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
+		}
+		
+		[Test]
+		public void ShouldContainAllData()
+		{
+			Assert.AreEqual(3, m_Categories.Count);
 
-            Assert.IsTrue(categoryRepository.HasId(categoryId));
-        }
+            Assert.AreEqual(1, m_Categories[0].Id);
+            Assert.AreEqual("Plastik", m_Categories[0].Name);
+            Assert.AreEqual("Alles was plaste ist", m_Categories[0].Description);
 
-        [Test]
-        public void Test_ExistCategoryId_DoesntExist()
-        {
-            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-            const int categoryId = -1;
+            Assert.AreEqual(2, m_Categories[1].Id);
+            Assert.AreEqual("Figur", m_Categories[1].Name);
+            Assert.AreEqual("Alle Figuren", m_Categories[1].Description);
 
-            Assert.IsFalse(categoryRepository.HasId(categoryId));
-        }
-
-        [Test]
-        public void Test_GetAllCategories()
-        {
-            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-
-            List<Category> categories = categoryRepository.GetAll();
-
-            Assert.AreEqual(3, categories.Count);
-
-            Assert.AreEqual(1, categories[0].Id);
-            Assert.AreEqual("Plastik", categories[0].Name);
-            Assert.AreEqual("Alles was plaste ist", categories[0].Description);
-
-            Assert.AreEqual(2, categories[1].Id);
-            Assert.AreEqual("Figur", categories[1].Name);
-            Assert.AreEqual("Alle Figuren", categories[1].Description);
-
-            Assert.AreEqual(3, categories[2].Id);
-            Assert.AreEqual("Zinn", categories[2].Name);
-            Assert.AreEqual("Zinnfiguren", categories[2].Description);
-        }
-
-        [Test]
-        public void Test_GetCategoryById_ValidId()
-        {
-            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-            
-            const int categoryId = 1;
-
-            Category category = categoryRepository.GetById(categoryId);
-
-            Assert.AreEqual(categoryId, category.Id);
-            Assert.AreEqual("Plastik", category.Name);
-            Assert.AreEqual("Alles was plaste ist", category.Description);
-        }
-
-        [Test]
-        public void Test_GetCategoryById_NotValidId()
-        {
-            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-
-            const int categoryId = -1;
-
-            Category category = categoryRepository.GetById(categoryId);
-
-            Assert.IsNull(category);
-        }
-
-        [Test]
-        public void Test_AddCategory()
-        {
-            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-
-            Category category = new Category 
+            Assert.AreEqual(3, m_Categories[2].Id);
+            Assert.AreEqual("Zinn", m_Categories[2].Name);
+            Assert.AreEqual("Zinnfiguren", m_Categories[2].Description);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenRequestingValidCategoryById : RepositoryBase
+    {
+		private const int CategoryId = 1;
+		private ICategoryRepository m_CategoryRepository;
+		private Category m_ReturnValue;
+		
+		[SetUp]
+		protected override void Preparation ()
+		{
+			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_ReturnValue = m_CategoryRepository.GetById(CategoryId);
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
+		}
+		
+		[Test]
+		public void ShouldReturnTheCategory()
+		{
+			Assert.AreEqual(CategoryId, m_ReturnValue.Id);
+            Assert.AreEqual("Plastik", m_ReturnValue.Name);
+            Assert.AreEqual("Alles was plaste ist", m_ReturnValue.Description);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenRequestingInvalidCategoryById : RepositoryBase
+    {
+		private const int CategoryId = -1;
+		private ICategoryRepository m_CategoryRepository;
+		private Category m_ReturnValue;
+		
+		[SetUp]
+		protected override void Preparation ()
+		{
+			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_ReturnValue = m_CategoryRepository.GetById(CategoryId);
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
+		}
+		
+		[Test]
+		public void ShouldReturnNullObject()
+		{
+			Assert.IsNull(m_ReturnValue);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenAddingCategory : RepositoryBase
+    {
+		private const int CategoryId = -1;
+		private ICategoryRepository m_CategoryRepository;
+		private Category m_Category;
+		private int m_Id;
+		
+		[SetUp]
+		protected override void Preparation ()
+		{
+			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
+			m_Category = new Category 
 			{ 
 				Id = 0, 
 				Name = "Test", 
 				Description = "Test" 
 			};
-            categoryRepository.Add(category);
-
-            int categoryId = categoryRepository.GetAll().FindLast(x => x.Id > 0).Id;
-            Category newCategory = categoryRepository.GetById(categoryId);
-
-            Assert.IsNotNull(newCategory);
-            Assert.AreEqual(categoryId, newCategory.Id);
-            Assert.AreEqual("Test", newCategory.Name);
-            Assert.AreEqual("Test", newCategory.Description);
-
-            int categoryIdToDelete = categoryRepository.GetAll().FindLast(x => x.Id > 0).Id;
-
-            categoryRepository.DeleteById(categoryIdToDelete);
-
-        }
-
-        [Test]
-        public void Test_UpdateCategory()
-        {
-            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-
-            Category category = new Category { Id = 0, Name = "Figur", Description = "Alle Figuren" };
-            categoryRepository.Add(category);
-            
-            int categoryId = categoryRepository.GetAll().FindLast(x => x.Id > 0).Id;
-            category = categoryRepository.GetById(categoryId);
-            category.Name = "Test";
-            category.Description = "Test";
-            
-            categoryRepository.Update(category);
-
-            Category newCategory = categoryRepository.GetById(categoryId);
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_Id = m_CategoryRepository.Add(m_Category);
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
+			m_CategoryRepository.DeleteById(m_Id);
+		}
+		
+		[Test]
+		public void CategoryShouldBeAddedToTheDatabase()
+		{
+			Category newCategory = m_CategoryRepository.GetById(m_Id);
 
             Assert.IsNotNull(newCategory);
-            Assert.AreEqual(categoryId, newCategory.Id);
+            Assert.AreEqual(m_Id, newCategory.Id);
             Assert.AreEqual("Test", newCategory.Name);
             Assert.AreEqual("Test", newCategory.Description);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenUpdatingCategory : RepositoryBase
+    {
+		private const int CategoryId = -1;
+		private ICategoryRepository m_CategoryRepository;
+		private Category m_Category;
+		private int m_Id;
+		
+		[SetUp]
+		protected override void Preparation ()
+		{
+			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
+			m_Category = new Category { Id = 0, Name = "Figur", Description = "Alle Figuren" };
+			m_Id = m_CategoryRepository.Add(m_Category);
+			m_Category = m_CategoryRepository.GetById(m_Id);
+            m_Category.Name = "Test";
+            m_Category.Description = "Test";
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_CategoryRepository.Update(m_Category);
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
+			m_CategoryRepository.DeleteById(m_Id);
+		}
+		
+		[Test]
+		public void CategoryShouldContainTheNewData()
+		{
+			Category category = m_CategoryRepository.GetById(m_Id);
 
-            categoryRepository.DeleteById(categoryId);
-
-            Assert.IsFalse(categoryRepository.HasId(categoryId));
-        }
-
-        [Test]
-        public void Test_DeleteCategoryById()
-        {
-            ICategoryRepository categoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-
-            Category category = new Category { Id = 0, Name = "Test", Description = "Test" };
-            categoryRepository.Add(category);
-
-            int categoryId = categoryRepository.GetAll().FindLast(x => x.Id > 0).Id;
-            
-            categoryRepository.DeleteById(categoryId);
-
-            Assert.IsFalse(categoryRepository.HasId(categoryId));
-        }
-    }
+            Assert.IsNotNull(category);
+            Assert.AreEqual(m_Id, category.Id);
+            Assert.AreEqual("Test", category.Name);
+            Assert.AreEqual("Test", category.Description);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenDeletingCategory : RepositoryBase
+    {
+		private const int CategoryId = -1;
+		private ICategoryRepository m_CategoryRepository;
+		private Category m_Category;
+		private int m_Id;
+		
+		[SetUp]
+		protected override void Preparation ()
+		{
+			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
+			m_Category = new Category { Id = 0, Name = "Test", Description = "Test" };
+			m_Id = m_CategoryRepository.Add(m_Category);
+			Because();
+		}
+		
+		protected override void Because ()
+		{
+			m_CategoryRepository.DeleteById(m_Id);
+		}
+		
+		[TearDown]
+		protected override void TearDown ()
+		{
+		}
+		
+		[Test]
+		public void CategoryShouldContainTheNewData()
+		{
+			Assert.IsFalse(m_CategoryRepository.HasId(m_Id));
+		}
+	}
 }

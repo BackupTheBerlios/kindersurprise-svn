@@ -68,6 +68,7 @@
     <Compile Include="TestSerieRepository.cs" />
     <Compile Include="TestPictureRepository.cs" />
     <Compile Include="TestInstructionsRepository.cs" />
+    <Compile Include="RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.DAL\KinderSurprise.DAL.csproj">

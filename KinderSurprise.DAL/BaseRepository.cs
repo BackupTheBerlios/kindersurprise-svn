@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using KinderSurprise.DAL.Interfaces;
 using KinderSurprise.Model;
 using NHibernate;
 
@@ -49,7 +50,7 @@ namespace KinderSurprise.DAL
             }
         }
 		
-		public void Add(T dto)
+		public int Add(T dto)
         {
             using (ISession session = SessionBase.OpenSession())
             {
@@ -59,6 +60,8 @@ namespace KinderSurprise.DAL
                     transaction.Commit();
                 }
             }
+			
+			return dto.Id;
         }
 		
 		public void Update(T dto)

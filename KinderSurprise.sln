@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderSurprise.Model", "Kin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderSurprise.BootStrap", "KinderSurprise.BootStrap\KinderSurprise.BootStrap.csproj", "{CF3B425E-4B3A-4B0C-BD00-D6EF14B28709}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderSurprise.DAL.Fake", "KinderSurprise.DAL.Fake\KinderSurprise.DAL.Fake.csproj", "{A06701DE-9492-4FED-9926-228BDC65812E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{854AD099-4D76-48AC-A859-C979F932A49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{854AD099-4D76-48AC-A859-C979F932A49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{854AD099-4D76-48AC-A859-C979F932A49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A06701DE-9492-4FED-9926-228BDC65812E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A06701DE-9492-4FED-9926-228BDC65812E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A06701DE-9492-4FED-9926-228BDC65812E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A06701DE-9492-4FED-9926-228BDC65812E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A7182705-AD37-4F16-A8FC-6FE1C610CC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7182705-AD37-4F16-A8FC-6FE1C610CC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7182705-AD37-4F16-A8FC-6FE1C610CC03}.Release|Any CPU.ActiveCfg = Release|Any CPU

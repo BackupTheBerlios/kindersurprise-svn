@@ -3,14 +3,7 @@ using KinderSurprise.Model;
 
 namespace KinderSurprise.DAL.Interfaces
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IBaseRepository<Category>
     {
-        bool HasId(int categoryId);
-        List<Category> GetAll();
-        Category GetById(int categoryId);
-        void DeleteById(int categoryId);
-        void Add(Category category);
-        void Update(Category category);
-
     }
 }

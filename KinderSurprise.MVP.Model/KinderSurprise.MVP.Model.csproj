@@ -52,6 +52,8 @@
     <Compile Include="Validator.cs" />
     <Compile Include="Interfaces\IPictureService.cs" />
     <Compile Include="Interfaces\IValidator.cs" />
+    <Compile Include="BaseServices.cs" />
+    <Compile Include="Interfaces\IBaseServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.DAL\KinderSurprise.DAL.csproj">
