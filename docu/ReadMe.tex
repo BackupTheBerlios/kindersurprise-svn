@@ -9,7 +9,7 @@
 \section*{KinderSurprise}
 
 Date of Create: 28.01.2011\\
-Date of last Update: 04.02.2011\\
+Date of last Update: 08.02.2011\\
 Author: Enrico Gallus\\
 
 Supposed to be a web-based c\# application used to save and organize a
@@ -24,9 +24,10 @@ kindersurprise collection.
   figures
   \item make every item editable, deletable and addable
   \item every serie and figure should consist of a store
-  \item import/export functionality for all the data
   \item support images for series and figures
+  \item import/export functionality for all the data
   \item has ebay-interface to sell figures/series
+  \item offers all functions of a customer-based trading center
 \end{itemize}
 
 \subsection{Developing Tools}
@@ -48,10 +49,11 @@ for Mono: ``deb http://debian.meebey.net/pkg-mono /''
 
 \subsection{Patterns}
 \begin{itemize}
-  \item MVP
+  \item Model-View-Presenter
   \item Dependency Injection
   \item N-Tier
-  \item TDD
+  \item Test-Driven-Development
+  \item UnitOfWork
 \end{itemize}
 
 \subsection{Installation}
@@ -127,4 +129,87 @@ If you want to commit any changes. Please be sure there are no broken unittests.
 I'm still looking for a codecoverage tool under linux which works with c\#. If
 you have any proposal, so please let me know. If there are more developer, maybe
 we can think about using continous integration.
+
+\subsection{Structure and Workaround}
+\subsubsection{View -The GUI}
+The view is the layer which provides the graphical user interface
+implemented with asp.net framework.
+The layer currently consists of one default page and an usercontrol for
+category, figur and serie.
+There exists also an account part, but it was automatically generated and should
+be reworked in the future.
+The default page contains a treeview on the left site to organize a view of all
+categories, series and figurs in a relation.
+If an element in the treeview was clicked the corresponding usercontrol should
+be open on the default page.
+Here you can work with the items, e.g. edit the properties. On the other site
+you sould be able to delete, add and move the item to another parent item.
+\newline
+Each page and usercontrol contains all properties (user control elements) as
+encapsulation. There is no business logic in this layer. All handling should be
+done by the presenter.
+\newline
+Featues:
+\begin{itemize}
+  \item Think about an icon for the application
+  \item The account
+  \begin{itemize}
+    \item Register and Login should be implemented in c\# and using less
+    javascript (none if possible)
+    \item Think of a secure way to implement the login handling
+    (password-encrypting-decrypting, ..)
+    \item Different Options should be activated if the user is logged in.
+    \begin{itemize}
+      \item layout for the account, e.g. change personal information or
+      password
+      \item The trading function should be activated
+      \item own message system to let user communicate with each other
+    \end{itemize}
+  \end{itemize}
+  \item User notification if he wants to delete an item which has still childs.
+\end{itemize}
+
+\subsubsection{The presenter}
+The interfaces defined in the presenter layer contain all the user controls of
+our gui. In this layer we can handle the changes of the layout of the user
+controls and use the model for the business behaviour.
+
+\subsubsection{The model}
+The model contains service methods for the repositories. And business code like
+the picturehandling, an validator and so on.
+
+\subsubsection{DAL - data access layer}
+The data access layer got on class for each table in the database.
+This is the lowest layer we can reach. NHibernate is used to handle the object
+- relational mapping between our application and the database in the background.
+The Code is in such a way encapsulated that changing the dbms does not
+require code changes.
+The repositories provide one method for one process (save, update, delete,
+getting by id or more complex queries.
+
+\subsubsection{The workaround}
+The user interact with our application.
+The view call the presenter and will tell the current state of the user control
+elements and so on. The presenter delegates the task to the model and the DAL to
+collect and edit the information. The dal is an interface for the database. The
+model is the workaround for our application.
+
+\subsubsection{Database model}
+The Layer Model contains the objects we are using in the application.
+This objects are used by the mapper.
+
+\subsubsection{Mapper}
+The mapper is using the FluentNHibernate framework to ``connect'' our objects
+with the corresponding relational tables in the database.
+
+\subsubsection{Bootstrap}
+Bootstrap contains our solution for the dependency injection pattern.
+There are a productive and a testing container.
+
+\subsubsection{NHBootstrap}
+This layer contains our implementation of the unit of work pattern.
+
+\subsubsection{Test}
+Some projects have an corresponding test project.
+Here is the testing of the behaviour of our units.
 \end{document}
