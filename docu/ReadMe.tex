@@ -58,15 +58,49 @@ for Mono: ``deb http://debian.meebey.net/pkg-mono /''
 
 \subsection{Installation}
 
-\subsubsection{Preparation}
-
-Install the compontents mentioned in the Section \"Developing Tools\".
+\subsubsection{Mono}
+To use the C\# programming language and asp.net under linux we need to install
+a special framework. This framework is called mono.
+You can install it using the following command with root rights:
+\begin{verbatim}
+apt-get install mono-complete
+\end{verbatim}
+An alternative under windows to visual studio is MonoDevelop. MonoDevelop is a
+Integrated Development Enviroment especially for C\#.
+Installation can be done with:
+\begin{verbatim}
+apt-get install monodevelop
+\end{verbatim}
 
 \subsubsection{VCS}
+Get the sourcecode of the project via Berlios.
+I recommend the rabbitvcs-nautilus package from the squeeze distribution.
+Handling vcs can't be easier and you can handle everything with nautilus.
+To install please type in
+\begin{verbatim}
+apt-get install rabbitvcs-nautilus
+\end{verbatim}
+You need root rights to execute this command.
 
-Get the Source Code from the project via Berlios.
-I recommend the rabbitvcs-nautilus package from the distribution. Handling vcs
-can't be easier and you can handle everything over nautilus.
+\subsubsection{Setup DBMS}
+The KinderSurprise application is using the mysql database managament system.
+There is also a possibility to use the application with any other dbms, but to
+keep the preparation as easy as possible, i will explain how to setup
+mysql-server and the client.
+Open a command line and get root rights.
+Type in the following command 
+\begin{verbatim}
+apt-get install mysql-server mysql-client
+\end{verbatim} 
+During the install process mysql will ask you to setup a root password.
+Write down this password, so you can never ever loose it.
+If the installation is finished you can use the command mysql to login to any
+database.
+I use phpmyadmin, a web gui for mysql. Installation is pretty easy:
+\begin{verbatim}
+apt-get install phpmyadmin
+\end{verbatim}
+
 
 \subsubsection{Setup Database}
 The first step is to set up the database and testdatabase with MySql.
@@ -130,7 +164,20 @@ I'm still looking for a codecoverage tool under linux which works with c\#. If
 you have any proposal, so please let me know. If there are more developer, maybe
 we can think about using continous integration.
 
-\subsection{Structure and Workaround}
+\subsection{Workaround and Structure}
+\subsubsection{The workaround}
+The user interact with our application.
+The view call the presenter and will tell the current state of the user control
+elements and so on. The presenter delegates the task to the model for the
+business logic and the DAL to collect and edit the information from the
+database. 
+The dal is an interface for the database. The model is the workaround for our application.
+The Bootstrap layer is the implementation of the dependency injection pattern
+and the NHBootstrap layer represents the unit of work pattern for NHibernate.
+The Test-Layers are the programmatically documentation.
+DAL.Fake will be used to fake the database data and make unittests independend
+of the database.
+
 \subsubsection{View -The GUI}
 The view is the layer which provides the graphical user interface
 implemented with asp.net framework.
@@ -186,13 +233,6 @@ The Code is in such a way encapsulated that changing the dbms does not
 require code changes.
 The repositories provide one method for one process (save, update, delete,
 getting by id or more complex queries.
-
-\subsubsection{The workaround}
-The user interact with our application.
-The view call the presenter and will tell the current state of the user control
-elements and so on. The presenter delegates the task to the model and the DAL to
-collect and edit the information. The dal is an interface for the database. The
-model is the workaround for our application.
 
 \subsubsection{Database model}
 The Layer Model contains the objects we are using in the application.
