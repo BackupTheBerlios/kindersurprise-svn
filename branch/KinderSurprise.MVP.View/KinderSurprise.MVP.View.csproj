@@ -38,6 +38,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
