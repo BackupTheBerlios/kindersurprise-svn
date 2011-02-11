@@ -1,0 +1,255 @@
+\documentclass{article}
+
+\begin{document}
+
+\tableofcontents
+
+\newpage
+
+\section*{KinderSurprise}
+
+Date of Create: 28.01.2011\\
+Date of last Update: 08.02.2011\\
+Author: Enrico Gallus\\
+
+Supposed to be a web-based c\# application used to save and organize a
+kindersurprise collection. 
+\subsection{Aim}
+\begin{itemize}
+  \item web based application
+  \item using database to save information
+  \item platform independent
+  \item user-specific acces to the data
+  \item provide a simple system to show information of categories, series and
+  figures
+  \item make every item editable, deletable and addable
+  \item every serie and figure should consist of a store
+  \item support images for series and figures
+  \item import/export functionality for all the data
+  \item has ebay-interface to sell figures/series
+  \item offers all functions of a customer-based trading center
+\end{itemize}
+
+\subsection{Developing Tools}
+I used to work under Debian Testing (Squeeze), using the following Repository
+for Mono: ``deb http://debian.meebey.net/pkg-mono /''
+
+\begin{itemize}
+  \item MonoDevelop v$2.4$
+  \item Mono-Framework
+  \item NHibernate v$2.1.2.4000$
+  \item FluentNHibernate v$1.1$
+  \item MySql v$5.1$
+  \item NUnit v$2.4.7$
+  \item Moq $v4.0.10827$
+  \item NhLambdaExtensions $v1.0.10.0$
+  \item structuremap $v2.6.1$
+  \item rabbitvcs-nautilus
+\end{itemize}
+
+\subsection{Patterns}
+\begin{itemize}
+  \item Model-View-Presenter
+  \item Dependency Injection
+  \item N-Tier
+  \item Test-Driven-Development
+  \item UnitOfWork
+\end{itemize}
+
+\subsection{Installation}
+
+\subsubsection{Mono}
+To use the C\# programming language and asp.net under linux we need to install
+a special framework. This framework is called mono.
+You can install it using the following command with root rights:
+\begin{verbatim}
+apt-get install mono-complete
+\end{verbatim}
+An alternative under windows to visual studio is MonoDevelop. MonoDevelop is a
+Integrated Development Enviroment especially for C\#.
+Installation can be done with:
+\begin{verbatim}
+apt-get install monodevelop
+\end{verbatim}
+
+\subsubsection{VCS}
+Get the sourcecode of the project via Berlios.
+I recommend the rabbitvcs-nautilus package from the squeeze distribution.
+Handling vcs can't be easier and you can handle everything with nautilus.
+To install please type in
+\begin{verbatim}
+apt-get install rabbitvcs-nautilus
+\end{verbatim}
+You need root rights to execute this command.
+
+\subsubsection{Setup DBMS}
+The KinderSurprise application is using the mysql database managament system.
+There is also a possibility to use the application with any other dbms, but to
+keep the preparation as easy as possible, i will explain how to setup
+mysql-server and the client.
+Open a command line and get root rights.
+Type in the following command 
+\begin{verbatim}
+apt-get install mysql-server mysql-client
+\end{verbatim} 
+During the install process mysql will ask you to setup a root password.
+Write down this password, so you can never ever loose it.
+If the installation is finished you can use the command mysql to login to any
+database.
+I use phpmyadmin, a web gui for mysql. Installation is pretty easy:
+\begin{verbatim}
+apt-get install phpmyadmin
+\end{verbatim}
+
+
+\subsubsection{Setup Database}
+The first step is to set up the database and testdatabase with MySql.
+Please create an user for your mysql instance and create a database named
+``kindersurprise'' and ``testkindersurprise''.
+Afterwards open the projectdir and change to the script folder.
+In there you will find all scripts necessary for the database structure. The
+name is organised as date followed by the function.
+Please execute the containing scripts for both databases in chronological order.
+If no errors occured and the structure was created on both databases, than
+please also execute the testscripts in the test database.
+
+\subsubsection{Setup Database Connection}
+Please open the project with MonoDevelop. Use the sln-file in the projectDir to
+open the solution.
+You have to edit the WebTest.config file in the following projects
+\begin{itemize}
+  \item KinderSurprise.DAL.Test
+  \item KinderSurprise.MVP.Model.Test
+  \item KinderSurprise.MVP.Presenter.Test
+\end{itemize}
+Customize the KinderSurpriseConnection String. Set the database name to
+``testkindersurprise'' if you used the name for the testdatabase. Also change
+the ID to the user you have created in the step before. Change the password.\\
+
+Also edit the Web.Config in the KinderSurprise.MVP.View subproject and make the
+same changes but instead of using the testdatabase use ``kindersurprise''.
+
+\subsubsection{Last Step}
+To verify if everything works well, please execute the unittests defined in the
+the three test projects.
+Compile the project and try to start.
+If any problem or error occure, please don't hesitate to contact me.
+
+\subsection{Using .net under Visual Studio}
+If you rather would use visual studio under windows than to use the mono
+framework, you have to change to modify some parts of the project.
+After open the solution file of the project the ui-project will maybe not be
+loaded correctly. If this error occured than you have to modify the solution
+file of the $KinderSurprise.MVP.View$ project like described in the file
+$windows_changes.txt$.
+Please comment out the part existing in the $windows_changes.txt$ in the
+solution file of the $KinderSurprise.MVP.View$. And copy the
+$windows_changes.txt$ content in the soltution file.
+Afterwards reload the project.
+\newline
+On the other side the $Nunit.framework.dll$ does not belong to the lib order.
+Mono is using the class directly from the system. So the references under visual
+studio are not correct. Delete all incorrect references to the dll in all the
+test projects. Copy the Nunit.Framework.dll to the lib directory and
+reference in the test-projects this libary.
+
+\subsection{Workflows}
+\subsubsection{Working with the database}
+If you make changes to the database, please save all the commands to a script
+which can be added to the script-folder. So other developer has it as easy as
+you, to setup the project. No need to mention the filename-specification!?
+\subsubsection{Submitting of Code changes}
+If you want to commit any changes. Please be sure there are no broken unittests.
+I'm still looking for a codecoverage tool under linux which works with c\#. If
+you have any proposal, so please let me know. If there are more developer, maybe
+we can think about using continous integration.
+
+\subsection{Workaround and Structure}
+\subsubsection{The workaround}
+The user interact with our application.
+The view call the presenter and will tell the current state of the user control
+elements and so on. The presenter delegates the task to the model for the
+business logic and the DAL to collect and edit the information from the
+database. 
+The dal is an interface for the database. The model is the workaround for our application.
+The Bootstrap layer is the implementation of the dependency injection pattern
+and the NHBootstrap layer represents the unit of work pattern for NHibernate.
+The Test-Layers are the programmatically documentation.
+DAL.Fake will be used to fake the database data and make unittests independend
+of the database.
+
+\subsubsection{View -The GUI}
+The view is the layer which provides the graphical user interface
+implemented with asp.net framework.
+The layer currently consists of one default page and an usercontrol for
+category, figur and serie.
+There exists also an account part, but it was automatically generated and should
+be reworked in the future.
+The default page contains a treeview on the left site to organize a view of all
+categories, series and figurs in a relation.
+If an element in the treeview was clicked the corresponding usercontrol should
+be open on the default page.
+Here you can work with the items, e.g. edit the properties. On the other site
+you sould be able to delete, add and move the item to another parent item.
+\newline
+Each page and usercontrol contains all properties (user control elements) as
+encapsulation. There is no business logic in this layer. All handling should be
+done by the presenter.
+\newline
+Featues:
+\begin{itemize}
+  \item Think about an icon for the application
+  \item The account
+  \begin{itemize}
+    \item Register and Login should be implemented in c\# and using less
+    javascript (none if possible)
+    \item Think of a secure way to implement the login handling
+    (password-encrypting-decrypting, ..)
+    \item Different Options should be activated if the user is logged in.
+    \begin{itemize}
+      \item layout for the account, e.g. change personal information or
+      password
+      \item The trading function should be activated
+      \item own message system to let user communicate with each other
+    \end{itemize}
+  \end{itemize}
+  \item User notification if he wants to delete an item which has still childs.
+\end{itemize}
+
+\subsubsection{The presenter}
+The interfaces defined in the presenter layer contain all the user controls of
+our gui. In this layer we can handle the changes of the layout of the user
+controls and use the model for the business behaviour.
+
+\subsubsection{The model}
+The model contains service methods for the repositories. And business code like
+the picturehandling, an validator and so on.
+
+\subsubsection{DAL - data access layer}
+The data access layer got on class for each table in the database.
+This is the lowest layer we can reach. NHibernate is used to handle the object
+- relational mapping between our application and the database in the background.
+The Code is in such a way encapsulated that changing the dbms does not
+require code changes.
+The repositories provide one method for one process (save, update, delete,
+getting by id or more complex queries.
+
+\subsubsection{Database model}
+The Layer Model contains the objects we are using in the application.
+This objects are used by the mapper.
+
+\subsubsection{Mapper}
+The mapper is using the FluentNHibernate framework to ``connect'' our objects
+with the corresponding relational tables in the database.
+
+\subsubsection{Bootstrap}
+Bootstrap contains our solution for the dependency injection pattern.
+There are a productive and a testing container.
+
+\subsubsection{NHBootstrap}
+This layer contains our implementation of the unit of work pattern.
+
+\subsubsection{Test}
+Some projects have an corresponding test project.
+Here is the testing of the behaviour of our units.
+\end{document}

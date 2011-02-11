@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <UnitTestResult>
+      <TestDate>2011-02-03T22:18:04</TestDate>
+      <Status>Success Failure</Status>
+      <TotalFailures>40</TotalFailures>
+      <TotalSuccess>120</TotalSuccess>
+      <TotalIgnored>0</TotalIgnored>
+      <Time />
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2011-02-03T22:19:16</TestDate>
+      <Status>Success Failure</Status>
+      <TotalFailures>40</TotalFailures>
+      <TotalSuccess>120</TotalSuccess>
+      <TotalIgnored>0</TotalIgnored>
+      <Time />
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2011-02-03T22:20:03</TestDate>
+      <Status>Success Failure</Status>
+      <TotalFailures>87</TotalFailures>
+      <TotalSuccess>73</TotalSuccess>
+      <TotalIgnored>0</TotalIgnored>
+      <Time />
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2011-02-03T22:20:30</TestDate>
+      <Status>Success Failure</Status>
+      <TotalFailures>40</TotalFailures>
+      <TotalSuccess>120</TotalSuccess>
+      <TotalIgnored>0</TotalIgnored>
+      <Time />
+    </UnitTestResult>
+    <UnitTestResult>
+      <TestDate>2011-02-03T22:20:56</TestDate>
+      <Status>Success</Status>
+      <TotalFailures>0</TotalFailures>
+      <TotalSuccess>160</TotalSuccess>
+      <TotalIgnored>0</TotalIgnored>
+      <Time />
+    </UnitTestResult>
+  </Results>
+  <Tests />
+</TestRecord>

@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CF3B425E-4B3A-4B0C-BD00-D6EF14B28709}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>KinderSurprise.BootStrap</RootNamespace>
+    <AssemblyName>KinderSurprise.BootStrap</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\structuremap_v2.6.1\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KinderSurprise.MVP.Presenter\KinderSurprise.MVP.Presenter.csproj">
+      <Project>{431C4DA1-C2FC-409E-89D5-99A0F599E71B}</Project>
+      <Name>KinderSurprise.MVP.Presenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KinderSurprise.MVP.Model\KinderSurprise.MVP.Model.csproj">
+      <Project>{CDC97DAE-3879-44B4-91D5-2926D375AED1}</Project>
+      <Name>KinderSurprise.MVP.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KinderSurprise.Model\KinderSurprise.Model.csproj">
+      <Project>{E831D0AF-40F4-4348-95C9-80C7D869A76E}</Project>
+      <Name>KinderSurprise.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KinderSurprise.Repository\KinderSurprise.Repository.csproj">
+      <Project>{5DA861F2-86A5-4327-AE6E-1712FEE99B82}</Project>
+      <Name>KinderSurprise.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KinderSurprise.RepositoryImpl\KinderSurprise.RepositoryImpl.csproj">
+      <Project>{F035EAD8-28ED-4398-A61E-CF1054B26FD9}</Project>
+      <Name>KinderSurprise.RepositoryImpl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Testing.cs" />
+    <Compile Include="Productive.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

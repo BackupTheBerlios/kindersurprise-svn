@@ -1,0 +1,47 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ctype="Workbench">
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" />
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>InstructionsRepository.&lt;GetByFigurId&gt;c__AnonStorey3</Value>
+          <Value>Click here to add a new watch</Value>
+        </State>
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.Model.Test/TestSchema.cs" line="38" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestPictureRepository.cs" line="73" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.MVP.Model.Test/TestFigurService.cs" line="116" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Fake/FakeFigurRepository.cs" line="40" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="186" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="191" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="204" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="211" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="217" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="237" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="248" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="254" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.NHBootstrap/UnitOfWorkFactory.cs" line="19" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.NHBootstrap/UnitOfWorkFactory.cs" line="21" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestFigurRepository.cs" line="310" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore">
+    <Watch file="KinderSurprise.DAL.Test/TestInstructionsRepository.cs" line="22" offsetX="976" offsetY="378" expression="IInstructionsRepository" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>

@@ -1,0 +1,309 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="854AD099-4D76-48AC-A859-C979F932A49D/f:TestFigurPropertyService.cs" caret="0" fromTop="0" />
+      <File id="854AD099-4D76-48AC-A859-C979F932A49D/f:TestCategoryPropertyPresenter.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/f:UserControlPresenter.cs" caret="60" fromTop="1" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/f:TreeViewPresenter.cs" caret="109" fromTop="3" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/f:SeriePropertyPresenter.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/f:MultiViewPresenter.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/f:FigurPropertyPresenter.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/f:CategoryPropertyPresenter.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/d:Interfaces/f:ICategoryControl.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/d:Interfaces/f:ICategoryPropertyPresenter.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/d:Interfaces/f:IFigurControl.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/d:Interfaces/f:IFigurPropertyPresenter.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/d:Interfaces/f:IMultiView.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/d:Interfaces/f:ISerieControl.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/d:Interfaces/f:ISeriePropertyPresenter.cs" caret="0" fromTop="0" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/d:Interfaces/f:ITreeView.cs" caret="0" fromTop="0" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:SerieService.cs" caret="0" fromTop="0" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:PictureHandler.cs" caret="308" fromTop="10" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:FigurService.cs" caret="0" fromTop="0" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:CategoryService.cs" caret="107" fromTop="3" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:IBaseServices.cs" caret="110" fromTop="3" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:ICategoryService.cs" caret="76" fromTop="2" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:IFigurService.cs" caret="0" fromTop="0" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:IPictureService.cs" caret="110" fromTop="3" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:ISerieService.cs" caret="0" fromTop="0" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:IValidator.cs" caret="45" fromTop="0" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:BaseServices.cs" caret="243" fromTop="8" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:PictureService.cs" caret="244" fromTop="8" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:Validator.cs" caret="124" fromTop="4" />
+      <File id="FDBB980E-6358-4136-86BA-C0517DE4B42A/f:TestValidator.cs" caret="152" fromTop="6" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="4631" fromTop="31" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="5952" fromTop="24" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="3745" fromTop="11" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="4779" fromTop="14" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="5272" fromTop="12" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="5932" fromTop="25" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="5915" fromTop="25" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="5952" fromTop="11" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:TestSerieRepository.cs" caret="232" fromTop="8" />
+      <File id="59E7C73B-EE9F-45E5-A287-2068CB41A771/f:PictureSpecification.cs" caret="62" fromTop="1" />
+      <File id="F035EAD8-28ED-4398-A61E-CF1054B26FD9/d:NHImpl/f:PictureRepository.cs" caret="523" fromTop="12" />
+      <File id="F035EAD8-28ED-4398-A61E-CF1054B26FD9/d:NHImpl/f:PictureRepository.cs" caret="626" fromTop="16" />
+      <File id="F035EAD8-28ED-4398-A61E-CF1054B26FD9/d:NHImpl/f:PictureRepository.cs" caret="743" fromTop="20" />
+      <File id="F035EAD8-28ED-4398-A61E-CF1054B26FD9/d:NHImpl/f:PictureRepository.cs" caret="846" fromTop="24" />
+      <File id="F035EAD8-28ED-4398-A61E-CF1054B26FD9/d:Fake/f:FakeBaseRepository.cs" caret="0" fromTop="0" />
+      <File id="F035EAD8-28ED-4398-A61E-CF1054B26FD9/d:Fake/f:FakeFigurRepository.cs" caret="298" fromTop="9" />
+      <File id="F035EAD8-28ED-4398-A61E-CF1054B26FD9/d:Fake/f:FakeFigurRepository.cs" caret="3393" fromTop="22" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/f:UserControlPresenter.cs" caret="60" fromTop="1" />
+      <File id="431C4DA1-C2FC-409E-89D5-99A0F599E71B/f:TreeViewPresenter.cs" caret="109" fromTop="3" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:CategoryService.cs" caret="107" fromTop="3" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:BaseServices.cs" caret="97" fromTop="1" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:ICategoryService.cs" caret="27" fromTop="0" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:IBaseServices.cs" caret="110" fromTop="3" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:IPictureService.cs" caret="110" fromTop="3" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/d:Interfaces/f:IValidator.cs" caret="45" fromTop="0" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:BaseServices.cs" caret="243" fromTop="8" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:PictureService.cs" caret="288" fromTop="8" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:PictureService.cs" caret="244" fromTop="8" />
+      <File id="CDC97DAE-3879-44B4-91D5-2926D375AED1/f:Validator.cs" caret="124" fromTop="4" />
+      <File id="FDBB980E-6358-4136-86BA-C0517DE4B42A/f:TestValidator.cs" caret="303" fromTop="12" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir>C:\Program Files (x86)\NUnit 2.5.9\bin\net-2.0\</NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="using" priority="3" />
+      <Item value="NUnit.Framework" priority="0" />
+      <Item value="SetupContext`0" priority="0" />
+      <Item value="public" priority="4" />
+      <Item value="void" priority="7" />
+      <Item value="TearDown`0" priority="0" />
+      <Item value="protected" priority="2" />
+      <Item value="virtual" priority="2" />
+      <Item value="RepositoryImpl" priority="4" />
+      <Item value="abstract" priority="0" />
+      <Item value="return" priority="5" />
+      <Item value="x" priority="2" />
+      <Item value="MySQLConfiguration`0" priority="1" />
+      <Item value="ISessionFactory`0" priority="0" />
+      <Item value="SessionBase`0" priority="1" />
+      <Item value="SessionFactory" priority="0" />
+      <Item value="ModelFixture`0" priority="0" />
+      <Item value="override" priority="0" />
+      <Item value="var" priority="1" />
+      <Item value="private" priority="3" />
+      <Item value="const" priority="2" />
+      <Item value="string" priority="2" />
+      <Item value="if" priority="0" />
+      <Item value="FileName" priority="2" />
+      <Item value="File`0" priority="0" />
+      <Item value="new" priority="1" />
+      <Item value="m_SessionFactory" priority="1" />
+      <Item value="Connection" priority="0" />
+      <Item value="configuration" priority="2" />
+      <Item value="Test" priority="0" />
+      <Item value="c" priority="1" />
+      <Item value="m_Connection" priority="0" />
+      <Item value="ForeignKey`0" priority="0" />
+      <Item value="Table`0" priority="1" />
+      <Item value="ConfigXmlDocument`0" priority="0" />
+      <Item value="EntityType" priority="0" />
+      <Item value="fluentlyConfig" priority="0" />
+      <Item value="ObjectFactory`0" priority="0" />
+      <Item value="ISerieRepository`0" priority="0" />
+      <Item value="FigurRepository`0" priority="0" />
+      <Item value="CategoryRepository`0" priority="0" />
+      <Item value="m" priority="0" />
+      <Item value="Configuration`0" priority="0" />
+      <Item value="SchemaExport`0" priority="0" />
+      <Item value="Cfg" priority="0" />
+      <Item value="filename" priority="0" />
+      <Item value="BuildSchema`0" priority="0" />
+      <Item value="typeof" priority="0" />
+      <Item value="NHibernate" priority="3" />
+      <Item value="Cache" priority="1" />
+      <Item value="byte" priority="0" />
+      <Item value="HashtableCacheProvider`0" priority="0" />
+      <Item value="conn" priority="0" />
+      <Item value="Criterion.Lambda" priority="0" />
+      <Item value="IQueryOver`0" priority="2" />
+      <Item value="crit" priority="0" />
+      <Item value="Figur`0" priority="2" />
+      <Item value="session" priority="6" />
+      <Item value="CacheMode`0" priority="7" />
+      <Item value="serieId" priority="0" />
+      <Item value="Instructions`0" priority="0" />
+      <Item value="Serie`0" priority="0" />
+      <Item value="categoryId" priority="0" />
+      <Item value="Picture`0" priority="3" />
+      <Item value="query" priority="0" />
+      <Item value="queryOver" priority="8" />
+      <Item value="List`0" priority="0" />
+      <Item value="IPictureRepository`0" priority="0" />
+      <Item value="EType`0" priority="0" />
+      <Item value="Figur" priority="0" />
+      <Item value="m_Type" priority="0" />
+      <Item value="int" priority="0" />
+      <Item value="m_Id" priority="0" />
+      <Item value="m_ReturnValue" priority="0" />
+      <Item value="id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@FluentNHibernate.Cfg.Db.MySQLConfiguration">
+      <Item value="Standard" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@FluentNHibernate.Cfg.Fluently">
+      <Item value="Configure`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.FluentConfiguration">
+      <Item value="Database`0" priority="2" />
+      <Item value="Mappings`0" priority="1" />
+      <Item value="ExposeConfiguration`0" priority="1" />
+      <Item value="BuildSessionFactory`0" priority="4" />
+      <Item value="BuildConfiguration`0" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@KinderSurprise.RepositoryImpl.SessionBase">
+      <Item value="GetSessionFactory`0" priority="0" />
+      <Item value="OpenSession`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.File">
+      <Item value="Exists`0" priority="0" />
+      <Item value="Delete`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.Tool.hbm2ddl.SchemaExport">
+      <Item value="Create`0" priority="3" />
+      <Item value="SetOutputFile`0" priority="0" />
+      <Item value="Execute`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.Db.MySQLConfiguration">
+      <Item value="ConnectionString`0" priority="0" />
+      <Item value="ShowSql`0" priority="0" />
+      <Item value="Cache`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.Db.MySQLConnectionStringBuilder">
+      <Item value="Is`0" priority="2" />
+      <Item value="FromAppSetting`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.MappingConfiguration">
+      <Item value="FluentMappings" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.FluentMappingsContainer">
+      <Item value="AddFromAssemblyOf`1" priority="1" />
+      <Item value="Conventions" priority="1" />
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.SetupConventionFinder`1">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@FluentNHibernate.Conventions.Helpers.PrimaryKey">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Conventions.Helpers.PrimaryKeyNameBuilder">
+      <Item value="Is`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@FluentNHibernate.Conventions.Helpers.ForeignKey">
+      <Item value="EndsWith`0" priority="0" />
+      <Item value="Format`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@FluentNHibernate.Conventions.Helpers.Table">
+      <Item value="Is`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Conventions.Inspections.IClassInspector">
+      <Item value="EntityType" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Type">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@StructureMap.ObjectFactory">
+      <Item value="GetInstance`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:FluentNHibernate.Cfg.Db.CacheSettingsBuilder">
+      <Item value="ProviderClass`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@KinderSurprise.BootStrap.Testing">
+      <Item value="Initialize`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Configuration.ConfigurationManager">
+      <Item value="AppSettings" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.ISession">
+      <Item value="QueryOver`1" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.ICriteria">
+      <Item value="Add`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.IQueryOver`2">
+      <Item value="Cacheable`0" priority="1" />
+      <Item value="Where`0" priority="6" />
+      <Item value="CacheMode`0" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.IQueryOver`1">
+      <Item value="CacheMode`0" priority="0" />
+      <Item value="Cacheable`0" priority="3" />
+      <Item value="List`1" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NHibernate.CacheMode">
+      <Item value="Normal" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:KinderSurprise.Model.Figur">
+      <Item value="Serie" priority="0" />
+      <Item value="Id" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:KinderSurprise.Model.Serie">
+      <Item value="Id" priority="1" />
+      <Item value="Category" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
+      <Item value="Cast`1" priority="0" />
+      <Item value="ToList`1" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="ToList`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:KinderSurprise.Model.Instructions">
+      <Item value="Fk_Figur_Id" priority="0" />
+      <Item value="Id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:KinderSurprise.Model.Category">
+      <Item value="Id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:NHibernate.IQueryOver">
+      <Item value="UnderlyingCriteria" priority="0" />
+      <Item value="RootCriteria" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NUnit.Framework.Assert">
+      <Item value="AreEqual`0" priority="1" />
+      <Item value="IsEmpty`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@KinderSurprise.Model.EType">
+      <Item value="Serie" priority="1" />
+      <Item value="Instructions" priority="0" />
+      <Item value="Figur" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Count" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:KinderSurprise.Model.Picture">
+      <Item value="Fk_Figur_Id" priority="0" />
+      <Item value="Fk_Serie_Id" priority="0" />
+      <Item value="Fk_Instructions_Id" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>

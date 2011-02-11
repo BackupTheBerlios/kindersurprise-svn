@@ -1,0 +1,1030 @@
+
+<html>
+    <head>
+        <title>NHibernate Lambda Extensions (V1.0.10.0) - Documentation</title>
+        <style>
+            body {
+            	margin:0px;
+            	padding:0px;
+            	color:black;
+            	}
+
+            .content {
+            	margin:0px 100px 50px;
+            	padding:20px;
+            	color:black;
+            	background-color:#eee;
+            	border:1px solid black;
+            	}
+            p {
+            	font-size:11px;
+            	line-height:20px;
+            	font-family:verdana, arial, helvetica, sans-serif;
+            	margin:0px 0px 12px 0px;
+            	}
+            li {
+            	font-size:10px;
+            	line-height:20px;
+            	font-family:verdana, arial, helvetica, sans-serif;
+            	margin:0px 0px 3px 0px;
+            	}
+            #Content>p {margin:0px;}
+            #Content>p+p {text-indent:30px;}
+
+            a {
+            	color:#09C;
+            	font-size:11px;
+            	font-weight:600;
+            	font-family:verdana, arial, helvetica, sans-serif;
+            	}
+            h1 {
+            	color:#333;
+            	font:20px/20px verdana, arial, helvetica, sans-serif;
+            	font-weight:900;
+            	}
+            h2 {
+            	color:#333;
+            	font:12px verdana, arial, helvetica, sans-serif;
+            	font-weight:700;
+            	margin:18px 0px 3px 0px;
+            	}
+            h3 {
+            	color:#666;
+            	font-size:11px;
+            	font-weight:800;
+            	margin:6px 0px 3px 0px;
+            	}
+            table {
+            	font-size:11px;
+            	line-height:20px;
+            	font-family:verdana, arial, helvetica, sans-serif;
+            	margin:0px 0px 12px 0px;
+                }
+            th {
+                font-style:italic;
+                }
+            pre {
+            	background-color:#ddd;
+                padding-top: 0px;
+                border-top: 0px;
+                margin-top: 0px;
+                }
+            code {
+            	background-color:#ddd;
+                }
+        </style>
+    </head>
+    
+    <body>
+        <br/>
+        <div class="content">
+        
+            <h1>NHibernate Lambda Extensions (V1.0.10.0) - Documentation</h1>
+            
+            <h2>1. Introduction</h2>
+
+            <p>
+                The .Net framework introduced
+                <a target="_blank" href="http://en.wikipedia.org/wiki/Language_Integrated_Query">LINQ</a>,
+                <a target="_blank" href="http://weblogs.asp.net/scottgu/archive/2007/04/08/new-orcas-language-feature-lambda-expressions.aspx">Lambda Expressions</a>,
+                and <a target="_blank" href="http://weblogs.asp.net/scottgu/archive/2007/03/13/new-orcas-language-feature-extension-methods.aspx">Extension Methods</a>.
+                In addition, an ORM (like NHibernate) can implement the IQueryable interface to allow transparent querying
+                of a datasource using LINQ.
+            </p>
+            <p>
+                However, sometimes you want the expressiveness of a query language that is closer to the persistence
+                implementation (i.e., a relational database) like
+                NHibernate's
+                <a target="_blank" href="http://martinfowler.com/eaaCatalog/queryObject.html">Query Object</a>
+                the
+                <a target="_blank" href="http://www.nhforge.org/doc/nh/en/index.html#querycriteria">ICriteria</a>
+                interface.
+                The trouble with the ICriteria interface is the use of 'magic strings' for property names
+                which can hinder the use of some refactoring tools.
+            </p>
+            <p>
+                This project supplies Extension Methods and uses Lambda Expressions to provide some extra
+                syntax to remove the 'magic strings' from your ICriteria queries.
+            </p>
+            <p>
+                So, for example:</p>
+<pre><code>.Add(Expression.Eq("Name", "Smith"))
+</code></pre>
+                <p>becomes:</p>
+<pre><code>.Add&lt;Person&gt;(p =&gt; p.Name == "Smith")
+</code></pre>
+            <p>
+                With this kind of syntax there are no 'magic strings', and refactoring tools like
+                'Find All References', and 'Refactor-&gt;Rename' work perfectly.
+            </p>
+            <p>
+                It is worth mentioning that this project is intended to remove the references to 'magic strings'
+                from the ICriteria API while maintaining it's opaqueness.  It is <u><b>not</b></u> a LINQ provider for NHibernate.  There are
+                seperate projects already in place to handle this (considerably more complex) problem.
+            </p>
+            
+            <h2>2. Getting started</h2>
+            <p>
+                Assuming you're already using NHibernate:
+            </p>
+            <ol>
+                <li>Download and extract NhLambdaExtensions from
+                    <a target="_blank" href="http://code.google.com/p/nhlambdaextensions/downloads/list">here</a>;</li>
+                <li>Put the NHibernate.LambdaExtensions.dll next to your NHibernate.dll;</li>
+                <li>Add a reference to NHibernate.LambdaExtensions;</li>
+                <li>Add a <code>using NHibernate.LambdaExtensions;</code> statement.</li>
+            </ol>
+            <p>
+                That's it.
+            </p>
+            
+            <h2>3. Simple expressions</h2>
+            <p>
+                Simple expressions (&lt;, &lt;=, ==, !=, &gt; &amp; &gt;=) can be added using an Extension
+                Method on the ICriteria interface that takes an appropriate Lambda Expression.  e.g.,:
+            </p>
+<pre><code>.Add&lt;Person&gt;(p =&gt; p.Name == "Smith")
+</code></pre>
+            <p>
+                C# allows another syntax that semantically identical to the above:
+            </p>
+<pre><code>.Add((Person p) =&gt; p.Name == "Smith")
+</code></pre>
+            <p>
+                Boolean comparisons can be made directly instead of comparing to true/false:
+            </p>
+<pre><code>.Add&lt;Person&gt;(p =&gt; p.IsParent)
+.Add&lt;Person&gt;(p =&gt; !p.IsRetired)
+</code></pre>
+            <p>
+                Note that the Lambda Expression is converted to a plain ICriterion at runtime.
+                The Lambda Expression is not stored in the resulting ICriteria, so the only difference
+                between:
+            </p>
+<pre><code>.Add(Expression.Eq("Name", "Smith"))</code></pre>
+                <p>and:</p>
+<pre><code>.Add&lt;Person&gt;(p =&gt; p.Name == "Smith")</code></pre>
+            <p>
+                is the compile time checking.  At runtime this calls
+                <code>.Add(Expression.Eq("Name", "Smith"))</code>
+                in both cases.
+            </p>
+            <p>
+                All of the extensions on the ICriteria interface have corresponding extensions on the
+                DetachedCriteria class.  So you can write:
+            </p>
+<pre><code>mySession
+    .CreateCriteria(typeof(Person))
+        .Add&lt;Person&gt;(p =&gt; p.Name == "Smith");
+</code></pre>
+            <p>
+                and also:
+            </p>
+<pre><code>    DetachedCriteria.For&lt;Person&gt;()
+        .Add&lt;Person&gt;(p =&gt; p.Name == "Smith");
+</code></pre>
+            
+            <h2>4. SQL specific functions</h2>
+            <p>
+                Some SQL operators/functions do not have a direct equivalent in C#.
+                (e.g., the SQL <code>where name like '%anna%'</code>).
+            </p>
+            <p>
+                Some LINQ providers might try to make a transparent mapping from the C#
+                <code>Name.StartsWith("anna")</code> to the SQL <code>where name like 'anna%'</code>.
+            </p>
+            <p>
+                The aim of this project is to provide a typesafe interface to ICriteria while
+                maintaining the opaqueness that makes it clearer to the developer what query
+                will be executed on the database.  Instead of mapping the <code>StartsWith</code>
+                function, there is a corresponding SqlExpression class that allows strongly-typed
+                expressions to be created.  So:
+            </p>
+<pre><code>.Add(Expression.Like("Name", "%anna%"))</code></pre>
+                <p>becomes:</p>
+<pre><code>.Add(SqlExpression.Like&lt;Person&gt;(p => p.Name, "%anna%"))</code></pre>
+            <p>
+                There is also a factory method <code>SqlExpression.CriterionFor</code>
+                to allow you to create arbitrary ICriterion for simple
+                expressions.  This allows you to use simple expressions anywhere that an ICriterion
+                can be used (e.g., <code>Expression.And</code>).  So:
+            </p>
+<pre><code>.Add&lt;Person&gt;(p =&gt; p.Name == "Smith")</code></pre>
+            <p>can also be written as:</p>
+<pre><code>.Add(SqlExpression.CriterionFor&lt;Person&gt;(p =&gt; p.Name == "Smith"))</code></pre>
+            <p>allowing expressions like:</p>
+<pre><code>.Add(Expression.Or(
+    SqlExpression.CriterionFor&lt;Person&gt;(p =&gt; p.Name == "test"),
+    SqlExpression.CriterionFor&lt;Person&gt;(p =&gt; p.Age &gt; 5)));
+</code></pre>
+            
+            <h2>5. Aliases</h2>
+            <p>
+                In the traditional ICriteria interface aliases are assigned using 'magic strings', however their value
+                does not correspond to a name in the object domain.  For example, when an alias is assigned using
+                <code>.CreateAlias("Father", "fatherAlias")</code>, the string "fatherAlias" does not correspond
+                to a property or class in the domain.
+            </p>
+            <p>
+                In NHibernate Lambda Extensions, aliases are assigned using an empty variable.
+                The variable can be declared anywhere (but should
+                be empty/default at runtime).  The compiler can then check the syntax against the variable is
+                used correctly, but at runtime the variable is not evaluated (it's just used as a placeholder for
+                the alias).
+            </p>
+            <p>
+                Aliases can be assigned using both the <code>CreateCriteria</code> and the
+                <code>CreateAlias</code> extensions:
+            </p>
+<pre><code>Person fatherAlias = null;
+mySession
+    .CreateCriteria(typeof(Person))
+        .CreateAlias&lt;Person>(p =&gt; p.Father, () =&gt; fatherAlias)
+        .Add&lt;Person&gt;(p =&gt; p.Name == fatherAlias.Name);
+</code></pre>
+            <p>
+                To create an alias on the root of DetachedCriteria use:
+            </p>
+<pre><code>Person personAlias = null;
+DetachedCriteria&lt;Person&gt;.Create(() => personAlias)</code></pre>
+            <p>
+                See below for more <a href="#examples">examples</a>.
+            </p>
+            
+            <h2>6. Projections</h2>
+            <p>
+                Projections are made typesafe through the <code>LambdaProjection</code> class,
+                with the <code>Property</code> method returning an IProjection.  In addition, the
+                SimpleProjection class has an extension to allow you to alias the projections.  So:
+            </p>
+<pre><code>.SetProjection(Projections.Property("Age").As("ageAlias"))</code></pre>
+            <p>can be written as:</p>
+<pre><code>.SetProjection(LambdaProjection.Property&lt;Person>(p =&gt; p.Age).As(() =&gt; ageAlias))</code></pre>
+            <p>
+                There are additional factory methods to create other projections (e.g., Max, Min, Avg, etc.)
+                See below for more <a href="#examples">examples</a>.
+            </p>
+            
+            <h2>7. Subqueries</h2>
+            <p>
+                Subqueries are put together using the <code>LambdaSubquery</code> class.  Each of the
+                original NHibernate factory methods has an equivalent on LambdaSubquery, so:
+            </p>
+<pre><code>.Add(Subqueries.PropertyIn("Name", myDetachedCriteriaSubquery))</code></pre>
+            <p>
+                becomes:
+            </p>
+<pre><code>.Add(LambdaSubquery.Property&lt;Person&gt;(p =&gt; p.Name).In(myDetachedCriteriaSubquery))</code></pre>
+            
+            <p>
+                In addition to these factory methods are the methods <code>Where</code>, <code>WhereAll</code>,
+                and <code>WhereSome</code> along with an Extension Method on the <code>DetachedCriteria</code>
+                class, which allows the use of Lambda Expressions to describe simple comparisons.  So:
+            </p>
+<pre><code>.Add(Subqueries.PropertyGt("Age", myDetachedCriteriaSubquery))</code></pre>
+            <p>
+                becomes:
+            </p>
+<pre><code>.Add(LambdaSubquery.Where&lt;Person&gt;(p =&gt; p.Age &gt; myDetachedCriteriaSubquery.As&lt;int&gt;()))</code></pre>
+            
+            <a name="examples"></a>
+            <h2>8. Examples</h2>
+            <p>
+                Below are some examples of how to write ICriteria using the 'old' style,
+                and then rewritten using NHibernate Lambda Extensions.
+            </p>
+    <h2 style="margin-left:20px;"><a href="#examples_Criteria"/>Criteria Examples</a></h2>
+            <h3 style="margin-left:50px;"><a href="#examples_Criteria_CreateCriteriaWithAlias">Create Criteria With Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_Eq">Eq</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_EqAlternativeSyntax">Eq Alternative Syntax</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_EqWithAlias">Eq With Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_EqUsingMetaProperty">Eq Using Meta Property</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_Order">Order</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_OrderUsingAlias">Order Using Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_CreateCriteriaAssociationWithAlias">Create Criteria Association With Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_CreateCriteriaAliasAssociationWithAliasAndJoinType">Create Criteria Alias Association With Alias And Join Type</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_CreateAlias">Create Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_CreateAliasUsingAliasWithJoinType">Create Alias Using Alias With Join Type</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_SetFetchMode">Set Fetch Mode</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_SetLockMode">Set Lock Mode</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_Criteria_AliasedEqProperty">Aliased Eq Property</a></h3>
+          <h2 style="margin-left:20px;"><a href="#examples_DetachedCriteria"/>DetachedCriteria Examples</a></h2>
+            <h3 style="margin-left:50px;"><a href="#examples_DetachedCriteria_CreateWithAlias">Create With Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_DetachedCriteria_CreateCriteriaAssociationWithAliasAndJoinType">Create Criteria Association With Alias And Join Type</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_DetachedCriteria_CreateAlias">Create Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_DetachedCriteria_CreateAliasFromAlias">Create Alias From Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_DetachedCriteria_SetFetchMode">Set Fetch Mode</a></h3>
+          <h2 style="margin-left:20px;"><a href="#examples_SqlExpression"/>SqlExpression Examples</a></h2>
+            <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_Between">Between</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_BetweenUsingAlias">Between Using Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_Like">Like</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_IsNull">Is Null</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_IsEmpty">Is Empty</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_In">In</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_GenericIn">Generic In</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_Not">Not</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_And">And</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_SqlExpression_Conjunction">Conjunction</a></h3>
+          <h2 style="margin-left:20px;"><a href="#examples_LambdaProjection"/>LambdaProjection Examples</a></h2>
+            <h3 style="margin-left:50px;"><a href="#examples_LambdaProjection_Property">Property</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaProjection_PropertyUsingAlias">Property Using Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaProjection_PropertyAliasUsingFluentInterface">Property Alias Using Fluent Interface</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaProjection_AliasedProperty">Aliased Property</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaProjection_Avg">Avg</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaProjection_Count">Count</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaProjection_GroupProperty">Group Property</a></h3>
+          <h2 style="margin-left:20px;"><a href="#examples_LambdaSubquery"/>LambdaSubquery Examples</a></h2>
+            <h3 style="margin-left:50px;"><a href="#examples_LambdaSubquery_PropertyEq">Property Eq</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaSubquery_PropertyEqAlternativeSyntax">Property Eq Alternative Syntax</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaSubquery_PropertyGtUsingAlias">Property Gt Using Alias</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaSubquery_PropertyGtUsingAliasAlternativeSyntax">Property Gt Using Alias Alternative Syntax</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaSubquery_PropertyEqAll">Property Eq All</a></h3>
+              <h3 style="margin-left:50px;"><a href="#examples_LambdaSubquery_PropertyIn">Property In</a></h3>
+          <a name="examples_Criteria"></a>
+    <h2 style="font-size:13pt;">Criteria Examples</h2>
+            <a name="examples_Criteria_CreateCriteriaWithAlias"></a>
+        <h2>Create Criteria With Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person), "personAlias");
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person), () =&gt; personAlias);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_Eq"></a>
+        <h2>Eq</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(Restrictions.Eq("Name", "test name"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add&lt;Person&gt;(p =&gt; p.Name == "test name");
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_EqAlternativeSyntax"></a>
+        <h2>Eq Alternative Syntax</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(Restrictions.Eq("Name", "test name"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add((Person p) =&gt; p.Name == "test name");
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_EqWithAlias"></a>
+        <h2>Eq With Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person), "personAlias")
+        .Add(Restrictions.Eq("personAlias.Name", "test name"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person), () =&gt; personAlias)
+        .Add(() =&gt; personAlias.Name == "test name");
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_EqUsingMetaProperty"></a>
+        <h2>Eq Using Meta Property</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person), "personAlias")
+        .Add(Restrictions.Eq("personAlias.class", typeof(Person)));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person), () =&gt; personAlias)
+        .Add(() =&gt; personAlias.GetType() == typeof(Person));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_Order"></a>
+        <h2>Order</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .AddOrder(Order.Desc("Name"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .AddOrder&lt;Person&gt;(p =&gt; p.Name, Order.Desc);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_OrderUsingAlias"></a>
+        <h2>Order Using Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person), "personAlias")
+        .AddOrder(Order.Asc("personAlias.Name"))
+        .AddOrder(Order.Desc("personAlias.Age"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person), () =&gt; personAlias)
+        .AddOrder(() =&gt; personAlias.Name, Order.Asc)
+        .AddOrder(() =&gt; personAlias.Age, Order.Desc);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_CreateCriteriaAssociationWithAlias"></a>
+        <h2>Create Criteria Association With Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .CreateCriteria("Children", "childAlias")
+            .Add(Restrictions.Eq("Nickname", "test"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Child childAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .CreateCriteria((Person p) =&gt; p.Children, () =&gt; childAlias)
+            .Add&lt;Child&gt;(c =&gt; c.Nickname == "test");
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_CreateCriteriaAliasAssociationWithAliasAndJoinType"></a>
+        <h2>Create Criteria Alias Association With Alias And Join Type</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person), "personAlias")
+        .CreateCriteria("personAlias.Children", "childAlias", JoinType.LeftOuterJoin)
+            .Add(Restrictions.Eq("Nickname", "test"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+Child childAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person), () =&gt; personAlias)
+        .CreateCriteria(() =&gt; personAlias.Children, () =&gt; childAlias, JoinType.LeftOuterJoin)
+            .Add&lt;Child&gt;(c =&gt; c.Nickname == "test");
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_CreateAlias"></a>
+        <h2>Create Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .CreateAlias("Father", "fatherAlias");
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person fatherAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .CreateAlias&lt;Person&gt;(p =&gt; p.Father, () =&gt; fatherAlias);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_CreateAliasUsingAliasWithJoinType"></a>
+        <h2>Create Alias Using Alias With Join Type</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person), "personAlias")
+        .CreateAlias("personAlias.Father", "fatherAlias", JoinType.LeftOuterJoin);
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+Person fatherAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person), () =&gt; personAlias)
+        .CreateAlias(() =&gt; personAlias.Father, () =&gt; fatherAlias, JoinType.LeftOuterJoin);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_SetFetchMode"></a>
+        <h2>Set Fetch Mode</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .SetFetchMode("Father", FetchMode.Eager);
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .SetFetchMode&lt;Person&gt;(p =&gt; p.Father, FetchMode.Eager);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_SetLockMode"></a>
+        <h2>Set Lock Mode</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .CreateAlias("Father", "fatherAlias")
+        .SetLockMode("fatherAlias", LockMode.Upgrade);
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person fatherAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .CreateAlias&lt;Person&gt;(p =&gt; p.Father, () =&gt; fatherAlias)
+        .SetLockMode(() =&gt; fatherAlias, LockMode.Upgrade);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_Criteria_AliasedEqProperty"></a>
+        <h2>Aliased Eq Property</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .CreateAlias("Children", "childAlias")
+        .Add(Expression.EqProperty("Name", "childAlias.Nickname"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Child childAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .CreateAlias&lt;Person&gt;(p =&gt; p.Children, () =&gt; childAlias)
+        .Add&lt;Person&gt;(p =&gt; p.Name == childAlias.Nickname);
+</code></pre>
+        <p>&nbsp;</p>
+          <a name="examples_DetachedCriteria"></a>
+    <h2 style="font-size:13pt;">DetachedCriteria Examples</h2>
+            <a name="examples_DetachedCriteria_CreateWithAlias"></a>
+        <h2>Create With Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;("personAlias");
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+DetachedCriteria after =
+    DetachedCriteria&lt;Person&gt;.Create(() =&gt; personAlias);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_DetachedCriteria_CreateCriteriaAssociationWithAliasAndJoinType"></a>
+        <h2>Create Criteria Association With Alias And Join Type</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .CreateCriteria("Children", "childAlias", JoinType.LeftOuterJoin)
+            .Add(Restrictions.Eq("Nickname", "test"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Child childAlias = null;
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .CreateCriteria((Person p) =&gt; p.Children, () =&gt; childAlias, JoinType.LeftOuterJoin)
+            .Add&lt;Child&gt;(c =&gt; c.Nickname == "test");
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_DetachedCriteria_CreateAlias"></a>
+        <h2>Create Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .CreateAlias("Father", "fatherAlias");
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person fatherAlias = null;
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .CreateAlias&lt;Person&gt;(p =&gt; p.Father, () =&gt; fatherAlias);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_DetachedCriteria_CreateAliasFromAlias"></a>
+        <h2>Create Alias From Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;("personAlias")
+        .CreateAlias("personAlias.Father", "fatherAlias");
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+Person fatherAlias = null;
+DetachedCriteria after =
+    DetachedCriteria&lt;Person&gt;.Create(() =&gt; personAlias)
+        .CreateAlias(() =&gt; personAlias.Father, () =&gt; fatherAlias);
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_DetachedCriteria_SetFetchMode"></a>
+        <h2>Set Fetch Mode</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetFetchMode("Father", FetchMode.Eager);
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetFetchMode&lt;Person&gt;(p =&gt; p.Father, FetchMode.Eager);
+</code></pre>
+        <p>&nbsp;</p>
+          <a name="examples_SqlExpression"></a>
+    <h2 style="font-size:13pt;">SqlExpression Examples</h2>
+            <a name="examples_SqlExpression_Between"></a>
+        <h2>Between</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.Between("Age", 5, 10));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(SqlExpression.Between&lt;Person&gt;(p =&gt; p.Age, 5, 10));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_BetweenUsingAlias"></a>
+        <h2>Between Using Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;("personAlias")
+        .Add(Restrictions.Between("personAlias.Age", 5, 10));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+DetachedCriteria after =
+    DetachedCriteria&lt;Person&gt;.Create(() =&gt; personAlias)
+        .Add(SqlExpression.Between(() =&gt; personAlias.Age, 5, 10));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_Like"></a>
+        <h2>Like</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.Like("Name", "%test%"))
+        .Add(Restrictions.Like("Name", "test", MatchMode.Anywhere))
+        .Add(Restrictions.Like("Name", "test", MatchMode.Anywhere, '?'));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(SqlExpression.Like&lt;Person&gt;(p =&gt; p.Name, "%test%"))
+        .Add(SqlExpression.Like&lt;Person&gt;(p =&gt; p.Name, "test", MatchMode.Anywhere))
+        .Add(SqlExpression.Like&lt;Person&gt;(p =&gt; p.Name, "test", MatchMode.Anywhere, '?'));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_IsNull"></a>
+        <h2>Is Null</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.IsNull("Name"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(SqlExpression.IsNull&lt;Person&gt;(p =&gt; p.Name));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_IsEmpty"></a>
+        <h2>Is Empty</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.IsEmpty("Children"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(SqlExpression.IsEmpty&lt;Person&gt;(p =&gt; p.Children));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_In"></a>
+        <h2>In</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.In("Name", new string[] { "name1", "name2", "name3" }));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(SqlExpression.In&lt;Person&gt;(p =&gt; p.Name, new string[] { "name1", "name2", "name3" }));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_GenericIn"></a>
+        <h2>Generic In</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.InG&lt;int&gt;("Age", new int[] { 1, 2, 3 }));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(SqlExpression.InG&lt;Person, int&gt;(p =&gt; p.Age, new int[] { 1, 2, 3 }));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_Not"></a>
+        <h2>Not</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.Not(Restrictions.Gt("Age", 5)));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(SqlExpression.Not&lt;Person&gt;(p =&gt; p.Age &gt; 5));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_And"></a>
+        <h2>And</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.And(
+            Restrictions.Eq("Name", "test"),
+            Restrictions.Gt("Age", 5)));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.And(
+            SqlExpression.CriterionFor&lt;Person&gt;(p =&gt; p.Name == "test"),
+            SqlExpression.CriterionFor&lt;Person&gt;(p =&gt; p.Age &gt; 5)));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_SqlExpression_Conjunction"></a>
+        <h2>Conjunction</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.Conjunction()
+                .Add(Restrictions.Eq("Name", "test"))
+                .Add(Restrictions.Gt("Age", 5)));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .Add(Restrictions.Conjunction()
+                .Add&lt;Person&gt;(p =&gt; p.Name == "test")
+                .Add&lt;Person&gt;(p =&gt; p.Age &gt; 5));
+</code></pre>
+        <p>&nbsp;</p>
+          <a name="examples_LambdaProjection"></a>
+    <h2 style="font-size:13pt;">LambdaProjection Examples</h2>
+            <a name="examples_LambdaProjection_Property"></a>
+        <h2>Property</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(Projections.Property("Name"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(LambdaProjection.Property&lt;Person&gt;(p =&gt; p.Name));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaProjection_PropertyUsingAlias"></a>
+        <h2>Property Using Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(Projections.Alias(Projections.Property("Name"), "nameAlias"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+string nameAlias = null;
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(LambdaProjection.Alias(LambdaProjection.Property&lt;Person&gt;(p =&gt; p.Name), () =&gt; nameAlias));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaProjection_PropertyAliasUsingFluentInterface"></a>
+        <h2>Property Alias Using Fluent Interface</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(Projections.Property("Age").As("ageAlias"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+int ageAlias = 0;
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(LambdaProjection.Property&lt;Person&gt;(p =&gt; p.Age).As(() =&gt; ageAlias));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaProjection_AliasedProperty"></a>
+        <h2>Aliased Property</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;("personAlias")
+        .SetProjection(Projections.Property("personAlias.Age"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+DetachedCriteria after =
+    DetachedCriteria&lt;Person&gt;.Create(() =&gt; personAlias)
+        .SetProjection(LambdaProjection.Property(() =&gt; personAlias.Age));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaProjection_Avg"></a>
+        <h2>Avg</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(Projections.Avg("Age"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(LambdaProjection.Avg&lt;Person&gt;(p =&gt; p.Age));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaProjection_Count"></a>
+        <h2>Count</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(Projections.Count("Age"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(LambdaProjection.Count&lt;Person&gt;(p =&gt; p.Age));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaProjection_GroupProperty"></a>
+        <h2>Group Property</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria before =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(Projections.GroupProperty("Name"));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+DetachedCriteria after =
+    DetachedCriteria.For&lt;Person&gt;()
+        .SetProjection(LambdaProjection.GroupProperty&lt;Person&gt;(p =&gt; p.Name));
+</code></pre>
+        <p>&nbsp;</p>
+          <a name="examples_LambdaSubquery"></a>
+    <h2 style="font-size:13pt;">LambdaSubquery Examples</h2>
+            <a name="examples_LambdaSubquery_PropertyEq"></a>
+        <h2>Property Eq</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(Subqueries.PropertyEq("Name", DetachedCriteriaSubquery));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(LambdaSubquery.Property&lt;Person&gt;(p =&gt; p.Name).Eq(DetachedCriteriaSubquery));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaSubquery_PropertyEqAlternativeSyntax"></a>
+        <h2>Property Eq Alternative Syntax</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(Subqueries.PropertyEq("Name", DetachedCriteriaSubquery));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(LambdaSubquery.Where&lt;Person&gt;(p =&gt; p.Name == DetachedCriteriaSubquery.As&lt;string&gt;()));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaSubquery_PropertyGtUsingAlias"></a>
+        <h2>Property Gt Using Alias</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person), "personAlias")
+        .Add(Subqueries.PropertyGt("personAlias.Age", DetachedCriteriaSubquery));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person), () =&gt; personAlias)
+        .Add(LambdaSubquery.Property(() =&gt; personAlias.Age).Gt(DetachedCriteriaSubquery));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaSubquery_PropertyGtUsingAliasAlternativeSyntax"></a>
+        <h2>Property Gt Using Alias Alternative Syntax</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person), "personAlias")
+        .Add(Subqueries.PropertyGt("personAlias.Age", DetachedCriteriaSubquery));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+Person personAlias = null;
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person), () =&gt; personAlias)
+        .Add(LambdaSubquery.Where(() =&gt; personAlias.Age &gt; DetachedCriteriaSubquery.As&lt;int&gt;()));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaSubquery_PropertyEqAll"></a>
+        <h2>Property Eq All</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(Subqueries.PropertyEqAll("Name", DetachedCriteriaSubquery));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(LambdaSubquery.WhereAll&lt;Person&gt;(p =&gt; p.Name == DetachedCriteriaSubquery.As&lt;string&gt;()));
+</code></pre>
+        <p>&nbsp;</p>
+              <a name="examples_LambdaSubquery_PropertyIn"></a>
+        <h2>Property In</h2>
+        <p>Using original ICriteria API:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria before = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(Subqueries.PropertyIn("Name", DetachedCriteriaSubquery));
+</code></pre>
+        <p>Using NHibernate Lambda Extensions:<p>
+<pre style="width:100%;overflow-x:auto;"><code>
+ICriteria after = CreateSession()
+    .CreateCriteria(typeof(Person))
+        .Add(LambdaSubquery.Property&lt;Person&gt;(p =&gt; p.Name).In(DetachedCriteriaSubquery));
+</code></pre>
+        <p>&nbsp;</p>
+      
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,8 @@
+﻿using KinderSurprise.Model;
+
+namespace KinderSurprise.MVP.Model.Interfaces
+{
+    public interface ICategoryService : IBaseServices<Category>
+    {
+    }
+}

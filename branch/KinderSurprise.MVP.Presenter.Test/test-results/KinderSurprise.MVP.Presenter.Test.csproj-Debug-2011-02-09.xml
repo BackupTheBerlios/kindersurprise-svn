@@ -1,0 +1,1270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <UnitTestResult>
+      <TestDate>2011-02-09T21:42:13</TestDate>
+      <Status>Success Failure</Status>
+      <TotalFailures>6</TotalFailures>
+      <TotalSuccess>49</TotalSuccess>
+      <TotalIgnored>0</TotalIgnored>
+      <Time />
+      <Message>Child test failed</Message>
+    </UnitTestResult>
+  </Results>
+  <Tests>
+    <TestRecord Name="KinderSurprise">
+      <Results>
+        <UnitTestResult>
+          <TestDate>2011-02-09T21:42:13</TestDate>
+          <Status>Success Failure</Status>
+          <TotalFailures>6</TotalFailures>
+          <TotalSuccess>49</TotalSuccess>
+          <TotalIgnored>0</TotalIgnored>
+          <Time />
+          <Message>Child test failed</Message>
+        </UnitTestResult>
+      </Results>
+      <Tests>
+        <TestRecord Name="MVP">
+          <Results>
+            <UnitTestResult>
+              <TestDate>2011-02-09T21:42:13</TestDate>
+              <Status>Success Failure</Status>
+              <TotalFailures>6</TotalFailures>
+              <TotalSuccess>49</TotalSuccess>
+              <TotalIgnored>0</TotalIgnored>
+              <Time />
+              <Message>Child test failed</Message>
+            </UnitTestResult>
+          </Results>
+          <Tests>
+            <TestRecord Name="Presenter">
+              <Results>
+                <UnitTestResult>
+                  <TestDate>2011-02-09T21:42:13</TestDate>
+                  <Status>Success Failure</Status>
+                  <TotalFailures>6</TotalFailures>
+                  <TotalSuccess>49</TotalSuccess>
+                  <TotalIgnored>0</TotalIgnored>
+                  <Time />
+                  <Message>Child test failed</Message>
+                </UnitTestResult>
+              </Results>
+              <Tests>
+                <TestRecord Name="Test">
+                  <Results>
+                    <UnitTestResult>
+                      <TestDate>2011-02-09T21:42:13</TestDate>
+                      <Status>Success Failure</Status>
+                      <TotalFailures>6</TotalFailures>
+                      <TotalSuccess>49</TotalSuccess>
+                      <TotalIgnored>0</TotalIgnored>
+                      <Time />
+                      <Message>Child test failed</Message>
+                    </UnitTestResult>
+                  </Results>
+                  <Tests>
+                    <TestRecord Name="TestCategoryPropertyPresenter">
+                      <Results>
+                        <UnitTestResult>
+                          <TestDate>2011-02-09T21:42:13</TestDate>
+                          <Status>Success Failure</Status>
+                          <TotalFailures>1</TotalFailures>
+                          <TotalSuccess>8</TotalSuccess>
+                          <TotalIgnored>0</TotalIgnored>
+                          <Time />
+                          <Message>Child test failed</Message>
+                        </UnitTestResult>
+                      </Results>
+                      <Tests>
+                        <TestRecord Name="InitializeErroLabel">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.31ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Delete_IfCategoryIsNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 1.44ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetButtonsToEditMode">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetButtonsToViewMode">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFields_CategoryIsNotNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFields_CategoryIsNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFieldsEmpty">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfNameIsNotValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfNameIsValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Failure</Status>
+                              <TotalFailures>1</TotalFailures>
+                              <TotalSuccess>0</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>System.InvalidOperationException : You cannot start more than one unit of work at the same time</Message>
+                              <StackTrace>  at KinderSurprise.NHBootstrap.UnitOfWork.Start () [0x0002a] in /home/enrico/projects/kindersurprise/KinderSurprise.NHBootstrap/UnitOfWork.cs:45 
+  at KinderSurprise.DAL.BaseRepository`1[T].GetById (Int32 id) [0x00000] in /home/enrico/projects/kindersurprise/KinderSurprise.DAL/BaseRepository.cs:45 
+  at KinderSurprise.DAL.BaseRepository`1[T].DeleteById (Int32 id) [0x00006] in /home/enrico/projects/kindersurprise/KinderSurprise.DAL/BaseRepository.cs:65 
+  at KinderSurprise.MVP.Model.BaseServices`2[T,U].DeleteById (Int32 id) [0x00006] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Model/BaseServices.cs:39 
+  at KinderSurprise.MVP.Presenter.Test.TestCategoryPropertyPresenter.Test_Update_IfNameIsValid () [0x00093] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter.Test/TestCategoryPropertyPresenter.cs:148 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                              <ConsoleOutput>NHibernate: SELECT category0_.CategoryId as CategoryId0_0_, category0_.CategoryName as Category2_0_0_, category0_.Description as Descript3_0_0_ FROM tCategory category0_ WHERE category0_.CategoryId=?p0;?p0 = 0
+NHibernate: INSERT INTO tCategory (CategoryName, Description) VALUES (?p0, ?p1);?p0 = 'test', ?p1 = 'desc'
+NHibernate: SELECT LAST_INSERT_ID()
+NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                      </Tests>
+                    </TestRecord>
+                    <TestRecord Name="TestFigurPropertyService">
+                      <Results>
+                        <UnitTestResult>
+                          <TestDate>2011-02-09T21:42:13</TestDate>
+                          <Status>Success Failure</Status>
+                          <TotalFailures>2</TotalFailures>
+                          <TotalSuccess>10</TotalSuccess>
+                          <TotalIgnored>0</TotalIgnored>
+                          <Time />
+                          <Message>Child test failed</Message>
+                        </UnitTestResult>
+                      </Results>
+                      <Tests>
+                        <TestRecord Name="Test_Delete_IfFigurIsNotNull_ForeignKeyDoesNotExist">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.06ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT figur0_.FigurId as FigurId1_0_, figur0_.FigurName as FigurName1_0_, figur0_.Description as Descript3_1_0_, figur0_.Price as Price1_0_, figur0_.FK_Serie_ID as FK5_1_0_ FROM tFigur figur0_ WHERE figur0_.FigurId=?p0;?p0 = 0
+NHibernate: INSERT INTO tFigur (FigurName, Description, Price, FK_Serie_ID) VALUES (?p0, ?p1, ?p2, ?p3);?p0 = 'test', ?p1 = 'desc', ?p2 = 14.5, ?p3 = 10
+</ConsoleOutput>
+                              <ConsoleError>21:42:24,464 ERROR [TestRunnerThread] AbstractBatcher [(null)]- Could not execute command: INSERT INTO tFigur (FigurName, Description, Price, FK_Serie_ID) VALUES (?p0, ?p1, ?p2, ?p3)
+MySql.Data.MySqlClient.MySqlException: Cannot add or update a child row: a foreign key constraint fails (`TestKinderSurprise`.`tFigur`, CONSTRAINT `FK_Figur_Serie` FOREIGN KEY (`FK_Serie_ID`) REFERENCES `tSerie` (`SerieId`))
+  at MySql.Data.MySqlClient.MySqlStream.ReadPacket () [0x00000] in &lt;filename unknown&gt;:0 
+  at MySql.Data.MySqlClient.NativeDriver.GetResult (System.Int32&amp; affectedRow, System.Int32&amp; insertedId) [0x00000] in &lt;filename unknown&gt;:0 
+21:42:24,482 ERROR [TestRunnerThread] ADOExceptionReporter [(null)]- Cannot add or update a child row: a foreign key constraint fails (`TestKinderSurprise`.`tFigur`, CONSTRAINT `FK_Figur_Serie` FOREIGN KEY (`FK_Serie_ID`) REFERENCES `tSerie` (`SerieId`))
+</ConsoleError>
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Delete_IfFigurIsNotNull_SaveSuccessfulExecuted">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Failure</Status>
+                              <TotalFailures>1</TotalFailures>
+                              <TotalSuccess>0</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>  Expected: 10
+  But was:  16
+</Message>
+                              <StackTrace>  at NUnit.Framework.Assert.That (System.Object actual, NUnit.Framework.Constraints.Constraint constraint, System.String message, System.Object[] args) [0x00000] in &lt;filename unknown&gt;:0 
+  at NUnit.Framework.Assert.AreEqual (Int32 expected, Int32 actual, System.String message, System.Object[] args) [0x00000] in &lt;filename unknown&gt;:0 
+  at NUnit.Framework.Assert.AreEqual (Int32 expected, Int32 actual) [0x00000] in &lt;filename unknown&gt;:0 
+  at KinderSurprise.MVP.Presenter.Test.TestFigurPropertyService.Test_Delete_IfFigurIsNotNull_SaveSuccessfulExecuted () [0x00069] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter.Test/TestFigurPropertyService.cs:228 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                              <ConsoleOutput>NHibernate: SELECT figur0_.FigurId as FigurId1_0_, figur0_.FigurName as FigurName1_0_, figur0_.Description as Descript3_1_0_, figur0_.Price as Price1_0_, figur0_.FK_Serie_ID as FK5_1_0_ FROM tFigur figur0_ WHERE figur0_.FigurId=?p0;?p0 = 0
+NHibernate: INSERT INTO tFigur (FigurName, Description, Price, FK_Serie_ID) VALUES (?p0, ?p1, ?p2, ?p3);?p0 = 'test', ?p1 = 'desc', ?p2 = 14.5, ?p3 = 3
+NHibernate: SELECT LAST_INSERT_ID()
+NHibernate: SELECT this_.FigurId as FigurId1_0_, this_.FigurName as FigurName1_0_, this_.Description as Descript3_1_0_, this_.Price as Price1_0_, this_.FK_Serie_ID as FK5_1_0_ FROM tFigur this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Delete_IfFigurIsNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.FigurId as FigurId1_0_, this_.FigurName as FigurName1_0_, this_.Description as Descript3_1_0_, this_.Price as Price1_0_, this_.FK_Serie_ID as FK5_1_0_ FROM tFigur this_
+NHibernate: SELECT this_.FigurId as FigurId1_0_, this_.FigurName as FigurName1_0_, this_.Description as Descript3_1_0_, this_.Price as Price1_0_, this_.FK_Serie_ID as FK5_1_0_ FROM tFigur this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFields_FigurIsNotNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.04ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFields_FigurIsNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFieldsEmpty">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetToEditMode">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetToViewMode">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfNameAndPriceAreNotValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfNameAndPriceAreValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Failure</Status>
+                              <TotalFailures>1</TotalFailures>
+                              <TotalSuccess>0</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>System.InvalidOperationException : You cannot start more than one unit of work at the same time</Message>
+                              <StackTrace>  at KinderSurprise.NHBootstrap.UnitOfWork.Start () [0x0002a] in /home/enrico/projects/kindersurprise/KinderSurprise.NHBootstrap/UnitOfWork.cs:45 
+  at KinderSurprise.DAL.BaseRepository`1[T].GetById (Int32 id) [0x00000] in /home/enrico/projects/kindersurprise/KinderSurprise.DAL/BaseRepository.cs:45 
+  at KinderSurprise.DAL.BaseRepository`1[T].DeleteById (Int32 id) [0x00006] in /home/enrico/projects/kindersurprise/KinderSurprise.DAL/BaseRepository.cs:65 
+  at KinderSurprise.MVP.Model.BaseServices`2[T,U].DeleteById (Int32 id) [0x00006] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Model/BaseServices.cs:39 
+  at KinderSurprise.MVP.Presenter.Test.TestFigurPropertyService.Test_Update_IfNameAndPriceAreValid () [0x000be] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter.Test/TestFigurPropertyService.cs:192 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+NHibernate: SELECT figur0_.FigurId as FigurId1_0_, figur0_.FigurName as FigurName1_0_, figur0_.Description as Descript3_1_0_, figur0_.Price as Price1_0_, figur0_.FK_Serie_ID as FK5_1_0_ FROM tFigur figur0_ WHERE figur0_.FigurId=?p0;?p0 = 0
+NHibernate: INSERT INTO tFigur (FigurName, Description, Price, FK_Serie_ID) VALUES (?p0, ?p1, ?p2, ?p3);?p0 = 'name', ?p1 = 'desc', ?p2 = 11.11, ?p3 = 1
+NHibernate: SELECT LAST_INSERT_ID()
+NHibernate: SELECT this_.FigurId as FigurId1_0_, this_.FigurName as FigurName1_0_, this_.Description as Descript3_1_0_, this_.Price as Price1_0_, this_.FK_Serie_ID as FK5_1_0_ FROM tFigur this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfNameIsNotValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfPriceIsNotValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                      </Tests>
+                    </TestRecord>
+                    <TestRecord Name="TestMultiViewPresenter">
+                      <Results>
+                        <UnitTestResult>
+                          <TestDate>2011-02-09T21:42:13</TestDate>
+                          <Status>Success</Status>
+                          <TotalFailures>0</TotalFailures>
+                          <TotalSuccess>4</TotalSuccess>
+                          <TotalIgnored>0</TotalIgnored>
+                          <Time />
+                        </UnitTestResult>
+                      </Results>
+                      <Tests>
+                        <TestRecord Name="Test_SetViewActive_Category">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetViewActive_Figur">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetViewActive_None">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetViewActive_Serie">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                      </Tests>
+                    </TestRecord>
+                    <TestRecord Name="TestSeriePropertyPresenter">
+                      <Results>
+                        <UnitTestResult>
+                          <TestDate>2011-02-09T21:42:13</TestDate>
+                          <Status>Success Failure</Status>
+                          <TotalFailures>2</TotalFailures>
+                          <TotalSuccess>9</TotalSuccess>
+                          <TotalIgnored>0</TotalIgnored>
+                          <Time />
+                          <Message>Child test failed</Message>
+                        </UnitTestResult>
+                      </Results>
+                      <Tests>
+                        <TestRecord Name="Test_Delete_IfSerieIsNotNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Failure</Status>
+                              <TotalFailures>1</TotalFailures>
+                              <TotalSuccess>0</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>System.InvalidOperationException : You cannot start more than one unit of work at the same time</Message>
+                              <StackTrace>  at KinderSurprise.NHBootstrap.UnitOfWork.Start () [0x0002a] in /home/enrico/projects/kindersurprise/KinderSurprise.NHBootstrap/UnitOfWork.cs:45 
+  at KinderSurprise.DAL.BaseRepository`1[T].GetById (Int32 id) [0x00000] in /home/enrico/projects/kindersurprise/KinderSurprise.DAL/BaseRepository.cs:45 
+  at KinderSurprise.DAL.BaseRepository`1[T].DeleteById (Int32 id) [0x00006] in /home/enrico/projects/kindersurprise/KinderSurprise.DAL/BaseRepository.cs:65 
+  at KinderSurprise.MVP.Model.BaseServices`2[T,U].DeleteById (Int32 id) [0x00006] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Model/BaseServices.cs:39 
+  at KinderSurprise.MVP.Presenter.SeriePropertyPresenter.Delete () [0x00017] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter/SeriePropertyPresenter.cs:82 
+  at KinderSurprise.MVP.Presenter.Test.TestSeriePropertyPresenter.Test_Delete_IfSerieIsNotNull () [0x000b9] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter.Test/TestSeriePropertyPresenter.cs:220 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+NHibernate: SELECT serie0_.SerieId as SerieId4_0_, serie0_.SerieName as SerieName4_0_, serie0_.Description as Descript3_4_0_, serie0_.PublicationYear as Publicat4_4_0_, serie0_.FK_Category_ID as FK5_4_0_ FROM tSerie serie0_ WHERE serie0_.SerieId=?p0;?p0 = 0
+NHibernate: INSERT INTO tSerie (SerieName, Description, PublicationYear, FK_Category_ID) VALUES (?p0, ?p1, ?p2, ?p3);?p0 = 'Test', ?p1 = 'test', ?p2 = 09/02/2011 00:00:00, ?p3 = 1
+NHibernate: SELECT LAST_INSERT_ID()
+NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Delete_IfSerieIsNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFields_CategoryIsNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFields_CateogryIsNotNull">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetFieldsEmpty">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetToEditMode">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SetToViewMode">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfNameAndYearAreValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Failure</Status>
+                              <TotalFailures>1</TotalFailures>
+                              <TotalSuccess>0</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>System.InvalidOperationException : You cannot start more than one unit of work at the same time</Message>
+                              <StackTrace>  at KinderSurprise.NHBootstrap.UnitOfWork.Start () [0x0002a] in /home/enrico/projects/kindersurprise/KinderSurprise.NHBootstrap/UnitOfWork.cs:45 
+  at KinderSurprise.DAL.BaseRepository`1[T].GetById (Int32 id) [0x00000] in /home/enrico/projects/kindersurprise/KinderSurprise.DAL/BaseRepository.cs:45 
+  at KinderSurprise.DAL.BaseRepository`1[T].DeleteById (Int32 id) [0x00006] in /home/enrico/projects/kindersurprise/KinderSurprise.DAL/BaseRepository.cs:65 
+  at KinderSurprise.MVP.Model.BaseServices`2[T,U].DeleteById (Int32 id) [0x00006] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Model/BaseServices.cs:39 
+  at KinderSurprise.MVP.Presenter.Test.TestSeriePropertyPresenter.Test_Update_IfNameAndYearAreValid () [0x000b1] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter.Test/TestSeriePropertyPresenter.cs:188 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT serie0_.SerieId as SerieId4_0_, serie0_.SerieName as SerieName4_0_, serie0_.Description as Descript3_4_0_, serie0_.PublicationYear as Publicat4_4_0_, serie0_.FK_Category_ID as FK5_4_0_ FROM tSerie serie0_ WHERE serie0_.SerieId=?p0;?p0 = 0
+NHibernate: INSERT INTO tSerie (SerieName, Description, PublicationYear, FK_Category_ID) VALUES (?p0, ?p1, ?p2, ?p3);?p0 = 'test serie update', ?p1 = 'desc serie update', ?p2 = 01/01/1981 00:00:00, ?p3 = 1
+NHibernate: SELECT LAST_INSERT_ID()
+NHibernate: SELECT this_.SerieId as SerieId4_0_, this_.SerieName as SerieName4_0_, this_.Description as Descript3_4_0_, this_.PublicationYear as Publicat4_4_0_, this_.FK_Category_ID as FK5_4_0_ FROM tSerie this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfNameIsNotValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfYearAndNameAreNotValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_Update_IfYearIsNotValid">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                      </Tests>
+                    </TestRecord>
+                    <TestRecord Name="TestTreeViewPresenter">
+                      <Results>
+                        <UnitTestResult>
+                          <TestDate>2011-02-09T21:42:13</TestDate>
+                          <Status>Success Failure</Status>
+                          <TotalFailures>1</TotalFailures>
+                          <TotalSuccess>10</TotalSuccess>
+                          <TotalIgnored>0</TotalIgnored>
+                          <Time />
+                          <Message>Child test failed</Message>
+                        </UnitTestResult>
+                      </Results>
+                      <Tests>
+                        <TestRecord Name="Test_ClearEmptyTreeOverview">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_ClearFilledTreeOverview">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.46ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_DataBind">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Failure</Status>
+                              <TotalFailures>1</TotalFailures>
+                              <TotalSuccess>0</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>  Expected: 3
+  But was:  9
+</Message>
+                              <StackTrace>  at NUnit.Framework.Assert.That (System.Object actual, NUnit.Framework.Constraints.Constraint constraint, System.String message, System.Object[] args) [0x00000] in &lt;filename unknown&gt;:0 
+  at NUnit.Framework.Assert.AreEqual (Int32 expected, Int32 actual, System.String message, System.Object[] args) [0x00000] in &lt;filename unknown&gt;:0 
+  at NUnit.Framework.Assert.AreEqual (Int32 expected, Int32 actual) [0x00000] in &lt;filename unknown&gt;:0 
+  at KinderSurprise.MVP.Presenter.Test.TestTreeViewPresenter.Test_DataBind () [0x00022] in /home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter.Test/TestTreeViewPresenter.cs:44 
+  at (wrapper managed-to-native) System.Reflection.MonoMethod:InternalInvoke (object,object[],System.Exception&amp;)
+  at System.Reflection.MonoMethod.Invoke (System.Object obj, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00000] in &lt;filename unknown&gt;:0 </StackTrace>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_GetActiveMultiMenu_CategoryIsChoosen">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_GetActiveMultiMenu_FigurIsChoosen">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_GetActiveMultiMenu_NoneIsChoosen">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.00ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_GetActiveMultiMenu_SerieIsChoosen">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_GetSelectedNodeDepth_CategorySelected">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_GetSelectedNodeDepth_FigurSelected">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_GetSelectedNodeDepth_NoneSelected">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.03ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_GetSelectedNodeDepth_SerieSelected">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.02ms</Message>
+                              <ConsoleOutput>NHibernate: SELECT this_.CategoryId as CategoryId0_0_, this_.CategoryName as Category2_0_0_, this_.Description as Descript3_0_0_ FROM tCategory this_
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 1
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 2
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 3
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 7
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 8
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 9
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 10
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 11
+NHibernate: SELECT this_.SerieId as SerieId14_0_, this_.SerieName as SerieName14_0_, this_.Description as Descript3_14_0_, this_.PublicationYear as Publicat4_14_0_, this_.FK_Category_ID as FK5_14_0_ FROM tSerie this_ WHERE this_.FK_Category_ID = ?p0;?p0 = 12
+</ConsoleOutput>
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                      </Tests>
+                    </TestRecord>
+                    <TestRecord Name="TestUserControlPresenter">
+                      <Results>
+                        <UnitTestResult>
+                          <TestDate>2011-02-09T21:42:13</TestDate>
+                          <Status>Success</Status>
+                          <TotalFailures>0</TotalFailures>
+                          <TotalSuccess>8</TotalSuccess>
+                          <TotalIgnored>0</TotalIgnored>
+                          <Time />
+                        </UnitTestResult>
+                      </Results>
+                      <Tests>
+                        <TestRecord Name="Test_CategoryIsSelected_ModeIsNew">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.03ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_CategoryIsSelected_ModeIsView">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_FigurIsSelected_ModeIsNew">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_FigurIsSelected_ModeIsView">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_NoneTabIsActivated_ModeIsNew">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_NoneTabIsActivated_ModeIsView">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SerieIsSelected_ModeIsNew">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                        <TestRecord Name="Test_SerieIsSelected_ModeIsView">
+                          <Results>
+                            <UnitTestResult>
+                              <TestDate>2011-02-09T21:42:13</TestDate>
+                              <Status>Success</Status>
+                              <TotalFailures>0</TotalFailures>
+                              <TotalSuccess>1</TotalSuccess>
+                              <TotalIgnored>0</TotalIgnored>
+                              <Time />
+                              <Message>Test successful
+
+Execution time: 0.01ms</Message>
+                              <ConsoleOutput />
+                              <ConsoleError />
+                            </UnitTestResult>
+                          </Results>
+                        </TestRecord>
+                      </Tests>
+                    </TestRecord>
+                  </Tests>
+                </TestRecord>
+              </Tests>
+            </TestRecord>
+          </Tests>
+        </TestRecord>
+      </Tests>
+    </TestRecord>
+  </Tests>
+</TestRecord>
