@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderSurprise.RepositoryIm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderSurprise.RepositoryImpl.Test", "KinderSurprise.RepositoryImpl.Test\KinderSurprise.RepositoryImpl.Test.csproj", "{59E7C73B-EE9F-45E5-A287-2068CB41A771}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderSurprise.Model.Test", "KinderSurprise.Model.Test\KinderSurprise.Model.Test.csproj", "{E83315F7-EC7C-4C93-9636-AF41471F9A83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinderSurprise.Model.Test", "KinderSurprise.Model.Test\KinderSurprise.Model.Test.csproj", "{71FBAA76-F154-464C-A95E-045F641C45B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,10 +87,10 @@ Global
 		{59E7C73B-EE9F-45E5-A287-2068CB41A771}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E7C73B-EE9F-45E5-A287-2068CB41A771}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E7C73B-EE9F-45E5-A287-2068CB41A771}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E83315F7-EC7C-4C93-9636-AF41471F9A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E83315F7-EC7C-4C93-9636-AF41471F9A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E83315F7-EC7C-4C93-9636-AF41471F9A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E83315F7-EC7C-4C93-9636-AF41471F9A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71FBAA76-F154-464C-A95E-045F641C45B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71FBAA76-F154-464C-A95E-045F641C45B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71FBAA76-F154-464C-A95E-045F641C45B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71FBAA76-F154-464C-A95E-045F641C45B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
