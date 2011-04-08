@@ -8,7 +8,7 @@ namespace KinderSurprise.RepositoryImpl.Test
         [SetUp]
 		public void SetupContext()
 		{
-			Testing.Initialize();
+			Productive.Initialize();
 
             Context();
             Because();

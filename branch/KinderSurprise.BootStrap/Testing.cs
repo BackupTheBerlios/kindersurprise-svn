@@ -3,6 +3,7 @@ using KinderSurprise.RepositoryImpl.NHImpl;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using StructureMap;
+using KinderSurprise.RepositoryImpl.Fake;
 
 namespace KinderSurprise.BootStrap
 {
@@ -15,7 +16,7 @@ namespace KinderSurprise.BootStrap
 				// register repository classes
                 x.For<IInstructionsRepository>().Use<InstructionsRepository>();
 				x.For<IFigurRepository>().Use<FigurRepository>();
-				x.For<ICategoryRepository>().Use<CategoryRepository>();
+				x.For<ICategoryRepository>().Use<FakeCategoryRepository>();
 				x.For<IPictureRepository>().Use<PictureRepository>();
 				x.For<ISerieRepository>().Use<SerieRepository>();
 				

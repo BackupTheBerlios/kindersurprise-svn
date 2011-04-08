@@ -1,11 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KinderSurprise.RepositoryImpl.Test/CategorySpecification.cs" ctype="Workbench">
+    <Files>
+      <File FileName="KinderSurprise.RepositoryImpl.Test/CategorySpecification.cs" Line="205" Column="15" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="KinderSurprise.RepositoryImpl" expanded="True">
-            <Node name="NHImpl" expanded="True" />
+        <State expanded="True">
+          <Node name="KinderSurprise.RepositoryImpl.Test" expanded="True">
+            <Node name="CategorySpecification.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -22,7 +25,16 @@
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="KinderSurprise.RepositoryImpl.Test" expanded="True">
+            <Node name="KinderSurprise" expanded="True">
+              <Node name="RepositoryImpl" expanded="True">
+                <Node name="Test" expanded="True" selected="True" />
+                <Node name="TestCategoryRepos" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
