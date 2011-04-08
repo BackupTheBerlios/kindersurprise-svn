@@ -3,6 +3,7 @@ using KinderSurprise.MVP.Model.Interfaces;
 using KinderSurprise.Repository;
 using KinderSurprise.Model;
 using StructureMap;
+using KinderSurprise.RepositoryImpl;
 
 namespace KinderSurprise.MVP.Model
 {
@@ -12,30 +13,50 @@ namespace KinderSurprise.MVP.Model
 	{
 		public List<T> GetAll()
         {
-            var repository = ObjectFactory.GetInstance<TU>();
-            return repository.GetAll();
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+    	        var repository = ObjectFactory.GetInstance<TU>();
+        	    return repository.GetAll();
+			}
         }
 		
 		public T GetById(int id)
         {
-            var repository = ObjectFactory.GetInstance<TU>();
-            return repository.GetById(id);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				var repository = ObjectFactory.GetInstance<TU>();
+            	return repository.GetById(id);
+			}
         }
 		
 		public void SaveOrUpdate(T dto)
         {
             var repository = ObjectFactory.GetInstance<TU>();
-
-            if(repository.HasId(dto.Id))
-                repository.Update(dto);
-            else
-                repository.Add(dto);
+			
+ 			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				using (IGenericTransaction transaction = uow.BeginTransaction())
+				{
+					if(repository.HasId(dto.Id))
+	                	repository.Update(dto);
+	            	else
+	                	repository.Add(dto);
+					transaction.Commit();
+				}
+			}
         }
 		
 		public void DeleteById(int id)
         {
-            var repository = ObjectFactory.GetInstance<TU>();
-            repository.DeleteById(id);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				using (IGenericTransaction transaction = uow.BeginTransaction())
+				{
+					var repository = ObjectFactory.GetInstance<TU>();
+            		repository.DeleteById(id);
+					transaction.Commit();
+				}
+			}
         }
 	}
 }

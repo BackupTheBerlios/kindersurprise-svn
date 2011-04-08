@@ -3,7 +3,7 @@ namespace KinderSurprise.Model
 	public class Instructions : BaseObject
 	{
 		public virtual string Name { get; set; }
-		public virtual Figur Fk_Figur_Id { get; set; }
+		public virtual Figur Figur { get; set; }
 		
 		public override bool Equals(object obj)
         {

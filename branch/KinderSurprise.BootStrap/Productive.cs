@@ -3,6 +3,7 @@ using KinderSurprise.RepositoryImpl.NHImpl;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;
 using StructureMap;
+using KinderSurprise.RepositoryImpl;
 
 namespace KinderSurprise.BootStrap
 {

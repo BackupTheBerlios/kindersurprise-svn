@@ -21,7 +21,10 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 		
 		protected override void Because()
 		{
-			m_ReturnValue = m_CategoryRepository.HasId(CategoryId);
+			using (UnitOfWork.Start())
+			{
+				m_ReturnValue = m_CategoryRepository.HasId(CategoryId);
+			}
 		}
 		
 		[Test]
@@ -45,7 +48,11 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 		
 		protected override void Because()
 		{
-			m_ReturnValue = m_CategoryRepository.HasId(CategoryId);
+			using (UnitOfWork.Start())
+			{
+				m_ReturnValue = m_CategoryRepository.HasId(CategoryId);
+		
+			}
 		}
 		
 		[Test]
@@ -68,7 +75,10 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 		
 		protected override void Because()
 		{
-			m_Categories = m_CategoryRepository.GetAll();
+			using (UnitOfWork.Start())
+			{
+				m_Categories = m_CategoryRepository.GetAll();
+			}
 		}
 		
 		[Test]
@@ -104,7 +114,10 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 		
 		protected override void Because()
 		{
-			m_ReturnValue = m_CategoryRepository.GetById(CategoryId);
+			using (UnitOfWork.Start())
+			{
+				m_ReturnValue = m_CategoryRepository.GetById(CategoryId);
+			}
 		}
 		
 		[Test]
@@ -130,7 +143,10 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 		
 		protected override void Because()
 		{
-			m_ReturnValue = m_CategoryRepository.GetById(CategoryId);
+			using (UnitOfWork.Start())
+			{
+				m_ReturnValue = m_CategoryRepository.GetById(CategoryId);
+			}
 		}
 		
         [Test]
@@ -145,6 +161,7 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
     {
 		private ICategoryRepository m_CategoryRepository;
 		private Category m_Category;
+		private Category m_NewCategory;
 		private int m_Id;
 		
 		protected override void Context()
@@ -160,23 +177,28 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 		
 		protected override void Because()
 		{
-			m_Id = m_CategoryRepository.Add(m_Category);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				using (IGenericTransaction transaction = uow.BeginTransaction())
+				{
+					m_Id = m_CategoryRepository.Add(m_Category);
+					m_NewCategory = m_CategoryRepository.GetById(m_Id);
+					transaction.Rollback();
+				}
+			}
 		}
 		
 		protected override void TearDownContext()
 		{
-			m_CategoryRepository.DeleteById(m_Id);
 		}
 		
         [Test]
 		public void CategoryShouldBeAddedToTheDatabase()
 		{
-			Category newCategory = m_CategoryRepository.GetById(m_Id);
-
-            Assert.IsNotNull(newCategory);
-            Assert.AreEqual(m_Id, newCategory.Id);
-            Assert.AreEqual("Test", newCategory.Name);
-            Assert.AreEqual("Test", newCategory.Description);
+            Assert.IsNotNull(m_NewCategory);
+            Assert.AreEqual(m_Id, m_NewCategory.Id);
+            Assert.AreEqual("Test", m_NewCategory.Name);
+            Assert.AreEqual("Test", m_NewCategory.Description);
 		}
 	}
 	
@@ -185,37 +207,38 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
     {
 		private ICategoryRepository m_CategoryRepository;
 		private Category m_Category;
-		private int m_Id;
+		private Category m_NewCategory;
 		
 		protected override void Context()
 		{
 			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-			m_Category = new Category { Id = 0, Name = "Figur", Description = "Alle Figuren" };
-			m_Id = m_CategoryRepository.Add(m_Category);
-			m_Category = m_CategoryRepository.GetById(m_Id);
-            m_Category.Name = "Test";
-            m_Category.Description = "Test";
+			m_Category = new Category { Id = 2, Name = "Test", Description = "Test" };
 		}
 		
 		protected override void Because()
 		{
-			m_CategoryRepository.Update(m_Category);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				using (IGenericTransaction transaction = uow.BeginTransaction())
+				{
+					m_CategoryRepository.Update(m_Category);
+					m_NewCategory = m_CategoryRepository.GetById(2);
+					transaction.Rollback();
+				}
+			}
 		}
 		
 		protected override void TearDownContext()
 		{
-			m_CategoryRepository.DeleteById(m_Id);
 		}
 		
 		[Test]
 		public void CategoryShouldContainTheNewData()
 		{
-			Category category = m_CategoryRepository.GetById(m_Id);
-
-            Assert.IsNotNull(category);
-            Assert.AreEqual(m_Id, category.Id);
-            Assert.AreEqual("Test", category.Name);
-            Assert.AreEqual("Test", category.Description);
+			Assert.IsNotNull(m_NewCategory);
+            Assert.AreEqual(2, m_NewCategory.Id);
+            Assert.AreEqual("Test", m_NewCategory.Name);
+            Assert.AreEqual("Test", m_NewCategory.Description);
 		}
 	}
 	
@@ -224,18 +247,23 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
     {
 		private ICategoryRepository m_CategoryRepository;
 		private Category m_Category;
-		private int m_Id;
 		
 		protected override void Context()
 		{
 			m_CategoryRepository = ObjectFactory.GetInstance<ICategoryRepository>();
-			m_Category = new Category { Id = 0, Name = "Test", Description = "Test" };
-			m_Id = m_CategoryRepository.Add(m_Category);
 		}
 		
 		protected override void Because ()
 		{
-			m_CategoryRepository.DeleteById(m_Id);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				using (IGenericTransaction transaction = uow.BeginTransaction())
+				{
+					m_CategoryRepository.DeleteById(1);
+					m_Category = m_CategoryRepository.GetById(1);
+					transaction.Rollback();
+				}
+			}
 		}
 		
 		protected override void TearDownContext()
@@ -243,9 +271,9 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 		}
 		
 		[Test]
-		public void CategoryShouldContainTheNewData()
+		public void CategoryShouldNotExistAnymore()
 		{
-			Assert.IsFalse(m_CategoryRepository.HasId(m_Id));
+			Assert.IsNull(m_Category);
 		}
 	}
 }

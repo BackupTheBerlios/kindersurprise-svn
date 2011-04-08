@@ -13,7 +13,7 @@ namespace KinderSurprise.RepositoryImpl.NHImpl
 			using (ISession session = SessionBase.OpenSession())
 			{
 			    return session.QueryOver<Instructions>()
-			        .Where(x => x.Fk_Figur_Id.Id == id)
+			        .Where(x => x.Figur.Id == id)
 			        .CacheMode(CacheMode.Normal)
 			        .List().ToList();
 			}

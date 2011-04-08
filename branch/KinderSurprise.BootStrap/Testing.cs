@@ -1,5 +1,4 @@
 using KinderSurprise.Repository;
-using KinderSurprise.RepositoryImpl.Fake;
 using KinderSurprise.RepositoryImpl.NHImpl;
 using KinderSurprise.MVP.Model;
 using KinderSurprise.MVP.Model.Interfaces;

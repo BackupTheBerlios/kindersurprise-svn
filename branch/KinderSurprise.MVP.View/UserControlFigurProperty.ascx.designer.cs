@@ -31,8 +31,6 @@ namespace KinderSurprise.MVP.View {
 		
 		protected System.Web.UI.WebControls.DropDownList DDL_Figur_Choose_Serie;
 		
-		protected System.Web.UI.WebControls.Image Image1;
-		
 		protected System.Web.UI.WebControls.Button BTN_NewFigur;
 		
 		protected System.Web.UI.WebControls.Button BTN_Cancel;

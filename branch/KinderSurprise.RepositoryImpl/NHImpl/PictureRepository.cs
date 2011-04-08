@@ -15,15 +15,15 @@ namespace KinderSurprise.RepositoryImpl.NHImpl
 			    var queryOver = session.QueryOver<Picture>();
 				if(type.Equals(EType.Figur))
 				{
-				    queryOver.Where(x => x.Fk_Figur_Id.Id == id);
+				    queryOver.Where(x => x.Figur.Id == id);
 				}
 				if(type.Equals(EType.Serie))
 				{
-				    queryOver.Where(x => x.Fk_Serie_Id.Id == id);
+				    queryOver.Where(x => x.Serie.Id == id);
 				}
 				if(type.Equals(EType.Instructions))
 				{
-				    queryOver.Where(x => x.Fk_Instructions_Id.Id == id);
+				    queryOver.Where(x => x.Instructions.Id == id);
 				}
 
 			    return queryOver.CacheMode(CacheMode.Normal).Cacheable()

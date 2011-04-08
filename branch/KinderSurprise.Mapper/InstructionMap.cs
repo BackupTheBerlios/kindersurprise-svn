@@ -10,7 +10,7 @@ namespace KinderSurprise.Mapper
 			Table("tInstructions");
 			Id(x => x.Id);
 			Map(x => x.Name);
-			References(x => x.Fk_Figur_Id, "FK_Figur_ID");
+			References(x => x.Figur, "FK_Figur_ID");
 			Cache.ReadWrite();
 		}
 	}

@@ -111,9 +111,9 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
         {
             Assert.AreEqual(6, m_ReturnValue[0].Id);
             Assert.AreEqual("instructions2.png", m_ReturnValue[0].Path);
-            Assert.IsNotNull(m_ReturnValue[0].Fk_Instructions_Id);
-            Assert.IsNull(m_ReturnValue[0].Fk_Figur_Id);
-            Assert.IsNull(m_ReturnValue[0].Fk_Serie_Id);
+            Assert.IsNotNull(m_ReturnValue[0].Instructions);
+            Assert.IsNull(m_ReturnValue[0].Figur);
+            Assert.IsNull(m_ReturnValue[0].Serie);
         }
     }
 
@@ -145,9 +145,9 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
         public void ElementShouldContainExpectedValues()
         {
             Assert.AreEqual("1.jpg", m_ReturnValue[0].Path);
-            Assert.IsNull(m_ReturnValue[0].Fk_Instructions_Id);
-            Assert.IsNull(m_ReturnValue[0].Fk_Figur_Id);
-            Assert.IsNotNull(m_ReturnValue[0].Fk_Serie_Id);
+            Assert.IsNull(m_ReturnValue[0].Instructions);
+            Assert.IsNull(m_ReturnValue[0].Figur);
+            Assert.IsNotNull(m_ReturnValue[0].Serie);
         }
     }
 
@@ -179,14 +179,14 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
         public void ElementsShouldContainExpectedValues()
         {
             Assert.AreEqual("3.jpg", m_ReturnValue[0].Path);
-            Assert.IsNull(m_ReturnValue[0].Fk_Instructions_Id);
-            Assert.IsNotNull(m_ReturnValue[0].Fk_Figur_Id);
-            Assert.IsNull(m_ReturnValue[0].Fk_Serie_Id);
+            Assert.IsNull(m_ReturnValue[0].Instructions);
+            Assert.IsNotNull(m_ReturnValue[0].Figur);
+            Assert.IsNull(m_ReturnValue[0].Serie);
 
             Assert.AreEqual("4.jpg", m_ReturnValue[1].Path);
-            Assert.IsNull(m_ReturnValue[1].Fk_Instructions_Id);
-            Assert.IsNotNull(m_ReturnValue[1].Fk_Figur_Id);
-            Assert.IsNull(m_ReturnValue[1].Fk_Serie_Id);
+            Assert.IsNull(m_ReturnValue[1].Instructions);
+            Assert.IsNotNull(m_ReturnValue[1].Figur);
+            Assert.IsNull(m_ReturnValue[1].Serie);
         }
     }
 }

@@ -3,7 +3,11 @@
   <MonoDevelop.Ide.Workbench ctype="Workbench">
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" />
+        <State expanded="True" selected="True">
+          <Node name="KinderSurprise.RepositoryImpl" expanded="True">
+            <Node name="NHImpl" expanded="True" />
+          </Node>
+        </State>
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
@@ -36,8 +40,6 @@
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="237" />
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="248" />
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="254" />
-      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.NHBootstrap/UnitOfWorkFactory.cs" line="19" />
-      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.NHBootstrap/UnitOfWorkFactory.cs" line="21" />
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestFigurRepository.cs" line="310" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

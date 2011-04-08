@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -59,10 +59,6 @@
     <Reference Include="System.Web.Routing" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KinderSurprise.MVP.Presenter\KinderSurprise.MVP.Presenter.csproj">
-      <Project>{431C4DA1-C2FC-409E-89D5-99A0F599E71B}</Project>
-      <Name>KinderSurprise.MVP.Presenter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\KinderSurprise.MVP.Model\KinderSurprise.MVP.Model.csproj">
       <Project>{CDC97DAE-3879-44B4-91D5-2926D375AED1}</Project>
       <Name>KinderSurprise.MVP.Model</Name>
@@ -85,20 +81,14 @@
     <Compile Include="Productive.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+    <BootstrapperPackage Include="..\..\..\Projects\kindersurprise\KinderSurprise.BootStrap\Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+    <BootstrapperPackage Include="..\..\..\Projects\kindersurprise\KinderSurprise.BootStrap\Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+    <BootstrapperPackage Include="..\..\..\Projects\kindersurprise\KinderSurprise.BootStrap\Microsoft.Windows.Installer.3.1">
       <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

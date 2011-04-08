@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -51,20 +51,14 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+    <BootstrapperPackage Include="..\..\..\Projects\kindersurprise\KinderSurprise.RepositoryImpl\Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+    <BootstrapperPackage Include="..\..\..\Projects\kindersurprise\KinderSurprise.RepositoryImpl\Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+    <BootstrapperPackage Include="..\..\..\Projects\kindersurprise\KinderSurprise.RepositoryImpl\Microsoft.Windows.Installer.3.1">
       <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +72,13 @@
     <Compile Include="Fake\FakeBaseRepository.cs" />
     <Compile Include="Fake\FakeCategoryRepository.cs" />
     <Compile Include="Fake\FakeFigurRepository.cs" />
+    <Compile Include="GenericTransaction.cs" />
+    <Compile Include="IGenericTransaction.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="IUnitOfWorkFactory.cs" />
+    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="UnitOfWorkFactory.cs" />
+    <Compile Include="UnitOfWorkImplementer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.Mapper\KinderSurprise.Mapper.csproj">
@@ -92,29 +93,29 @@
       <Project>{E831D0AF-40F4-4348-95C9-80C7D869A76E}</Project>
       <Name>KinderSurprise.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KinderSurprise.NHBootstrap\KinderSurprise.NHBootstrap.csproj">
-      <Project>{D6536A31-1D7A-4D71-BEAB-71C8C4787C56}</Project>
-      <Name>KinderSurprise.NHBootstrap</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate, Version=2.0.0.698, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\NHibernate.ByteCode.Castle.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Core" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="FluentNHibernate, Version=2.0.0.698, Culture=neutral, PublicKeyToken=8aa435e3cb308880">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\structuremap_v2.6.1\StructureMap.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

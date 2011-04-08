@@ -3,9 +3,9 @@ namespace KinderSurprise.Model
 	public class Picture : BaseObject
 	{
         public virtual string Path { get; set; }
-		public virtual Serie Fk_Serie_Id { get; set; }
-		public virtual Figur Fk_Figur_Id { get; set; }
-		public virtual Instructions Fk_Instructions_Id { get; set; }
+		public virtual Serie Serie { get; set; }
+		public virtual Figur Figur { get; set; }
+		public virtual Instructions Instructions { get; set; }
 		
 		public override bool Equals(object obj)
         {
@@ -26,7 +26,7 @@ namespace KinderSurprise.Model
         {
             unchecked
             {
-                return this != null ? this.GetHashCode() : 0;
+                return Serie != null ? Serie.GetHashCode() : 0;
             }
         }
 	}

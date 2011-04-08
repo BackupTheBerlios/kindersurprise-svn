@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using KinderSurprise.Model;
 using NHibernate;
+using StructureMap;
 
 namespace KinderSurprise.RepositoryImpl.NHImpl
 {
@@ -9,68 +10,36 @@ namespace KinderSurprise.RepositoryImpl.NHImpl
 	{
 		public bool HasId(int id)
         {
-			using (ISession session = SessionBase.OpenSession())
-            {
-                var hasObject = session.Get<T>(id);
-
-                return hasObject != null;
-            }
+			var hasObject = UnitOfWork.CurrentSession.Get<T>(id);
+	    	return hasObject != null;
         }
 		
 		public List<T> GetAll()
         {
-			using (ISession session = SessionBase.OpenSession())
-			{
-			    return session.QueryOver<T>()
-			        .CacheMode(CacheMode.Normal).Cacheable()
-			        .List().ToList();
-            }
+		    return UnitOfWork.CurrentSession.QueryOver<T>()
+		        .CacheMode(CacheMode.Normal).Cacheable()
+		        .List().ToList();
         }
 		
 		public T GetById(int id)
         {
-            using (ISession session = SessionBase.OpenSession())
-            {
-                return session.Get<T>(id);
-            }
+            return UnitOfWork.CurrentSession.Get<T>(id);
         }
 		
 		public void DeleteById(int id)
         {
-			using (ISession session = SessionBase.OpenSession())
-            {
-                using (ITransaction transaction = session.BeginTransaction())
-                {
-                    session.Delete(GetById(id));
-                    transaction.Commit();
-                }
-            }
+            UnitOfWork.CurrentSession.Delete(GetById(id));
         }
 		
 		public int Add(T dto)
         {
-			using (ISession session = SessionBase.OpenSession())
-            {
-                using (ITransaction transaction = session.BeginTransaction())
-                {
-                    session.Save(dto);
-                    transaction.Commit();
-                }
-            }
-			
+            UnitOfWork.CurrentSession.Save(dto);
 			return dto.Id;
         }
 		
 		public void Update(T dto)
         {
-			using (ISession session = SessionBase.OpenSession())
-            {
-                using(ITransaction transaction = session.BeginTransaction())
-                {
-                    session.Update(dto);
-                    transaction.Commit();
-                }
-            }
+            UnitOfWork.CurrentSession.Update(dto);
         }
 	}
 }
