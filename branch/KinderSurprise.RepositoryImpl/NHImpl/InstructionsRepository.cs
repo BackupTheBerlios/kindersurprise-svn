@@ -10,13 +10,10 @@ namespace KinderSurprise.RepositoryImpl.NHImpl
 	{
 		public List<Instructions> GetByFigurId(int id)
 		{
-			using (ISession session = SessionBase.OpenSession())
-			{
-			    return session.QueryOver<Instructions>()
-			        .Where(x => x.Figur.Id == id)
-			        .CacheMode(CacheMode.Normal)
-			        .List().ToList();
-			}
+			return UnitOfWork.CurrentSession.QueryOver<Instructions>()
+		        .Where(x => x.Figur.Id == id)
+		        .CacheMode(CacheMode.Normal)
+		        .List().ToList();
 		}
 	}
 }

@@ -96,6 +96,7 @@
     <Compile Include="TestTreeViewPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestUserControlPresenter.cs" />
+    <Compile Include="PresenterFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.Mapper\KinderSurprise.Mapper.csproj">

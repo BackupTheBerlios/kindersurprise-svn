@@ -5,228 +5,405 @@ using KinderSurprise.Model;
 using KinderSurprise.Repository;
 using NUnit.Framework;
 using StructureMap;
+using KinderSurprise.RepositoryImpl.Test;
 
-namespace KinderSurprise.RepositoryImpl.Test
+namespace KinderSurprise.RepositoryImpl.TestSerieRepos
 {
-    [TestFixture]
-    public class TestSerieRepository
+	[TestFixture]
+	public class WhenCheckingIfValidSerieExist : RepositoryFixture
     {
-		[SetUp]
-		public void Initialize()
+		private const int SerieId = 1;
+		private ISerieRepository m_SerieRepository;
+		private bool m_ReturnValue;
+		
+		protected override void Context()
 		{
-			Testing.Initialize();	
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
 		}
 		
-        [Test]
-        public void Test_ExistSerieId_DoesntExist()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-            const int serieId = 1;
+		protected override void Because()
+		{
+			using (UnitOfWork.Start())
+			{
+				m_ReturnValue = m_SerieRepository.HasId(SerieId);
+			}
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void ShouldReturnTrue()
+		{
+			Assert.IsTrue(m_ReturnValue);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenCheckingIfInvalidSerieExist : RepositoryFixture
+    {
+		private const int SerieId = 6;
+		private ISerieRepository m_SerieRepository;
+		private bool m_ReturnValue;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+		}
+		
+		protected override void Because()
+		{
+			using (UnitOfWork.Start())
+			{
+				m_ReturnValue = m_SerieRepository.HasId(SerieId);
+			}
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void ShouldReturnFalse()
+		{
+			Assert.IsFalse(m_ReturnValue);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenRequestingAllSeries : RepositoryFixture
+    {
+		private ISerieRepository m_SerieRepository;
+		private List<Serie> m_Series;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+		}
+		
+		protected override void Because()
+		{
+			using (UnitOfWork.Start())
+			{
+				m_Series = m_SerieRepository.GetAll();
+			}
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void ShouldContainAllData()
+		{
+			Assert.AreEqual(5, m_Series.Count);
 
-            Assert.IsTrue(serieRepository.HasId(serieId));
-        }
+            Assert.AreEqual(1, m_Series[0].Id);
+            Assert.AreEqual("Plaste1", m_Series[0].Name);
+            Assert.AreEqual("Plasteserie 1", m_Series[0].Description);
+            Assert.AreEqual(new DateTime(2008, 1, 1), m_Series[0].PublicationYear);
+            Assert.AreEqual(1, m_Series[0].Category.Id);
 
-        [Test]
-        public void Test_ExistSerieId_DoesExist()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-            const int serieId = -1;
+            Assert.AreEqual(2, m_Series[1].Id);
+            Assert.AreEqual("Plaste2", m_Series[1].Name);
+            Assert.AreEqual("Plasteserie 2", m_Series[1].Description);
+            Assert.AreEqual(new DateTime(2008, 1, 2), m_Series[1].PublicationYear);
+            Assert.AreEqual(1, m_Series[1].Category.Id);
 
-            Assert.IsFalse(serieRepository.HasId(serieId));
-        }
+            Assert.AreEqual(3, m_Series[2].Id);
+            Assert.AreEqual("Figuren1", m_Series[2].Name);
+            Assert.AreEqual("Figurenserie 1", m_Series[2].Description);
+            Assert.AreEqual(new DateTime(2008, 1, 3), m_Series[2].PublicationYear);
+            Assert.AreEqual(2, m_Series[2].Category.Id);
 
-        [Test]
-        public void Test_GetAllSeries()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+            Assert.AreEqual(4, m_Series[3].Id);
+            Assert.AreEqual("Figuren2", m_Series[3].Name);
+            Assert.AreEqual("Figurenserie 2", m_Series[3].Description);
+            Assert.AreEqual(new DateTime(2008, 1, 4), m_Series[3].PublicationYear);
+            Assert.AreEqual(2, m_Series[3].Category.Id);
 
-            List<Serie> series = serieRepository.GetAll();
+            Assert.AreEqual(5, m_Series[4].Id);
+            Assert.AreEqual("Zinnfiguren", m_Series[4].Name);
+            Assert.AreEqual("Zinnserie", m_Series[4].Description);
+            Assert.AreEqual(new DateTime(2008, 1, 5), m_Series[4].PublicationYear);
+            Assert.AreEqual(3, m_Series[4].Category.Id);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenRequestingValidSerieById : RepositoryFixture
+    {
+		private const int SerieId = 1;
+		private ISerieRepository m_SerieRepository;
+		private Serie m_ReturnValue;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+		}
+		
+		protected override void Because()
+		{
+			using (UnitOfWork.Start())
+			{
+				m_ReturnValue = m_SerieRepository.GetById(SerieId);
+			}
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void ShouldReturnTheSerie()
+		{
+			Assert.AreEqual(SerieId, m_ReturnValue.Id);
+            Assert.AreEqual("Plaste1", m_ReturnValue.Name);
+            Assert.AreEqual("Plasteserie 1", m_ReturnValue.Description);
+            Assert.AreEqual(new DateTime(2008, 1, 1), m_ReturnValue.PublicationYear);
+            Assert.AreEqual(1, m_ReturnValue.Category.Id);
+		}
+	}
 
-            Assert.AreEqual(5, series.Count);
-
-            Assert.AreEqual(1, series[0].Id);
-            Assert.AreEqual("Plaste1", series[0].Name);
-            Assert.AreEqual("Plasteserie 1",series[0].Description);
-            Assert.AreEqual(new DateTime(2008, 1, 1), series[0].PublicationYear);
-            Assert.AreEqual(1,series[0].Category.Id);
-
-            Assert.AreEqual(2, series[1].Id);
-            Assert.AreEqual("Plaste2", series[1].Name);
-            Assert.AreEqual("Plasteserie 2", series[1].Description);
-            Assert.AreEqual(new DateTime(2008, 1, 2), series[1].PublicationYear);
-            Assert.AreEqual(1, series[1].Category.Id);
-
-            Assert.AreEqual(3, series[2].Id);
-            Assert.AreEqual("Figuren1", series[2].Name);
-            Assert.AreEqual("Figurenserie 1", series[2].Description);
-            Assert.AreEqual(new DateTime(2008, 1, 3), series[2].PublicationYear);
-            Assert.AreEqual(2, series[2].Category.Id);
-
-            Assert.AreEqual(4, series[3].Id);
-            Assert.AreEqual("Figuren2", series[3].Name);
-            Assert.AreEqual("Figurenserie 2", series[3].Description);
-            Assert.AreEqual(new DateTime(2008, 1, 4), series[3].PublicationYear);
-            Assert.AreEqual(2, series[3].Category.Id);
-
-            Assert.AreEqual(5, series[4].Id);
-            Assert.AreEqual("Zinnfiguren", series[4].Name);
-            Assert.AreEqual("Zinnserie", series[4].Description);
-            Assert.AreEqual(new DateTime(2008, 1, 5), series[4].PublicationYear);
-            Assert.AreEqual(3, series[4].Category.Id);
-        }
-
-        [Test]
-        public void Test_GetSerieById_ValidId()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-
-            const int serieId = 1;
-
-            Serie serie = serieRepository.GetById(serieId);
-
-            Assert.AreEqual(serieId, serie.Id);
-            Assert.AreEqual("Plaste1", serie.Name);
-            Assert.AreEqual("Plasteserie 1", serie.Description);
-            Assert.AreEqual(new DateTime(2008, 1, 1), serie.PublicationYear);
-            Assert.AreEqual(1, serie.Category.Id);
-        }
-
-        [Test]
-        public void Test_GetSerieById_NotValidId()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-
-            const int serieId = -1;
-
-            Serie serie = serieRepository.GetById(serieId);
-
-            Assert.IsNull(serie);
-        }
-
-        [Test]
-        public void Test_DeleteSerieById()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-
-            Assert.IsTrue(serieRepository.HasId(1));
-
-            Serie oldSerie = serieRepository.GetById(1);
-            oldSerie.Name = "Plaste5";
-            serieRepository.Add(oldSerie);
-            int serieId = serieRepository.GetAll().FindLast(x => x.Id > 0).Id;
-
-            serieRepository.DeleteById(serieId);
-
-            Assert.IsFalse(serieRepository.HasId(serieId));
-        }
-
-        [Test]
-        public void Test_UpdateSerie()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-
-            Serie serie = new Serie { Id = 0, Name = "TestSerie", Description = "TestDesc", PublicationYear = new DateTime(2000,1,1), 
-                                             Category = new Category
-                                                 {
-                                                     Id = 1,
-                                                     Name = "TestCategory",
-                                                     Description = "TestDescCat"
-                                                 } };
-            serieRepository.Add(serie);
-            int serieId = serieRepository.GetAll().FindLast(x => x.Id > 0).Id;
-
-            serie = serieRepository.GetById(serieId);
-            serie.Name = "TestSerieOverwritten";
-            serie.Description = "TestDescOverwritten";
-
-            serieRepository.Update(serie);
-            
-            Serie newSerie = serieRepository.GetById(serieId);
-
-            Assert.IsNotNull(newSerie);
-            Assert.AreEqual(serieId, newSerie.Id);
-            Assert.AreEqual("TestSerieOverwritten", newSerie.Name);
-            Assert.AreEqual("TestDescOverwritten", newSerie.Description);
-            Assert.AreEqual(new DateTime(2000,1,1), newSerie.PublicationYear);
-                
-            Assert.IsNotNull(newSerie.Category);
-
-            serieRepository.DeleteById(serieId);
-
-            Assert.IsFalse(serieRepository.HasId(serieId));
-        }
-
-        [Test]
-        public void Test_AddSerie()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-
-            Serie serie = new Serie { Id = 1, Name = "Name", Description = "Test", PublicationYear =  new DateTime(2000,1,1), 
+	[TestFixture]
+	public class WhenRequestingInvalidSerieById : RepositoryFixture
+    {
+		private const int SerieId = -1;
+		private ISerieRepository m_SerieRepository;
+		private Serie m_ReturnValue;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+		}
+		
+		protected override void Because()
+		{
+			using (UnitOfWork.Start())
+			{
+				m_ReturnValue = m_SerieRepository.GetById(SerieId);
+			}
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void ShouldReturnNull()
+		{
+			Assert.IsNull(m_ReturnValue);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenAddingSerie : RepositoryFixture
+    {
+		private ISerieRepository m_SerieRepository;
+		private Serie m_Serie;
+		private Serie m_NewSerie;
+		private int m_Id;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+			m_Serie = new Serie { Id = 1, Name = "Name", Description = "Test", PublicationYear =  new DateTime(2000,1,1), 
                                              Category = new Category
                                                  {
                                                      Id = 1,
                                                      Name = "TestCategory",
                                                      Description = "TestDesc"
-                                                 } };
-
-            serieRepository.Add(serie);
-
-            int serieId = serieRepository.GetAll().FindLast(x => x.Id > 0).Id;
-
-            Serie newSerie = serieRepository.GetById(serieId);
-            
-            Assert.IsNotNull(newSerie);
-            Assert.AreEqual(serieId, newSerie.Id);
-            Assert.AreEqual("Name", newSerie.Name);
-            Assert.AreEqual("Test", newSerie.Description);
-            Assert.AreEqual(new DateTime(2000, 1, 1), newSerie.PublicationYear);
-
-            Assert.IsNotNull(newSerie.Category);
-            Assert.AreEqual(1, newSerie.Category.Id);
-            //Assert.AreEqual("TestCategory", newSerieDto.FK_Category_ID.CategoryName);
-            //Assert.AreEqual("TestDesc", newSerieDto.FK_Category_ID.Description);
-
-            serieRepository.DeleteById(newSerie.Id);
-
-            Assert.IsFalse(serieRepository.HasId(newSerie.Id));
-        }
-        
-		[Test]
-		[ExpectedException(typeof (NHibernate.Exceptions.GenericADOException))]
-		public void Test_TryInsertSerieWithWrongConstraint_ShouldFail()
+                                                 } 
+								};
+		}
+		
+		protected override void Because()
 		{
-			ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-			
-			Serie serie = new Serie { Id = 1, Name = "Name", Description = "Test", PublicationYear = new DateTime(2000,1,1), 
-                                             Category = new Category { Id = 10 } };
-			serieRepository.Add(serie);	
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				using (IGenericTransaction transaction = uow.BeginTransaction())
+				{
+					m_Id = m_SerieRepository.Add(m_Serie);
+					m_NewSerie = m_SerieRepository.GetById(m_Id);
+					transaction.Rollback();
+				}
+			}
+		}
+		
+		protected override void TearDownContext()
+		{
+		}
+		
+        [Test]
+		public void SerieShouldBeAddedToTheDatabase()
+		{
+            Assert.IsNotNull(m_NewSerie);
+            Assert.AreEqual(m_Id, m_NewSerie.Id);
+            Assert.AreEqual("Name", m_NewSerie.Name);
+            Assert.AreEqual("Test", m_NewSerie.Description);
+            Assert.AreEqual(new DateTime(2000, 1, 1), m_NewSerie.PublicationYear);
+
+            Assert.IsNotNull(m_NewSerie.Category);
+            Assert.AreEqual(1, m_NewSerie.Category.Id);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenUpdatingSerie : RepositoryFixture
+    {
+		private ISerieRepository m_SerieRepository;
+		private Serie m_Serie;
+		private Serie m_NewSerie;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+			m_Serie = new Serie { Id = 2, Name = "TestSerie", Description = "TestDesc", PublicationYear = new DateTime(2000,1,1), 
+                                             Category = new Category
+                                                 {
+                                                     Id = 1,
+                                                     Name = "TestCategory",
+                                                     Description = "TestDescCat"
+                                                 } 
+								};
+		}
+		
+		protected override void Because()
+		{
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				using (IGenericTransaction transaction = uow.BeginTransaction())
+				{
+					m_SerieRepository.Update(m_Serie);
+					m_NewSerie = m_SerieRepository.GetById(2);
+					transaction.Rollback();
+				}
+			}
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void SerieShouldContainTheNewData()
+		{
+			Assert.IsNotNull(m_NewSerie);
+            Assert.AreEqual(2, m_NewSerie.Id);
+            Assert.AreEqual("TestSerie", m_NewSerie.Name);
+            Assert.AreEqual("TestDesc", m_NewSerie.Description);
+            Assert.AreEqual(new DateTime(2000,1,1), m_NewSerie.PublicationYear);
+                
+            Assert.IsNotNull(m_NewSerie.Category);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenDeletingSerie : RepositoryFixture
+    {
+		private ISerieRepository m_SerieRepository;
+		private Serie m_Serie;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+		}
+		
+		protected override void Because ()
+		{
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				using (IGenericTransaction transaction = uow.BeginTransaction())
+				{
+					m_SerieRepository.DeleteById(1);
+					m_Serie = m_SerieRepository.GetById(1);
+					transaction.Rollback();
+				}
+			}
+		}
+		
+		protected override void TearDownContext()
+		{
 		}
 		
 		[Test]
-        public void Test_GetAllSeriesByCategoryId_CategoryIs1()
+		public void SerieShouldNotExistAnymore()
 		{
-		    ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-            var series = serieRepository.GetAllByCategoryId(1);
-
-            Assert.AreEqual(2, series.Count);
-        }
-
-        [Test]
-        public void Test_GetAllSeriesByCategoryId_CategoryIs2()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-            var series = serieRepository.GetAllByCategoryId(2);
-
-            Assert.AreEqual(2, series.Count);
-        }
-
-        [Test]
-        public void Test_GetAllSeriesByCategoryId_CategoryIs3()
-        {
-            ISerieRepository serieRepository = ObjectFactory.GetInstance<ISerieRepository>();
-            var series = serieRepository.GetAllByCategoryId(3);
-
-            Assert.AreEqual(1, series.Count);
-        }
-    }
+			Assert.IsNull(m_Serie);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenRequestingSerieByCategory : RepositoryFixture
+    {
+		private ISerieRepository m_SerieRepository;
+		private List<Serie> m_SerieList;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+		}
+		
+		protected override void Because ()
+		{
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				m_SerieList = m_SerieRepository.GetAllByCategoryId(1);
+			}
+		}
+		
+		protected override void TearDownContext()
+		{
+		}
+		
+		[Test]
+		public void ContainsExpectedElements()
+		{
+			Assert.IsNotNull(m_SerieList);
+			Assert.AreEqual(2, m_SerieList.Count);
+			Assert.AreEqual(1, m_SerieList[0].Id);
+			Assert.AreEqual(2, m_SerieList[1].Id);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenCheckingConstraintException : RepositoryFixture
+    {
+		private ISerieRepository m_SerieRepository;
+		private Exception m_Exception;
+		private Serie m_Serie;
+		
+		protected override void Context()
+		{
+			m_SerieRepository = ObjectFactory.GetInstance<ISerieRepository>();
+			m_Serie = new Serie { Id = 1, Name = "Name", Description = "Test", PublicationYear =  new DateTime(2000,1,1), 
+                                             Category = new Category
+                                                 {
+                                                     Id = 0,
+                                                     Name = "TestCategory",
+                                                     Description = "TestDesc"
+                                                 } 
+								};
+		}
+		
+		protected override void Because()
+		{
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+				try
+				{
+					m_SerieRepository.Add(m_Serie);	
+				}
+				catch(NHibernate.Exceptions.GenericADOException ex)
+				{
+					m_Exception = ex;
+				}
+			}
+		}
+		
+		protected override void TearDownContext()
+		{
+		}
+		
+		[Test]
+		public void ConstraintShouldThrowException()
+		{
+			Assert.IsInstanceOf<NHibernate.Exceptions.GenericADOException>(m_Exception);
+		}
+	}
 }

@@ -22,8 +22,14 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
 
         protected override void Because()
         {
-            m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+            	m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			}
         }
+		
+		protected override void TearDownContext()
+		{}
 
         [Test]
         public void ListShouldBeEmpty()
@@ -47,8 +53,14 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
 
         protected override void Because()
         {
-            m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+            	m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			}
         }
+		
+		protected override void TearDownContext()
+		{}
 
         [Test]
         public void ListShouldBeEmpty()
@@ -72,8 +84,14 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
 
         protected override void Because()
         {
-            m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+            	m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			}
         }
+		
+		protected override void TearDownContext()
+		{}
 
         [Test]
         public void ListShouldBeEmpty()
@@ -97,8 +115,14 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
 
         protected override void Because()
         {
-            m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+            	m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			}
         }
+		
+		protected override void TearDownContext()
+		{}
 
         [Test]
         public void ListShouldContainOneElement()
@@ -132,8 +156,14 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
 
         protected override void Because()
         {
-            m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+            	m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+			}
         }
+		
+		protected override void TearDownContext()
+		{}
 
         [Test]
         public void ListShouldContainOneElement()
@@ -166,8 +196,15 @@ namespace KinderSurprise.RepositoryImpl.TestPictureRepos
 
         protected override void Because()
         {
-            m_ReturnValue = m_PictureRepository.GetById(Id, Type);
-        }
+			using (IUnitOfWork uow = UnitOfWork.Start())
+			{
+            	m_ReturnValue = m_PictureRepository.GetById(Id, Type);
+        
+			}
+		}
+		
+		protected override void TearDownContext()
+		{}
 
         [Test]
         public void ListShouldContainTwoElements()

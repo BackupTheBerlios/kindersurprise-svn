@@ -14,6 +14,7 @@ namespace KinderSurprise.RepositoryImpl.NHImpl
             {
                 return session.QueryOver<Serie>()
                     .Where(x => x.Category.Id == categoryId)
+					.Cacheable()
                     .CacheMode(CacheMode.Normal)
                     .List().ToList();
 			}

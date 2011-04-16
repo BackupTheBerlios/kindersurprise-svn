@@ -20,8 +20,14 @@ namespace KinderSurprise.RepositoryImpl.TestInstructionsRepos
 		
 		protected override void Because ()
 		{
-			m_Instructions = m_InstructionsRepository.GetByFigurId(1);
+			using (UnitOfWork.Start())
+			{
+				m_Instructions = m_InstructionsRepository.GetByFigurId(1);
+			}
 		}
+		
+		protected override void TearDownContext()
+		{}
 		
 		[Test]
 		public void ShouldHaveNoInstructions()
@@ -43,8 +49,14 @@ namespace KinderSurprise.RepositoryImpl.TestInstructionsRepos
 		
 		protected override void Because ()
 		{
-			m_Instructions = m_InstructionsRepository.GetByFigurId(3);
+			using (UnitOfWork.Start())
+			{
+				m_Instructions = m_InstructionsRepository.GetByFigurId(3);
+			}
 		}
+		
+		protected override void TearDownContext()
+		{}
 		
 		[Test]
 		public void ShouldHaveInstructions()

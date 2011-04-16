@@ -10,25 +10,23 @@ namespace KinderSurprise.RepositoryImpl.NHImpl
 	{
 		public List<Picture> GetById(int id, EType type)
 		{
-			using (ISession session = SessionBase.OpenSession())
+		    var queryOver = UnitOfWork.CurrentSession.QueryOver<Picture>();
+			
+			if(type.Equals(EType.Figur))
 			{
-			    var queryOver = session.QueryOver<Picture>();
-				if(type.Equals(EType.Figur))
-				{
-				    queryOver.Where(x => x.Figur.Id == id);
-				}
-				if(type.Equals(EType.Serie))
-				{
-				    queryOver.Where(x => x.Serie.Id == id);
-				}
-				if(type.Equals(EType.Instructions))
-				{
-				    queryOver.Where(x => x.Instructions.Id == id);
-				}
-
-			    return queryOver.CacheMode(CacheMode.Normal).Cacheable()
-			        .List().ToList();
+			    queryOver.Where(x => x.Figur.Id == id);
 			}
+			if(type.Equals(EType.Serie))
+			{
+			    queryOver.Where(x => x.Serie.Id == id);
+			}
+			if(type.Equals(EType.Instructions))
+			{
+			    queryOver.Where(x => x.Instructions.Id == id);
+			}
+
+		    return queryOver.CacheMode(CacheMode.Normal).Cacheable()
+		        .List().ToList();
 		}
 	}
 }

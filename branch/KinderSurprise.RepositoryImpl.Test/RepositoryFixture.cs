@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace KinderSurprise.RepositoryImpl.Test
 {
-	public class RepositoryFixture
+	public abstract class RepositoryFixture
 	{
         [SetUp]
-		public void SetupContext()
+		public void FixtureSetupContext()
 		{
 			Productive.Initialize();
 
@@ -15,22 +15,14 @@ namespace KinderSurprise.RepositoryImpl.Test
 		}
 
         [TearDown]
-        public void TearDown()
+        public void FixtureTearDown()
         {
             TearDownContext();
         }
 
-        protected virtual void Context()
-        {
-        }
-
-        protected virtual void Because()
-        {
-        }
-
-	    protected virtual void TearDownContext()
-	    {
-	    }
+        protected abstract void Context();
+        protected abstract void Because();
+	    protected abstract void TearDownContext();
 	}
 }
 

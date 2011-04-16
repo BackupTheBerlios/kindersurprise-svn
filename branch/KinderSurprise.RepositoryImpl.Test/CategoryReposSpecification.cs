@@ -27,6 +27,9 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 			}
 		}
 		
+		protected override void TearDownContext()
+		{}
+		
 		[Test]
 		public void ShouldReturnTrue()
 		{
@@ -55,6 +58,9 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 			}
 		}
 		
+		protected override void TearDownContext()
+		{}
+		
 		[Test]
 		public void ShouldReturnFalse()
 		{
@@ -80,6 +86,9 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 				m_Categories = m_CategoryRepository.GetAll();
 			}
 		}
+		
+		protected override void TearDownContext()
+		{}
 		
 		[Test]
 		public void ShouldContainAllData()
@@ -120,6 +129,9 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 			}
 		}
 		
+		protected override void TearDownContext()
+		{}
+		
 		[Test]
 		public void ShouldReturnTheCategory()
 		{
@@ -148,6 +160,9 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 				m_ReturnValue = m_CategoryRepository.GetById(CategoryId);
 			}
 		}
+		
+		protected override void TearDownContext()
+		{}
 		
         [Test]
 		public void ShouldReturnNullObject()
@@ -189,8 +204,7 @@ namespace KinderSurprise.RepositoryImpl.TestCategoryRepos
 		}
 		
 		protected override void TearDownContext()
-		{
-		}
+		{}
 		
         [Test]
 		public void CategoryShouldBeAddedToTheDatabase()
