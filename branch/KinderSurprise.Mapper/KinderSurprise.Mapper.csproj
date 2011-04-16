@@ -54,13 +54,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="FluentNHibernate, Version=2.0.0.698, Culture=neutral, PublicKeyToken=8aa435e3cb308880">
+    <Reference Include="FluentNHibernate, Version=1.2.0.712, Culture=neutral, PublicKeyToken=8aa435e3cb308880">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\FluentNHibernate.dll</HintPath>
+      <HintPath>..\lib\fluentnhibernate-NH3.1-1.2\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\NHibernate.dll</HintPath>
+      <HintPath>..\lib\NHibernate-3.1.0.GA-bin\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

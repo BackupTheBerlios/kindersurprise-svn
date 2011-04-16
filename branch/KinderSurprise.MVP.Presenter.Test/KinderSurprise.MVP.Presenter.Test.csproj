@@ -76,16 +76,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\structuremap_v2.6.1\StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=3.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-      <HintPath>..\lib\fluentnhibernate-binary-2.0.0.698\NHibernate.ByteCode.Castle.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\nunit v2.5.9\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate-3.1.0.GA-bin\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
