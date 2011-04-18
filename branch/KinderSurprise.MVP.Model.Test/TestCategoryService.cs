@@ -8,14 +8,8 @@ using StructureMap;
 namespace KinderSurprise.MVP.Model.Test
 {
 	[TestFixture]
-    public class TestCategoryService
+    public class TestCategoryService : ServiceFixture
     {
-		[SetUp]
-		public void Initialize()
-		{
-			Testing.Initialize();
-		}
-		
         [Test]
         public void Test_GetAll()
         {
@@ -102,5 +96,18 @@ namespace KinderSurprise.MVP.Model.Test
 
             Assert.IsNull(categoryService.GetById(newCategory.Id));
         }
-    }
+    
+
+		protected override void Because ()
+		{
+		}
+
+		protected override void Context ()
+		{
+		}
+
+		protected override void TearDownContext ()
+		{
+		}
+	}
 }

@@ -1,32 +1,33 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KinderSurprise.MVP.Presenter.Test/TestCategoryPropertyPresenter.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KinderSurprise.MVP.Model.Test/TestCategoryService.cs" ctype="Workbench">
     <Files>
-      <File FileName="KinderSurprise.MVP.Presenter.Test/TestCategoryPropertyPresenter.cs" Line="94" Column="24" />
-      <File FileName="KinderSurprise.MVP.Presenter.Test/PresenterFixture.cs" Line="10" Column="60" />
-      <File FileName="KinderSurprise.MVP.Presenter/CategoryPropertyPresenter.cs" Line="72" Column="31" />
-      <File FileName="KinderSurprise.MVP.View/UserControlCategoryProperty.ascx.cs" Line="79" Column="39" />
-      <File FileName="KinderSurprise.MVP.View/Default.aspx.cs" Line="108" Column="51" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestCategoryPropertyPresenter.cs" Line="289" Column="9" />
+      <File FileName="KinderSurprise.BootStrap/Testing.cs" Line="43" Column="30" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/PresenterFixture.cs" Line="51" Column="3" />
+      <File FileName="KinderSurprise.MVP.Presenter/CategoryPropertyPresenter.cs" Line="52" Column="1" />
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestMultiViewPresenter.cs" Line="84" Column="1" />
+      <File FileName="KinderSurprise.MVP.Model.Test/ServiceFixture.cs" Line="32" Column="46" />
+      <File FileName="KinderSurprise.MVP.Model.Test/TestCategoryService.cs" Line="104" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="KinderSurprise.BootStrap" expanded="True" />
+          <Node name="KinderSurprise.Mapper" expanded="True" />
           <Node name="KinderSurprise.Model" expanded="True" />
-          <Node name="KinderSurprise.MVP.Model.Test" expanded="True" />
+          <Node name="KinderSurprise.Model.Test" expanded="True" />
+          <Node name="KinderSurprise.MVP.Model" expanded="True">
+            <Node name="Interfaces" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.MVP.Model.Test" expanded="True" selected="True">
+            <Node name="Properties" expanded="True" />
+          </Node>
           <Node name="KinderSurprise.MVP.Presenter" expanded="True" />
-          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True">
-            <Node name="TestCategoryPropertyPresenter.cs" selected="True" />
-          </Node>
-          <Node name="KinderSurprise.MVP.View" expanded="True">
-            <Node name="Default.aspx" expanded="True" />
-            <Node name="UserControlCategoryProperty.ascx" expanded="True" />
-          </Node>
+          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True" />
+          <Node name="KinderSurprise.MVP.View" expanded="True" />
           <Node name="KinderSurprise.Repository" expanded="True" />
-          <Node name="KinderSurprise.RepositoryImpl" expanded="True">
-            <Node name="NHImpl" expanded="True" />
-          </Node>
-          <Node name="KinderSurprise.RepositoryImpl.Test" expanded="True" />
+          <Node name="KinderSurprise.RepositoryImpl" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -42,25 +43,7 @@
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True">
-            <Node name="KinderSurprise" expanded="True">
-              <Node name="MVP" expanded="True">
-                <Node name="Presenter" expanded="True">
-                  <Node name="Test" expanded="True" />
-                  <Node name="TestCategoryPresenter" expanded="True">
-                    <Node name="WhenSettingEditMode" selected="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-          <Node name="KinderSurprise.RepositoryImpl.Test" expanded="True">
-            <Node name="KinderSurprise" expanded="True">
-              <Node name="RepositoryImpl" expanded="True" />
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -79,7 +62,9 @@
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="248" />
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestCategoryRepository.cs" line="254" />
       <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.DAL.Test/TestFigurRepository.cs" line="310" />
-      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter.Test/TestCategoryPropertyPresenter.cs" line="20" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter.Test/TestCategoryPropertyPresenter.cs" line="22" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.MVP.Presenter/CategoryPropertyPresenter.cs" line="52" />
+      <Breakpoint file="/home/enrico/projects/kindersurprise/KinderSurprise.MVP.Model.Test/ServiceFixture.cs" line="13" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore">

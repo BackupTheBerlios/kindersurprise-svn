@@ -89,6 +89,7 @@
     <Compile Include="TestPictureService.cs" />
     <Compile Include="TestPictureHandler.cs" />
     <Compile Include="TestValidator.cs" />
+    <Compile Include="ServiceFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KinderSurprise.Mapper\KinderSurprise.Mapper.csproj">

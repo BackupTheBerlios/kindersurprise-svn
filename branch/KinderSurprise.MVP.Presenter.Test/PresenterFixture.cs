@@ -22,6 +22,7 @@ namespace KinderSurprise.MVP.Presenter.Test
         public void FixtureTearDown()
         {
 			CleanMocks();
+			Testing.ResetMocks();
         }
 
         protected abstract void Context();
