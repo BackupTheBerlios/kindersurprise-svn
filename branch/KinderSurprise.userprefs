@@ -1,15 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="KinderSurprise.MVP.Model.Test/TestCategoryService.cs" ctype="Workbench">
-    <Files>
-      <File FileName="KinderSurprise.MVP.Presenter.Test/TestCategoryPropertyPresenter.cs" Line="289" Column="9" />
-      <File FileName="KinderSurprise.BootStrap/Testing.cs" Line="43" Column="30" />
-      <File FileName="KinderSurprise.MVP.Presenter.Test/PresenterFixture.cs" Line="51" Column="3" />
-      <File FileName="KinderSurprise.MVP.Presenter/CategoryPropertyPresenter.cs" Line="52" Column="1" />
-      <File FileName="KinderSurprise.MVP.Presenter.Test/TestMultiViewPresenter.cs" Line="84" Column="1" />
-      <File FileName="KinderSurprise.MVP.Model.Test/ServiceFixture.cs" Line="32" Column="46" />
-      <File FileName="KinderSurprise.MVP.Model.Test/TestCategoryService.cs" Line="104" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench ctype="Workbench">
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -20,14 +11,26 @@
           <Node name="KinderSurprise.MVP.Model" expanded="True">
             <Node name="Interfaces" expanded="True" />
           </Node>
-          <Node name="KinderSurprise.MVP.Model.Test" expanded="True" selected="True">
+          <Node name="KinderSurprise.MVP.Model.Test" expanded="True">
             <Node name="Properties" expanded="True" />
           </Node>
-          <Node name="KinderSurprise.MVP.Presenter" expanded="True" />
-          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True" />
+          <Node name="KinderSurprise.MVP.Presenter" expanded="True">
+            <Node name="References" expanded="True" />
+          </Node>
+          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True">
+            <Node name="References" expanded="True">
+              <Node name="/home/enrico/projects/kindersurprise/lib/Moq.4.0.10827/NET35/Moq.dll">
+                <Option id="ShowVersionControlOverlays" value="True" />
+                <Option id="ShowAllFiles" value="True" />
+              </Node>
+            </Node>
+            <Node name="Properties" expanded="True" />
+            <Node name="TestTreeViewPresenter.cs" selected="True" />
+          </Node>
           <Node name="KinderSurprise.MVP.View" expanded="True" />
           <Node name="KinderSurprise.Repository" expanded="True" />
           <Node name="KinderSurprise.RepositoryImpl" expanded="True" />
+          <Node name="KinderSurprise.RepositoryImpl.Test" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -43,7 +46,17 @@
         <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" />
+        <State expanded="True">
+          <Node name="KinderSurprise.MVP.Presenter.Test" expanded="True">
+            <Node name="KinderSurprise" expanded="True">
+              <Node name="MVP" expanded="True">
+                <Node name="Presenter" expanded="True">
+                  <Node name="TestTreeViewPresenter" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

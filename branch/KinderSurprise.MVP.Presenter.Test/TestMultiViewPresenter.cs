@@ -1,99 +1,157 @@
 using System.Web.UI.WebControls;
 using KinderSurprise.Model;
 using KinderSurprise.MVP.Presenter.Interfaces;
+using KinderSurprise.MVP.Presenter.Test;
 using NUnit.Framework;
 
-namespace KinderSurprise.MVP.Presenter.Test
+
+namespace KinderSurprise.MVP.Presenter.TestMultiViewPresenter
 {
-    [TestFixture]
-    public class TestMultiViewPresenter
-    {
-		private IMultiView m_MockMultiView = null;
+	[TestFixture]
+	public class WhenSettingViewWithoutActiveTab : PresenterFixture
+	{
+		private MultiViewPresenter m_MultiViewPresenter;
+		private ETabActivity m_ActiveTab;
 		
-        #region MockObjectWithInitializationAndDispose
-        [SetUp]
-        public void Setup()
-        {
-            Moq.Mock<IMultiView> mockMultiView = new Moq.Mock<IMultiView>();
-            mockMultiView.SetupAllProperties();
-			m_MockMultiView = mockMultiView.Object;
-			m_MockMultiView.MultiViewCategory = new MultiView();
-			m_MockMultiView.MultiViewFigur = new MultiView();
-			m_MockMultiView.MultiViewSerie = new MultiView();
-			m_MockMultiView.ViewCategoryProperty = new View();
-			m_MockMultiView.ViewFigurProperty = new View();
-			m_MockMultiView.ViewFigurStore = new View();
-			m_MockMultiView.ViewSerieProperty = new View();
-			m_MockMultiView.ViewSerieStore = new View();
-			m_MockMultiView.MultiViewCategory.Views.Add(m_MockMultiView.ViewCategoryProperty);
-            m_MockMultiView.MultiViewSerie.Views.Add(m_MockMultiView.ViewSerieProperty);
-            m_MockMultiView.MultiViewSerie.Views.Add(m_MockMultiView.ViewSerieStore);
-            m_MockMultiView.MultiViewFigur.Views.Add(m_MockMultiView.ViewFigurProperty);
-            m_MockMultiView.MultiViewFigur.Views.Add(m_MockMultiView.ViewFigurStore);
-        }
+		protected override void Context()
+		{
+			m_MultiViewPresenter = new MultiViewPresenter(MockMultiView);
+			m_ActiveTab = ETabActivity.None;
+		}
+		
+		protected override void Because()
+		{
+			m_MultiViewPresenter.ActivateView(m_ActiveTab);
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void AllViewsShouldBeInvisible()
+		{
+			Assert.IsFalse(MockMultiView.MultiViewCategory.Visible);
+            Assert.IsFalse(MockMultiView.MultiViewSerie.Visible);
+            Assert.IsFalse(MockMultiView.MultiViewFigur.Visible);
+		}
+		
+		[Test]
+		public void NoActiveIndexShouldBeSet()
+		{
+			Assert.AreEqual(-1, MockMultiView.MultiViewCategory.ActiveViewIndex);
+            Assert.AreEqual(-1, MockMultiView.MultiViewSerie.ActiveViewIndex);
+            Assert.AreEqual(-1, MockMultiView.MultiViewFigur.ActiveViewIndex);
+		}
+	}
+	
+	[TestFixture]
+	public class WhenSettingViewWithActiveCategory : PresenterFixture
+	{
+		private MultiViewPresenter m_MultiViewPresenter;
+		private ETabActivity m_ActiveTab;
+		
+		protected override void Context()
+		{
+			m_MultiViewPresenter = new MultiViewPresenter(MockMultiView);
+			m_ActiveTab = ETabActivity.Category;
+		}
+		
+		protected override void Because()
+		{
+			m_MultiViewPresenter.ActivateView(m_ActiveTab);
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void OnlyCategoryShouldBeVisible()
+		{
+			Assert.IsTrue(MockMultiView.MultiViewCategory.Visible);
+            Assert.IsFalse(MockMultiView.MultiViewSerie.Visible);
+            Assert.IsFalse(MockMultiView.MultiViewFigur.Visible);
+		}
+		
+		[Test]
+		public void CategoryViewShouldHaveActiveIndex()
+		{
+			Assert.AreEqual(0, MockMultiView.MultiViewCategory.ActiveViewIndex);
+            Assert.AreEqual(-1, MockMultiView.MultiViewSerie.ActiveViewIndex);
+            Assert.AreEqual(-1, MockMultiView.MultiViewFigur.ActiveViewIndex);
+		}
+	}
 
-        [TearDown]
-        public void Teardown()
-        {
-            m_MockMultiView = null;
-        }
+	[TestFixture]
+	public class WhenSettingViewWithActiveSerie : PresenterFixture
+	{
+		private MultiViewPresenter m_MultiViewPresenter;
+		private ETabActivity m_ActiveTab;
+		
+		protected override void Context()
+		{
+			m_MultiViewPresenter = new MultiViewPresenter(MockMultiView);
+			m_ActiveTab = ETabActivity.Serie;
+		}
+		
+		protected override void Because()
+		{
+			m_MultiViewPresenter.ActivateView(m_ActiveTab);
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void OnlySerieShouldBeVisible()
+		{
+			Assert.IsFalse(MockMultiView.MultiViewCategory.Visible);
+            Assert.IsTrue(MockMultiView.MultiViewSerie.Visible);
+            Assert.IsFalse(MockMultiView.MultiViewFigur.Visible);
+		}
+		
+		[Test]
+		public void SerieViewShouldHaveActiveIndex()
+		{
+			Assert.AreEqual(-1, MockMultiView.MultiViewCategory.ActiveViewIndex);
+            Assert.AreEqual(0, MockMultiView.MultiViewSerie.ActiveViewIndex);
+            Assert.AreEqual(-1, MockMultiView.MultiViewFigur.ActiveViewIndex);
+		}
+	}
 
-		#endregion
-        
-        [Test]
-        public void Test_SetViewActive_None()
-        {
-            MultiViewPresenter multiViewPresenter = new MultiViewPresenter(m_MockMultiView);
-            multiViewPresenter.ActivateView(ETabActivity.None);
-
-            Assert.IsFalse(m_MockMultiView.MultiViewCategory.Visible);
-            Assert.IsFalse(m_MockMultiView.MultiViewSerie.Visible);
-            Assert.IsFalse(m_MockMultiView.MultiViewFigur.Visible);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewCategory.ActiveViewIndex);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewSerie.ActiveViewIndex);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewFigur.ActiveViewIndex);
-        }
-
-        [Test]
-        public void Test_SetViewActive_Category()
-        {
-            MultiViewPresenter multiViewPresenter = new MultiViewPresenter(m_MockMultiView);
-            multiViewPresenter.ActivateView(ETabActivity.Category);
-
-            Assert.IsTrue(m_MockMultiView.MultiViewCategory.Visible);
-            Assert.IsFalse(m_MockMultiView.MultiViewSerie.Visible);
-            Assert.IsFalse(m_MockMultiView.MultiViewFigur.Visible);
-            Assert.AreEqual(0, m_MockMultiView.MultiViewCategory.ActiveViewIndex);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewSerie.ActiveViewIndex);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewFigur.ActiveViewIndex);
-        }
-
-        [Test]
-        public void Test_SetViewActive_Serie()
-        {
-            MultiViewPresenter multiViewPresenter = new MultiViewPresenter(m_MockMultiView);
-            multiViewPresenter.ActivateView(ETabActivity.Serie);
-
-            Assert.IsFalse(m_MockMultiView.MultiViewCategory.Visible);
-            Assert.IsTrue(m_MockMultiView.MultiViewSerie.Visible);
-            Assert.IsFalse(m_MockMultiView.MultiViewFigur.Visible);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewCategory.ActiveViewIndex);
-            Assert.AreEqual(0, m_MockMultiView.MultiViewSerie.ActiveViewIndex);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewFigur.ActiveViewIndex);
-        }
-
-        [Test]
-        public void Test_SetViewActive_Figur()
-        {
-            MultiViewPresenter multiViewPresenter = new MultiViewPresenter(m_MockMultiView);
-            multiViewPresenter.ActivateView(ETabActivity.Figur);
-
-            Assert.IsFalse(m_MockMultiView.MultiViewCategory.Visible);
-            Assert.IsFalse(m_MockMultiView.MultiViewSerie.Visible);
-            Assert.IsTrue(m_MockMultiView.MultiViewFigur.Visible);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewCategory.ActiveViewIndex);
-            Assert.AreEqual(-1, m_MockMultiView.MultiViewSerie.ActiveViewIndex);
-            Assert.AreEqual(0, m_MockMultiView.MultiViewFigur.ActiveViewIndex);
-        }
+	[TestFixture]
+	public class WhenSettingViewWithActiveFigur : PresenterFixture
+	{
+		private MultiViewPresenter m_MultiViewPresenter;
+		private ETabActivity m_ActiveTab;
+		
+		protected override void Context()
+		{
+			m_MultiViewPresenter = new MultiViewPresenter(MockMultiView);
+			m_ActiveTab = ETabActivity.Figur;
+		}
+		
+		protected override void Because()
+		{
+			m_MultiViewPresenter.ActivateView(m_ActiveTab);
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void OnlySerieShouldBeVisible()
+		{
+			Assert.IsFalse(MockMultiView.MultiViewCategory.Visible);
+            Assert.IsFalse(MockMultiView.MultiViewSerie.Visible);
+            Assert.IsTrue(MockMultiView.MultiViewFigur.Visible);
+		}
+		
+		[Test]
+		public void SerieViewShouldHaveActiveIndex()
+		{
+			Assert.AreEqual(-1, MockMultiView.MultiViewCategory.ActiveViewIndex);
+            Assert.AreEqual(-1, MockMultiView.MultiViewSerie.ActiveViewIndex);
+            Assert.AreEqual(0, MockMultiView.MultiViewFigur.ActiveViewIndex);
+		}
     }
 }
