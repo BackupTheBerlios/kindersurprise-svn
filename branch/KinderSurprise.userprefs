@@ -1,6 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="KinderSurprise.MVP.Presenter.Test/TestTreeViewPresenter.cs" ctype="Workbench">
+    <Files>
+      <File FileName="KinderSurprise.MVP.Presenter.Test/TestTreeViewPresenter.cs" Line="430" Column="2" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -51,6 +54,8 @@
             <Node name="KinderSurprise" expanded="True">
               <Node name="MVP" expanded="True">
                 <Node name="Presenter" expanded="True">
+                  <Node name="Test" expanded="True" />
+                  <Node name="TestMultiViewPresenter" expanded="True" />
                   <Node name="TestTreeViewPresenter" selected="True" />
                 </Node>
               </Node>

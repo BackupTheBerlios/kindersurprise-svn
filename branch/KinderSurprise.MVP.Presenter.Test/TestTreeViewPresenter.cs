@@ -381,22 +381,50 @@ namespace KinderSurprise.MVP.Presenter.TestTreeViewPresenter
 		}
 	}
 	
-//    [TestFixture]
-//    public class TestTreeViewPresenter
-//    {
-//        [Test]
-//        public void Test_GetActiveMultiMenu_FigurIsChoosen()
-//        {
-//            TreeViewPresenter m_TreeViewPresenter = new TreeViewPresenter(m_TreeView);
-//            m_TreeViewPresenter.FillTreeView();
-//            m_TreeView.OverviewTreeView.Nodes[0].ChildNodes[0].ChildNodes[0].Selected = true;
-//
-//            var activMenu = m_TreeViewPresenter.GetSelectedNodeDepth();
-//
-//            Assert.AreEqual(ETabActivity.Figur, activMenu);
-//            Assert.IsTrue(m_TreeView.Menu.Visible);
-//            Assert.IsTrue(m_TreeView.Menu.Items[(int)EMenuItem.Property].Enabled);
-//            Assert.IsFalse(m_TreeView.Menu.Items[(int)EMenuItem.Store].Enabled);
-//        }
-//    }
+	[TestFixture]
+	public class WhenSettingMultiViewWithFigurSelection : PresenterFixture
+	{
+		private TreeViewPresenter m_TreeViewPresenter;
+		private ETabActivity m_ActiveMenu;
+		
+		protected override void Context()
+		{
+			m_TreeViewPresenter = new TreeViewPresenter(MockTreeView);
+			Testing.MockCategoryService.Setup(x => x.GetAll())
+				.Returns(new List<Category> { 
+					new Category { Id = 1 }, 
+					new Category { Id = 2 }, 
+					new Category { Id = 3 }});
+			m_TreeViewPresenter.FillTreeView();
+			MockTreeView.OverviewTreeView.Nodes[0].ChildNodes[0].ChildNodes[0].Selected = true;
+			m_ActiveMenu = m_TreeViewPresenter.GetSelectedNodeDepth();
+		}
+		
+		protected override void Because()
+		{
+			m_TreeViewPresenter.ClearTreeView();
+		}
+		
+		protected override void TearDownContext()
+		{}
+		
+		[Test]
+		public void SelectionShouldBeCategory()
+		{
+			Assert.AreEqual(ETabActivity.Figur, m_ActiveMenu);
+		}
+		
+		[Test]
+		public void MenuShouldBeVisible()
+		{
+			Assert.IsTrue(MockTreeView.Menu.Visible);
+		}
+		
+		[Test]
+		public void OnlyPropertyMenuItemShouldBeVisible()
+		{
+			Assert.IsTrue(MockTreeView.Menu.Items[(int)EMenuItem.Property].Enabled);
+			Assert.IsFalse(MockTreeView.Menu.Items[(int)EMenuItem.Store].Enabled);
+		}
+	}
 }
